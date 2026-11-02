@@ -86,15 +86,17 @@ export function Header() {
           </Button>
         </div>
 
-        <button
+        <Button
           type="button"
+          variant="outline"
+          size="icon"
           onClick={() => setOpen((v) => !v)}
           className="inline-flex size-10 items-center justify-center rounded-xl border border-brown text-primary lg:hidden"
           aria-expanded={open}
           aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+        </Button>
       </div>
 
       {open && (

@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep shared academy branding in semantic CSS tokens and the shared Logo component; uploaded logo artwork uses a CDN asset pointer so all pages show the same source.
+- Keep the homepage a concise presentation with introduction, benefits, starting steps, and one final booking section; detailed teaching content remains on the samples page.

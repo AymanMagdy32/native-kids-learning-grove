@@ -13,6 +13,8 @@ import { whatsappLink } from "@/lib/contact";
 export const Route = createFileRoute("/trial")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "احجز حصة تجريبية مجانية | Native Kid Academy" },
       {
         name: "description",

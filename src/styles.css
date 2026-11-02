@@ -8,8 +8,8 @@
 
 /*
  * Native Kid Academy design system.
- * Brand foundation: olive green, light pistachio, warm brown, and cream.
- * Blue is reserved for quiet informational accents, not primary actions.
+ * Brand foundation: the supplied logo’s teal, royal blue, sunshine yellow, coral, and green.
+ * Teal leads actions; blue anchors typography, with restrained yellow and coral accents.
  * Exact logo samples are preserved as hex tokens; UI tints derive from them.
  * Keep component colors semantic so every page shares the same palette.
  */
@@ -86,98 +86,84 @@
 }
 
 :root {
-  --contact: oklch(0.62 0.13 190);
-  --contact-hover: oklch(0.54 0.12 190);
+  --brand-green: #009c95;
+  --brand-brown: #134276;
+  --brand-mint: #e7f6f3;
+  --brand-blue: #0751ae;
+  --brand-yellow: #ffbd08;
+  --coral-accent: #ff584b;
+  --orange-accent: var(--brand-yellow);
+  --contact: #008579;
+  --contact-hover: #006b61;
   --contact-foreground: #ffffff;
-  --primary-action: var(--primary);
+  --primary-action: #008579;
   --yellow-accent: var(--brand-yellow);
-  --coral-accent: oklch(0.67083261 0.17356097 22.15725846);
-  --orange-accent: oklch(0.81485112 0.15263207 74.40638198);
-  --overlay: oklch(0.22 0.016 163);
-  /* Most frequent interior pixels in public/brand/accel-logo.png. */
-  --brand-green: oklch(0.63 0.21 18);
-  --brand-brown: oklch(0.27 0.07 255);
-  --brand-mint: oklch(0.93 0.05 190);
-  --brand-blue: oklch(0.66 0.13 195);
-  --brand-yellow: oklch(0.87 0.16 88);
+  --overlay: #152b45;
   --space-unit: 0.25rem;
-  --radius: 1.25rem;
-  --background: oklch(0.985 0.014 55);
-  --foreground: var(--brand-brown);
-  --card: oklch(1 0 0);
-  --card-foreground: var(--brand-brown);
-  --popover: oklch(1 0 0);
-  --popover-foreground: var(--brand-brown);
-
-  --primary: var(--brand-green);
-  --primary-foreground: #fff;
-  --secondary: color-mix(in srgb, var(--brand-mint) 55%, white);
-  --secondary-foreground: var(--brand-brown);
-  --muted: oklch(0.955 0.025 45);
-  --muted-foreground: oklch(0.47 0.05 255);
-  --accent: color-mix(in srgb, var(--brand-brown) 8%, white);
-  --accent-foreground: var(--brand-brown);
-
-  --destructive: oklch(0.58 0.22 27);
-  --destructive-foreground: oklch(0.99 0.005 95);
-  --success: oklch(0.58 0.12 145);
-  --success-foreground: oklch(0.99 0.005 95);
-  --warning: oklch(0.6 0.15 65); /* Accessible amber for stars; yellow remains decorative. */
-  --warning-foreground: oklch(0.3 0.05 65);
-
-  --brand-dark: var(--brand-brown);
-  --brand-dark-foreground: oklch(0.98 0.012 100);
+  --radius: 0.5rem;
+  --background: #ffffff;
+  --foreground: #173651;
+  --card: #ffffff;
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: #008579;
+  --primary-foreground: #ffffff;
+  --secondary: var(--brand-mint);
+  --secondary-foreground: var(--foreground);
+  --muted: #f3f7f8;
+  --muted-foreground: #536979;
+  --accent: #e7f6f3;
+  --accent-foreground: var(--primary);
+  --destructive: #c83432;
+  --destructive-foreground: #ffffff;
+  --success: #168345;
+  --success-foreground: #ffffff;
+  --warning: #946700;
+  --warning-foreground: #ffffff;
+  --brand-dark: #123e70;
+  --brand-dark-foreground: #ffffff;
   --pistachio: var(--brand-mint);
-  --pistachio-foreground: var(--brand-brown);
+  --pistachio-foreground: var(--foreground);
   --brown: var(--brand-brown);
-  --blue-accent: color-mix(in srgb, var(--brand-blue) 85%, var(--brand-mint));
-  --cream: color-mix(in srgb, var(--brand-yellow) 5%, white);
-
-  --border: color-mix(in srgb, var(--brand-brown) 18%, white);
-  --input: color-mix(in srgb, var(--brand-brown) 55%, white);
-  --ring: var(--brand-green);
-
+  --blue-accent: #eaf2fd;
+  --cream: #f6faf9;
+  --border: #dce8eb;
+  --input: #b3c8ce;
+  --ring: var(--primary);
   --chart-1: var(--primary);
-  --chart-2: var(--pistachio);
-  --chart-3: var(--brown);
-  --chart-4: var(--blue-accent);
-  --chart-5: var(--warning);
-
-  --sidebar: oklch(0.31 0.055 105);
-  --sidebar-foreground: oklch(0.97 0.012 100);
-  --sidebar-primary: var(--brand-green);
-  --sidebar-primary-foreground: oklch(0.99 0.008 100);
-  --sidebar-accent: oklch(0.38 0.06 105);
-  --sidebar-accent-foreground: oklch(0.98 0.01 100);
-  --sidebar-border: oklch(0.43 0.045 100);
-  --sidebar-ring: oklch(0.84 0.09 113);
+  --chart-2: var(--brand-blue);
+  --chart-3: var(--coral-accent);
+  --chart-4: var(--brand-yellow);
+  --chart-5: var(--success);
+  --sidebar: var(--brand-dark);
+  --sidebar-foreground: var(--brand-dark-foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
-
 .dark {
-  --background: oklch(0.21 0.035 105);
-  --foreground: oklch(0.97 0.012 100);
-  --card: oklch(0.26 0.035 98);
-  --card-foreground: oklch(0.97 0.012 100);
-  --popover: oklch(0.26 0.035 98);
-  --popover-foreground: oklch(0.97 0.012 100);
-  --primary: oklch(0.72 0.11 115);
-  --primary-foreground: oklch(0.19 0.035 105);
-  --secondary: oklch(0.32 0.04 105);
-  --secondary-foreground: oklch(0.97 0.012 100);
-  --muted: oklch(0.3 0.03 95);
-  --muted-foreground: oklch(0.76 0.025 95);
-  --accent: oklch(0.34 0.045 70);
-  --accent-foreground: oklch(0.97 0.012 100);
-  --brand-dark: oklch(0.24 0.04 105);
-  --brand-dark-foreground: oklch(0.98 0.01 100);
-  --pistachio: oklch(0.76 0.09 113);
-  --pistachio-foreground: oklch(0.2 0.04 105);
-  --brown: oklch(0.55 0.065 60);
-  --blue-accent: oklch(0.7 0.05 235);
-  --cream: oklch(0.27 0.03 95);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.72 0.11 115);
+  --background: #102334;
+  --foreground: #edf5fa;
+  --card: #183247;
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: #63d6c9;
+  --primary-action: #63d6c9;
+  --primary-foreground: #102334;
+  --muted: #203a4d;
+  --muted-foreground: #b6ccd8;
+  --secondary: var(--muted);
+  --secondary-foreground: var(--foreground);
+  --accent: var(--muted);
+  --accent-foreground: var(--primary);
+  --cream: var(--card);
+  --border: #375466;
+  --input: var(--border);
 }
 
 @layer base {
@@ -226,7 +212,7 @@
 @utility surface-card {
   background-color: var(--color-card);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
 }
 
@@ -505,7 +491,7 @@
 .woodland-site .hero-gradient dl > div {
   background: color-mix(in srgb, var(--card) 80%, transparent);
   border: 1px solid color-mix(in srgb, var(--brand-green) 8%, var(--card));
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius);
   backdrop-filter: blur(6px);
 }
 
@@ -1230,40 +1216,47 @@
   }
 }
 
-/* ===== Candy Pop identity (Native Kid) ===== */
-.pop-site { position: relative; overflow-x: clip; }
-.pop-site main > section:nth-of-type(even):not(.pop-hero) {
-  background: color-mix(in oklch, var(--primary) 7%, var(--background));
-  border-radius: 3rem; margin-inline: 0.75rem;
-}
-.pop-site .surface-card { border: 2px solid var(--brand-brown); box-shadow: 6px 6px 0 var(--brand-brown); border-radius: 1.5rem; transition: transform .2s, box-shadow .2s; }
-.pop-site .surface-card:hover { transform: translate(-3px,-3px) rotate(-.4deg); box-shadow: 9px 9px 0 var(--primary); }
-.pop-site .inline-flex.cursor-pointer { border-radius: 999px; border: 2px solid var(--brand-brown); box-shadow: 4px 4px 0 var(--brand-brown); }
-.pop-site .inline-flex.cursor-pointer:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--brand-brown); }
-.pop-site .inline-flex.cursor-pointer.border-input { background: var(--brand-yellow); color: var(--brand-brown); }
-.pop-site header { background: color-mix(in oklch, var(--background) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 2px dashed color-mix(in oklch, var(--brand-brown) 25%, transparent); }
-.pop-site .brand-logo-mark { width: 3rem; height: 3rem; animation: pop-wiggle 4s ease-in-out infinite; }
-.pop-site .brand-logo > span > span:first-child { font-family: var(--font-display); font-size: 1.35rem; color: var(--primary); }
-.pop-site .brand-logo-light > span > span:first-child { color: var(--brand-yellow); }
 
-@utility pop-hero {
-  background:
-    radial-gradient(circle at 12% 20%, color-mix(in oklch, var(--brand-yellow) 55%, transparent) 0, transparent 28%),
-    radial-gradient(circle at 88% 15%, color-mix(in oklch, var(--brand-blue) 40%, transparent) 0, transparent 30%),
-    radial-gradient(circle at 70% 90%, color-mix(in oklch, var(--primary) 30%, transparent) 0, transparent 35%),
-    var(--background);
+/* Original academy structure, with restrained uploaded-brand styling. */
+.academy-site { overflow-x: clip; }
+.academy-site .container-page { max-width: 76rem; }
+.academy-logo { width: 176px; height: 104px; }
+.academy-site header > .container-page { height: 112px; }
+.academy-site .brand-logo { flex-shrink: 0; }
+.academy-site .brand-logo-light { width: fit-content; background: var(--card); border-radius: var(--radius); padding: 0.4rem 0.75rem; }
+.academy-site .inline-flex.cursor-pointer { box-shadow: none; border-radius: var(--radius); }
+.academy-site .inline-flex.cursor-pointer.border-input { border-color: var(--border); color: var(--foreground); }
+.academy-site .surface-card { box-shadow: none; }
+.academy-page-heading { background: var(--cream); border-bottom: 1px solid var(--border); }
+.academy-home-hero { position: relative; isolation: isolate; overflow: hidden; background: var(--cream); }
+.academy-home-hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.academy-home-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to left, var(--cream) 0%, var(--cream) 42%, color-mix(in srgb, var(--cream) 75%, transparent) 52%, transparent 75%); }
+.academy-home-hero > .container-page { min-height: 590px; padding-block: 4rem; display: flex; align-items: center; }
+.academy-hero-copy { width: min(100%, 33rem); }
+.academy-home-hero h1 { font-size: 3rem; line-height: 1.35; }
+.academy-facts { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.academy-facts > div + div { border-inline-start: 1px solid var(--border); }
+.academy-facts > div { text-align: center; }
+.academy-facts dt { font-size: 1.25rem; font-weight: 700; color: var(--brand-blue); }
+.academy-facts dd { font-size: 0.75rem; color: var(--muted-foreground); }
+.academy-benefit-icon { display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: var(--radius); }
+.academy-icon-teal { background: var(--brand-mint); color: var(--primary); }
+.academy-icon-blue { background: var(--blue-accent); color: var(--brand-blue); }
+.academy-icon-coral { background: color-mix(in srgb, var(--coral-accent) 12%, var(--card)); color: var(--coral-accent); }
+.academy-start { background: var(--cream); border-block: 1px solid var(--border); }
+.academy-step-number { font-size: 2rem; font-weight: 700; color: var(--primary); }
+.academy-booking { background: var(--brand-dark); color: var(--brand-dark-foreground); }
+.academy-site footer { margin-top: 0; background: var(--brand-dark); }
+.academy-site footer > .container-page { padding-block: 3rem; }
+@media (max-width: 1023px) {
+  .academy-site header > .container-page { height: 86px; }
+  .academy-logo { width: 140px; height: 78px; }
+  .academy-home-hero > .container-page { min-height: 0; align-items: flex-start; padding-block: 2.25rem 19rem; }
+  .academy-home-hero > img { object-position: 35% bottom; height: 290px; top: auto; }
+  .academy-home-hero::after { background: linear-gradient(to bottom, var(--cream) 0%, var(--cream) calc(100% - 290px), transparent calc(100% - 235px)); }
+  .academy-home-hero h1 { font-size: 2.25rem; }
+  .academy-hero-copy { width: 100%; max-width: 35rem; }
 }
-@utility pop-blob { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
-@utility pop-tilt { transform: rotate(-2.5deg); }
-@utility pop-sticker { border: 2px solid var(--brand-brown); box-shadow: 4px 4px 0 var(--brand-brown); border-radius: 999px; }
-@utility text-pop {
-  background-image: linear-gradient(95deg, var(--primary), var(--brand-yellow) 55%, var(--brand-blue));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+@media (max-width: 400px) {
+  .academy-home-hero h1 { font-size: 1.85rem; }
 }
-@utility tile-coral { background: color-mix(in oklch, var(--primary) 18%, white); color: var(--primary); }
-@utility tile-teal { background: color-mix(in oklch, var(--brand-blue) 22%, white); color: var(--brand-blue); }
-@utility tile-sun { background: color-mix(in oklch, var(--brand-yellow) 40%, white); color: var(--warning); }
-@utility tile-ink { background: var(--brand-brown); color: var(--brand-yellow); }
-@keyframes pop-wiggle { 0%,100% { transform: rotate(0) } 50% { transform: rotate(-8deg) scale(1.06) } }
-@keyframes pop-float { 0%,100% { transform: translateY(0) rotate(-2deg) } 50% { transform: translateY(-12px) rotate(1deg) } }
-@utility animate-float { animation: pop-float 6s ease-in-out infinite; }

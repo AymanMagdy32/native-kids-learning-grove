@@ -17,6 +17,8 @@ import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
 export const Route = createFileRoute("/samples")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "نماذج تعليم الإنجليزية والصوتيات للأطفال | Native Kid Academy" },
       {
         name: "description",

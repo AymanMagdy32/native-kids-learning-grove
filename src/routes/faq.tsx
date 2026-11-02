@@ -42,6 +42,8 @@ const FAQS = [
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "الأسئلة الشائعة | Native Kid Academy" },
       {
         name: "description",
