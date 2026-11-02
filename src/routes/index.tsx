@@ -22,7 +22,7 @@ import {
   ProgressSection,
   FinalParentCta,
 } from "@/components/home/LearningSections";
-import heroImage from "@/assets/hero-lesson.jpg";
+import heroImage from "@/assets/hero-pop.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -83,41 +83,49 @@ const STEPS = [
   { n: "4", t: "ابدأ الاشتراك", d: "نرشّح المجموعة والمستوى المناسب وتبدأ الرحلة." },
 ];
 
+const TILES = ["tile-coral", "tile-teal", "tile-sun", "tile-ink", "tile-teal", "tile-coral"];
+
 function HomePage() {
   return (
     <SiteLayout>
-      {/* Hero */}
-      <section className="hero-gradient reference-hero">
-        <div className="container-page grid items-center gap-10 py-14 md:py-20 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-background/75 px-3 py-1.5 text-xs font-bold text-primary">
-              <Leaf className="size-4" />
+      {/* Hero: image first, centered stack */}
+      <section className="pop-hero overflow-hidden">
+        <div className="container-page grid items-center gap-12 py-12 md:py-20 lg:grid-cols-[1.1fr_1fr]">
+          <div className="relative order-2 lg:order-1">
+            <div className="pop-blob absolute -inset-4 bg-primary/15" aria-hidden="true" />
+            <img
+              src={heroImage}
+              width={1280}
+              height={1024}
+              alt="أطفال سعداء يتعلمون الإنجليزية أونلاين مع معلمة"
+              className="relative w-full rounded-[2.5rem] border-2 border-foreground shadow-[10px_10px_0_var(--brand-brown)] animate-float"
+            />
+            <span className="pop-sticker absolute -bottom-5 start-6 bg-secondary px-4 py-2 font-display text-sm font-extrabold">
+              4–15 سنة ✦
+            </span>
+            <span className="pop-sticker pop-tilt absolute -top-4 end-6 bg-yellow-accent px-4 py-2 font-display text-sm font-extrabold">
+              Speak English!
+            </span>
+          </div>
+          <div className="order-1 lg:order-2">
+            <span className="pop-sticker inline-flex items-center gap-2 bg-card px-4 py-1.5 text-xs font-bold text-primary">
+              <Sparkles className="size-4" />
               حصة تجريبية مجانية
             </span>
-            <h1 className="mt-5 text-3xl leading-[1.25] md:text-5xl md:leading-[1.2]">
-              إنجليزي أونلاين تفاعلي
-              <br className="hidden lg:block" /> لأطفالك{" "}
-              <span className="text-primary">بأسلوب الغمر</span>
+            <h1 className="mt-6 font-display text-4xl leading-[1.15] md:text-6xl">
+              طفلك يتكلم إنجليزي
+              <br />
+              <span className="text-pop">زي أهلها بالظبط</span>
             </h1>
-            <ul className="hero-intro mt-5 max-w-xl list-disc space-y-2 ps-5 text-sm leading-7 text-muted-foreground">
-              <li>
-                إنجليزي أونلاين للأعمار من 4 إلى 15 سنة، بأسلوب الغمر والتفاعل. مجموعات صغيرة أو حصص
-                شبه خاصة وخاصة، مع متابعة شهرية لولي الأمر.
-              </li>
-              <li>
-                بنركّز على المهارات الأربع: التحدث، الاستماع، القراءة والكتابة، مع اهتمام خاص بـ{" "}
-                <Link
-                  to="/samples"
-                  hash="phonics"
-                  className="inline-flex items-center gap-1 rounded-md font-bold text-primary hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-                >
-                  الصوتيات <bdi lang="en">(Phonics)</bdi>
-                  <span className="text-xs font-medium">· اعرف أكتر</span>
-                </Link>{" "}
-                لبناء أساس قوي في النطق والقراءة.
-              </li>
-            </ul>
-            <div className="hero-actions mt-8 flex flex-wrap gap-3">
+            <p className="mt-6 max-w-xl text-base leading-8 text-muted-foreground">
+              حصص أونلاين حية بأسلوب الغمر للأعمار من 4 إلى 15 سنة: تحدث، استماع، قراءة وكتابة،
+              مع اهتمام خاص بالـ{" "}
+              <Link to="/samples" hash="phonics" className="font-bold text-primary underline-offset-4 hover:underline">
+                <bdi lang="en">Phonics</bdi>
+              </Link>{" "}
+              ومتابعة شهرية لولي الأمر.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
               <Button asChild size="lg">
                 <Link to="/trial">
                   احجز حصة تجريبية مجانية
@@ -128,118 +136,99 @@ function HomePage() {
                 <Link to="/samples">شوف نماذج من المحتوى</Link>
               </Button>
             </div>
-            <dl className="hero-facts">
+            <dl className="mt-10 grid max-w-md grid-cols-3 gap-3">
               {[
-                ["4–15", "سنة"],
-                ["حصص", "مسجّلة"],
-                ["تقرير", "شهري"],
-              ].map(([v, l]) => (
-                <div key={l} className="text-center">
-                  <dt className="font-display font-bold text-foreground">
+                ["55", "دقيقة للحصة", "tile-coral"],
+                ["2×", "حصص أسبوعيًا", "tile-teal"],
+                ["📊", "تقرير شهري", "tile-sun"],
+              ].map(([v, l, t]) => (
+                <div key={l} className={`rounded-2xl p-3 text-center ${t}`}>
+                  <dt className="font-display text-2xl font-extrabold">
                     <bdi>{v}</bdi>
                   </dt>
-                  <dd className="text-xs text-muted-foreground">{l}</dd>
+                  <dd className="text-xs font-medium text-foreground">{l}</dd>
                 </div>
               ))}
             </dl>
           </div>
-          <div className="relative">
-            <img
-                src={heroImage}
-                width={1280}
-                height={1024}
-                alt="حصة إنجليزي أونلاين تفاعلية للأطفال مع معلمة ومجموعة صغيرة من الطلاب"
-                className="w-full rounded-3xl shadow-[var(--shadow-lift)]"
-              />
+        </div>
+      </section>
+
+      {/* Features: bento */}
+      <section className="py-16 md:py-24">
+        <div className="container-page">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl md:text-5xl">
+              ليه <span className="text-pop">Native Kid</span>؟
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              مش مجرد حصص أونلاين؛ تجربة تعليم كاملة من أول حصة لحد تقرير آخر الشهر.
+            </p>
           </div>
+          <div className="mt-12 grid gap-6 md:grid-cols-6">
+            {FEATURES.map((f, i) => (
+              <article
+                key={f.title}
+                className={`surface-card p-7 ${i === 0 || i === 3 ? "md:col-span-4" : "md:col-span-2"}`}
+              >
+                <span className={`flex size-14 items-center justify-center pop-blob ${TILES[i]}`}>
+                  <f.icon className="size-7" />
+                </span>
+                <h3 className="mt-5 font-display text-xl">{f.title}</h3>
+                <p className="mt-2 text-sm leading-7 text-muted-foreground">{f.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <HowLearningWorks />
+
+      {/* Steps: zigzag path */}
+      <section className="py-16 md:py-24">
+        <div className="container-page">
+          <h2 className="text-center font-display text-3xl md:text-5xl">٤ خطوات وتبدأ الرحلة 🚀</h2>
+          <ol className="mx-auto mt-12 grid max-w-4xl gap-6 md:grid-cols-2">
+            {STEPS.map((s, i) => (
+              <li key={s.n} className={`surface-card flex gap-5 p-6 ${i % 2 ? "md:translate-y-10" : ""}`}>
+                <span className={`flex size-14 shrink-0 items-center justify-center pop-blob font-display text-2xl font-extrabold ${TILES[i]}`}>
+                  {s.n}
+                </span>
+                <div>
+                  <h3 className="font-display text-lg">{s.t}</h3>
+                  <p className="mt-1 text-sm leading-7 text-muted-foreground">{s.d}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       <TwoWaysToLearn />
-
-      {/* Features */}
-      <section className="container-page py-16 md:py-24">
-        <h2 className="text-2xl md:text-3xl">ليه أولياء الأمور بيختارونا؟</h2>
-        <p className="mt-3 max-w-2xl text-muted-foreground">
-          مش مجرد حصص أونلاين؛ دي تجربة تعليم تفاعلي كاملة تعتمد أسلوب الغمر، من تحديد المستوى لحد
-          تقرير آخر الشهر.
-        </p>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f) => (
-            <article
-              key={f.title}
-              className="surface-card p-6 transition-shadow hover:shadow-[var(--shadow-lift)]"
-            >
-              <span className="flex size-11 items-center justify-center rounded-2xl bg-accent text-primary">
-                <f.icon className="size-5" />
-              </span>
-              <h3 className="mt-4 text-lg">{f.title}</h3>
-              <p className="mt-2 text-sm leading-7 text-muted-foreground">{f.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* Steps */}
-      <section className="container-page py-16 md:py-24">
-        <h2 className="text-2xl md:text-3xl">كيف نبدأ؟</h2>
-        <ol className="mt-10 grid gap-5 md:grid-cols-4">
-          {STEPS.map((s) => (
-            <li key={s.n} className="surface-card p-6">
-              <span className="flex size-10 items-center justify-center rounded-full brand-gradient font-display text-sm font-extrabold text-brand-dark-foreground">
-                {s.n}
-              </span>
-              <h3 className="mt-4 text-base">{s.t}</h3>
-              <p className="mt-2 text-sm leading-7 text-muted-foreground">{s.d}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <HowLearningWorks />
-      <CurriculumRoadmap />
       <WhatStudentsLearn />
-      <LessonTimeline />
       <InteractiveLearning />
+      <CurriculumRoadmap />
+      <LessonTimeline />
       <ProgressSection />
-
-      <FinalParentCta />
 
       {/* CTA */}
       <section className="container-page py-16 md:py-24">
-        <div className="relative overflow-hidden rounded-3xl brand-gradient px-6 py-14 text-center text-brand-dark-foreground md:px-16">
-          {/* Background glow */}
-          <div className="pointer-events-none absolute inset-0 -z-0 glow-brand" />
-
-          <h2 className="relative z-10 text-2xl text-brand-dark-foreground md:text-4xl">
-            جرّب حصة مجانية قبل ما تقرر
-          </h2>
-          <p className="relative z-10 mx-auto mt-4 max-w-xl text-sm leading-8 text-brand-dark-foreground/80 md:text-base">
-            احجز الآن، وفريقنا هيتواصل معك لتحديد الموعد المناسب واختبار تحديد المستوى.
+        <div className="relative overflow-hidden rounded-[3rem] border-2 border-foreground bg-primary px-6 py-16 text-center text-primary-foreground shadow-[10px_10px_0_var(--brand-brown)] md:px-16">
+          <div className="pop-blob absolute -start-16 -top-16 size-56 bg-yellow-accent/60" aria-hidden="true" />
+          <div className="pop-blob absolute -bottom-20 -end-10 size-64 bg-secondary/40" aria-hidden="true" />
+          <h2 className="relative font-display text-3xl md:text-5xl">جرّب حصة مجانية قبل ما تقرر ✨</h2>
+          <p className="relative mx-auto mt-4 max-w-xl leading-8 opacity-90">
+            احجز الآن، وفريقنا هيتواصل معك لتحديد الموعد المناسب.
           </p>
-
-          <div className="relative z-10 mt-8 flex flex-wrap justify-center gap-3">
-            <Button asChild size="lg" variant="secondary">
+          <div className="relative mt-8 flex flex-wrap justify-center gap-4">
+            <Button asChild size="lg" variant="outline">
               <Link to="/trial">احجز التجربة المجانية</Link>
             </Button>
-
-            {/* Neon electric pulse samples CTA */}
-            <div className="group relative">
-              <div className="absolute -inset-1 rounded-2xl bg-linear-to-r from-primary via-pistachio to-brown opacity-40 blur transition duration-500 group-hover:opacity-75" />
-              <Button
-                asChild
-                size="lg"
-                className="relative border-b-4 border-brown bg-linear-to-br from-primary-action to-success px-6 text-primary-foreground shadow-lg transition-all active:translate-y-[2px] active:border-b-0 hover:from-primary-action/90 hover:to-success/90"
-              >
-                <Link to="/samples">
-                  شوف نماذج من المحتوى
-                  <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-                </Link>
-              </Button>
-            </div>
           </div>
         </div>
       </section>
+
+      <FinalParentCta />
     </SiteLayout>
   );
 }

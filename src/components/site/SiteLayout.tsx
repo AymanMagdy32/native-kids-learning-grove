@@ -5,7 +5,7 @@ import { WhatsAppContact } from "./WhatsAppContact";
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="woodland-site flex min-h-screen flex-col">
+    <div className="pop-site flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
@@ -24,7 +24,7 @@ export function PageHero({
   description?: string;
 }) {
   return (
-    <section className="hero-gradient border-b border-border/60">
+    <section className="pop-hero">
       <div className="container-page py-14 md:py-20">
         {eyebrow && (
           <span className="inline-flex rounded-full bg-background/70 px-3 py-1 text-xs font-bold text-primary">

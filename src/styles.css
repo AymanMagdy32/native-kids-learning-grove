@@ -31,8 +31,8 @@
   --radius-2xl: calc(var(--radius) + 12px);
   --radius-3xl: calc(var(--radius) + 20px);
 
-  --font-sans: "Tajawal", "Segoe UI", system-ui, sans-serif;
-  --font-display: "Cairo", "Tajawal", system-ui, sans-serif;
+  --font-sans: "Readex Pro", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Baloo Bhaijaan 2", "Readex Pro", system-ui, sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -80,14 +80,14 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   --shadow-soft:
-    0 2px 8px -2px oklch(0.3 0.045 95 / 0.08), 0 8px 24px -8px oklch(0.3 0.045 95 / 0.12);
+    0 2px 8px -2px oklch(0.4 0.12 20 / 0.08), 0 8px 24px -8px oklch(0.4 0.12 20 / 0.12);
   --shadow-lift:
-    0 4px 14px -4px oklch(0.3 0.045 95 / 0.14), 0 18px 44px -18px oklch(0.3 0.045 95 / 0.24);
+    0 4px 14px -4px oklch(0.4 0.12 20 / 0.14), 0 18px 44px -18px oklch(0.4 0.12 20 / 0.24);
 }
 
 :root {
-  --contact: #128c7e;
-  --contact-hover: #0d766b;
+  --contact: oklch(0.62 0.13 190);
+  --contact-hover: oklch(0.54 0.12 190);
   --contact-foreground: #ffffff;
   --primary-action: var(--primary);
   --yellow-accent: var(--brand-yellow);
@@ -95,14 +95,14 @@
   --orange-accent: oklch(0.81485112 0.15263207 74.40638198);
   --overlay: oklch(0.22 0.016 163);
   /* Most frequent interior pixels in public/brand/accel-logo.png. */
-  --brand-green: #187f3b;
-  --brand-brown: #512711;
-  --brand-mint: #e2eeea;
-  --brand-blue: #72b3df;
-  --brand-yellow: #ffc951;
+  --brand-green: oklch(0.63 0.21 18);
+  --brand-brown: oklch(0.27 0.07 255);
+  --brand-mint: oklch(0.93 0.05 190);
+  --brand-blue: oklch(0.66 0.13 195);
+  --brand-yellow: oklch(0.87 0.16 88);
   --space-unit: 0.25rem;
-  --radius: 0.9rem;
-  --background: oklch(0.992 0.006 100);
+  --radius: 1.25rem;
+  --background: oklch(0.985 0.014 55);
   --foreground: var(--brand-brown);
   --card: oklch(1 0 0);
   --card-foreground: var(--brand-brown);
@@ -113,8 +113,8 @@
   --primary-foreground: #fff;
   --secondary: color-mix(in srgb, var(--brand-mint) 55%, white);
   --secondary-foreground: var(--brand-brown);
-  --muted: oklch(0.965 0.018 95);
-  --muted-foreground: #66594f;
+  --muted: oklch(0.955 0.025 45);
+  --muted-foreground: oklch(0.47 0.05 255);
   --accent: color-mix(in srgb, var(--brand-brown) 8%, white);
   --accent-foreground: var(--brand-brown);
 
@@ -122,10 +122,10 @@
   --destructive-foreground: oklch(0.99 0.005 95);
   --success: oklch(0.58 0.12 145);
   --success-foreground: oklch(0.99 0.005 95);
-  --warning: #9c6a16; /* Accessible amber for stars; yellow remains decorative. */
+  --warning: oklch(0.6 0.15 65); /* Accessible amber for stars; yellow remains decorative. */
   --warning-foreground: oklch(0.3 0.05 65);
 
-  --brand-dark: color-mix(in srgb, var(--brand-green) 45%, var(--brand-brown));
+  --brand-dark: var(--brand-brown);
   --brand-dark-foreground: oklch(0.98 0.012 100);
   --pistachio: var(--brand-mint);
   --pistachio-foreground: var(--brand-brown);
@@ -1229,3 +1229,41 @@
     font-size: clamp(1.25rem, 5.3vw, 1.55rem);
   }
 }
+
+/* ===== Candy Pop identity (Native Kid) ===== */
+.pop-site { position: relative; overflow-x: clip; }
+.pop-site main > section:nth-of-type(even):not(.pop-hero) {
+  background: color-mix(in oklch, var(--primary) 7%, var(--background));
+  border-radius: 3rem; margin-inline: 0.75rem;
+}
+.pop-site .surface-card { border: 2px solid var(--brand-brown); box-shadow: 6px 6px 0 var(--brand-brown); border-radius: 1.5rem; transition: transform .2s, box-shadow .2s; }
+.pop-site .surface-card:hover { transform: translate(-3px,-3px) rotate(-.4deg); box-shadow: 9px 9px 0 var(--primary); }
+.pop-site .inline-flex.cursor-pointer { border-radius: 999px; border: 2px solid var(--brand-brown); box-shadow: 4px 4px 0 var(--brand-brown); }
+.pop-site .inline-flex.cursor-pointer:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--brand-brown); }
+.pop-site .inline-flex.cursor-pointer.border-input { background: var(--brand-yellow); color: var(--brand-brown); }
+.pop-site header { background: color-mix(in oklch, var(--background) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 2px dashed color-mix(in oklch, var(--brand-brown) 25%, transparent); }
+.pop-site .brand-logo-mark { width: 3rem; height: 3rem; animation: pop-wiggle 4s ease-in-out infinite; }
+.pop-site .brand-logo > span > span:first-child { font-family: var(--font-display); font-size: 1.35rem; color: var(--primary); }
+.pop-site .brand-logo-light > span > span:first-child { color: var(--brand-yellow); }
+
+@utility pop-hero {
+  background:
+    radial-gradient(circle at 12% 20%, color-mix(in oklch, var(--brand-yellow) 55%, transparent) 0, transparent 28%),
+    radial-gradient(circle at 88% 15%, color-mix(in oklch, var(--brand-blue) 40%, transparent) 0, transparent 30%),
+    radial-gradient(circle at 70% 90%, color-mix(in oklch, var(--primary) 30%, transparent) 0, transparent 35%),
+    var(--background);
+}
+@utility pop-blob { border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%; }
+@utility pop-tilt { transform: rotate(-2.5deg); }
+@utility pop-sticker { border: 2px solid var(--brand-brown); box-shadow: 4px 4px 0 var(--brand-brown); border-radius: 999px; }
+@utility text-pop {
+  background-image: linear-gradient(95deg, var(--primary), var(--brand-yellow) 55%, var(--brand-blue));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+@utility tile-coral { background: color-mix(in oklch, var(--primary) 18%, white); color: var(--primary); }
+@utility tile-teal { background: color-mix(in oklch, var(--brand-blue) 22%, white); color: var(--brand-blue); }
+@utility tile-sun { background: color-mix(in oklch, var(--brand-yellow) 40%, white); color: var(--warning); }
+@utility tile-ink { background: var(--brand-brown); color: var(--brand-yellow); }
+@keyframes pop-wiggle { 0%,100% { transform: rotate(0) } 50% { transform: rotate(-8deg) scale(1.06) } }
+@keyframes pop-float { 0%,100% { transform: translateY(0) rotate(-2deg) } 50% { transform: translateY(-12px) rotate(1deg) } }
+@utility animate-float { animation: pop-float 6s ease-in-out infinite; }
