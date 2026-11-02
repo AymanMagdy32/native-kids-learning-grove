@@ -4,28 +4,36 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Self-host the existing typefaces for reliable reference typography. */
+
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Native Kid Academy design system.
+ * Brand foundation: olive green, light pistachio, warm brown, and cream.
+ * Blue is reserved for quiet informational accents, not primary actions.
+ * Exact logo samples are preserved as hex tokens; UI tints derive from them.
+ * Keep component colors semantic so every page shares the same palette.
  */
 
 @theme inline {
+  --color-contact: var(--contact);
+  --color-contact-hover: var(--contact-hover);
+  --color-contact-foreground: var(--contact-foreground);
+  --color-brand-green: var(--brand-green);
+  --color-primary-action: var(--primary-action);
+  --color-yellow-accent: var(--yellow-accent);
+  --color-coral-accent: var(--coral-accent);
+  --color-orange-accent: var(--orange-accent);
+  --color-overlay: var(--overlay);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+
+  --font-sans: "Tajawal", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Cairo", "Tajawal", system-ui, sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -42,6 +50,17 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-dark-foreground: var(--brand-dark-foreground);
+  --color-pistachio: var(--pistachio);
+  --color-pistachio-foreground: var(--pistachio-foreground);
+  --color-brown: var(--brown);
+  --color-blue-accent: var(--blue-accent);
+  --color-cream: var(--cream);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -59,77 +78,106 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-soft:
+    0 2px 8px -2px oklch(0.3 0.045 95 / 0.08), 0 8px 24px -8px oklch(0.3 0.045 95 / 0.12);
+  --shadow-lift:
+    0 4px 14px -4px oklch(0.3 0.045 95 / 0.14), 0 18px 44px -18px oklch(0.3 0.045 95 / 0.24);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --contact: #128c7e;
+  --contact-hover: #0d766b;
+  --contact-foreground: #ffffff;
+  --primary-action: var(--primary);
+  --yellow-accent: var(--brand-yellow);
+  --coral-accent: oklch(0.67083261 0.17356097 22.15725846);
+  --orange-accent: oklch(0.81485112 0.15263207 74.40638198);
+  --overlay: oklch(0.22 0.016 163);
+  /* Most frequent interior pixels in public/brand/accel-logo.png. */
+  --brand-green: #187f3b;
+  --brand-brown: #512711;
+  --brand-mint: #e2eeea;
+  --brand-blue: #72b3df;
+  --brand-yellow: #ffc951;
+  --space-unit: 0.25rem;
+  --radius: 0.9rem;
+  --background: oklch(0.992 0.006 100);
+  --foreground: var(--brand-brown);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: var(--brand-brown);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --popover-foreground: var(--brand-brown);
+
+  --primary: var(--brand-green);
+  --primary-foreground: #fff;
+  --secondary: color-mix(in srgb, var(--brand-mint) 55%, white);
+  --secondary-foreground: var(--brand-brown);
+  --muted: oklch(0.965 0.018 95);
+  --muted-foreground: #66594f;
+  --accent: color-mix(in srgb, var(--brand-brown) 8%, white);
+  --accent-foreground: var(--brand-brown);
+
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0.005 95);
+  --success: oklch(0.58 0.12 145);
+  --success-foreground: oklch(0.99 0.005 95);
+  --warning: #9c6a16; /* Accessible amber for stars; yellow remains decorative. */
+  --warning-foreground: oklch(0.3 0.05 65);
+
+  --brand-dark: color-mix(in srgb, var(--brand-green) 45%, var(--brand-brown));
+  --brand-dark-foreground: oklch(0.98 0.012 100);
+  --pistachio: var(--brand-mint);
+  --pistachio-foreground: var(--brand-brown);
+  --brown: var(--brand-brown);
+  --blue-accent: color-mix(in srgb, var(--brand-blue) 85%, var(--brand-mint));
+  --cream: color-mix(in srgb, var(--brand-yellow) 5%, white);
+
+  --border: color-mix(in srgb, var(--brand-brown) 18%, white);
+  --input: color-mix(in srgb, var(--brand-brown) 55%, white);
+  --ring: var(--brand-green);
+
+  --chart-1: var(--primary);
+  --chart-2: var(--pistachio);
+  --chart-3: var(--brown);
+  --chart-4: var(--blue-accent);
+  --chart-5: var(--warning);
+
+  --sidebar: oklch(0.31 0.055 105);
+  --sidebar-foreground: oklch(0.97 0.012 100);
+  --sidebar-primary: var(--brand-green);
+  --sidebar-primary-foreground: oklch(0.99 0.008 100);
+  --sidebar-accent: oklch(0.38 0.06 105);
+  --sidebar-accent-foreground: oklch(0.98 0.01 100);
+  --sidebar-border: oklch(0.43 0.045 100);
+  --sidebar-ring: oklch(0.84 0.09 113);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.21 0.035 105);
+  --foreground: oklch(0.97 0.012 100);
+  --card: oklch(0.26 0.035 98);
+  --card-foreground: oklch(0.97 0.012 100);
+  --popover: oklch(0.26 0.035 98);
+  --popover-foreground: oklch(0.97 0.012 100);
+  --primary: oklch(0.72 0.11 115);
+  --primary-foreground: oklch(0.19 0.035 105);
+  --secondary: oklch(0.32 0.04 105);
+  --secondary-foreground: oklch(0.97 0.012 100);
+  --muted: oklch(0.3 0.03 95);
+  --muted-foreground: oklch(0.76 0.025 95);
+  --accent: oklch(0.34 0.045 70);
+  --accent-foreground: oklch(0.97 0.012 100);
+  --brand-dark: oklch(0.24 0.04 105);
+  --brand-dark-foreground: oklch(0.98 0.01 100);
+  --pistachio: oklch(0.76 0.09 113);
+  --pistachio-foreground: oklch(0.2 0.04 105);
+  --brown: oklch(0.55 0.065 60);
+  --blue-accent: oklch(0.7 0.05 235);
+  --cream: oklch(0.27 0.03 95);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.11 115);
 }
 
 @layer base {
@@ -137,8 +185,1047 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: 0;
+    line-height: 1.4;
+    overflow-wrap: break-word;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+}
+
+@utility surface-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility hero-gradient {
+  background-image: linear-gradient(
+    160deg,
+    var(--color-cream) 0%,
+    color-mix(in oklch, var(--color-pistachio) 55%, white) 55%,
+    color-mix(in oklch, var(--color-primary) 5%, white) 100%
+  );
+}
+
+@utility brand-gradient {
+  background-image: linear-gradient(
+    140deg,
+    var(--color-brand-dark) 0%,
+    color-mix(in oklch, var(--color-primary) 52%, var(--color-brand-dark)) 62%,
+    var(--color-brown) 100%
+  );
+}
+
+@utility text-gradient-brand {
+  background-image: linear-gradient(100deg, var(--color-primary), var(--color-brown));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Style the existing button variants without changing their APIs or behavior. */
+@layer components {
+  .inline-flex.cursor-pointer {
+    min-height: 2.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .inline-flex.cursor-pointer.border-input {
+    border-color: var(--brown);
+    color: var(--brown);
+  }
+
+  .inline-flex.cursor-pointer.bg-secondary {
+    background-color: var(--brown);
+    color: #fff;
+  }
+
+  .inline-flex.cursor-pointer.bg-secondary:hover {
+    background-color: color-mix(in srgb, var(--brown) 90%, black);
+  }
+
+  .inline-flex.cursor-pointer:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  .lucide {
+    stroke-width: 1.75;
+    flex-shrink: 0;
+  }
+}
+
+@utility brand-accent-glow {
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    color-mix(in srgb, var(--blue-accent) 18%, transparent),
+    transparent 60%
+  );
+}
+
+@media (max-width: 639px) {
+  .container-page {
+    padding-inline: calc(var(--space-unit) * 4);
+  }
+
+  .inline-flex.cursor-pointer {
+    max-width: 100%;
+    white-space: normal;
+    height: auto;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@utility glow-brand {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--brand-green) 18%, transparent),
+    transparent 60%
+  );
+}
+@utility glow-blue-top {
+  background-image: radial-gradient(
+    circle at 85% 0%,
+    color-mix(in srgb, var(--blue-accent) 18%, transparent),
+    transparent 55%
+  );
+}
+@utility glow-blue-center {
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    color-mix(in srgb, var(--blue-accent) 18%, transparent),
+    transparent 60%
+  );
+}
+
+/* Woodland identity: shared decoration stays behind all existing content. */
+.woodland-site {
+  --woodland-leaf: url("/brand/leaf-sprig.svg");
+  --woodland-frame: url("/brand/woodland-frame.svg");
+  background: var(--background);
+  overflow: clip;
+}
+.woodland-site > main {
+  isolation: isolate;
+}
+.woodland-site .hero-gradient {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      ellipse at 25% 35%,
+      color-mix(in srgb, var(--brand-mint) 65%, transparent),
+      transparent 52%
+    ),
+    var(--cream);
+}
+.woodland-site .hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--woodland-frame);
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.woodland-site .hero-gradient > .container-page {
+  padding-block: clamp(5rem, 7vw, 7rem) clamp(6rem, 8vw, 8rem);
+}
+.woodland-site main > section:not(.hero-gradient) {
+  position: relative;
+  isolation: isolate;
+}
+.woodland-site main > section:not(.hero-gradient)::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 3rem;
+  inset-inline-start: -5rem;
+  width: 11rem;
+  height: 17rem;
+  z-index: -1;
+  opacity: 0.065;
+  pointer-events: none;
+  background: var(--woodland-leaf) center / contain no-repeat;
+  transform: rotate(-22deg);
+}
+.woodland-site main > section:nth-child(2n)::before {
+  inset-inline-start: auto;
+  inset-inline-end: -5rem;
+  transform: rotate(24deg) scaleX(-1);
+}
+.woodland-site main > section:nth-child(3n):not(.hero-gradient) {
+  background-image: radial-gradient(
+    ellipse at 80% 35%,
+    color-mix(in srgb, var(--brand-mint) 35%, transparent),
+    transparent 70%
+  );
+}
+.woodland-site .surface-card {
+  position: relative;
+  background-image: linear-gradient(
+    145deg,
+    var(--card),
+    color-mix(in srgb, var(--brand-mint) 12%, var(--card))
+  );
+  border-color: color-mix(in srgb, var(--brand-green) 15%, var(--card));
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+.woodland-site .surface-card:hover {
+  border-color: color-mix(in srgb, var(--brand-green) 38%, var(--card));
+  box-shadow: 0 6px 26px -12px color-mix(in srgb, var(--brand-green) 30%, transparent);
+}
+.woodland-site .brand-gradient {
+  position: relative;
+  isolation: isolate;
+  background-image: linear-gradient(
+    125deg,
+    var(--brand-dark),
+    color-mix(in srgb, var(--brand-green) 75%, var(--brand-brown)) 65%,
+    var(--brand-dark)
+  );
+}
+.woodland-site .brand-gradient::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.14;
+  background:
+    var(--woodland-leaf) left -2rem bottom -1rem / 12rem no-repeat,
+    var(--woodland-leaf) right -2rem top -2rem / 15rem no-repeat;
+  filter: brightness(0) invert(1);
+}
+.woodland-site header {
+  border-bottom-color: color-mix(in srgb, var(--brand-green) 12%, var(--card));
+}
+.woodland-site .inline-flex.cursor-pointer {
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.woodland-site .inline-flex.cursor-pointer:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px -6px color-mix(in srgb, var(--brand-green) 35%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+  .woodland-site .hero-gradient::before {
+    animation: woodland-breathe 12s ease-in-out infinite;
+    transform-origin: center bottom;
+  }
+  @keyframes woodland-breathe {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.012);
+    }
+  }
+}
+@media (max-width: 767px) {
+  .woodland-site .hero-gradient::before {
+    background-size: 100% 100%;
+    opacity: 0.45;
+  }
+  .woodland-site .hero-gradient > .container-page {
+    padding-block: 4rem 5rem;
+  }
+  .woodland-site main > section:not(.hero-gradient)::before {
+    width: 6rem;
+    height: 10rem;
+    opacity: 0.045;
+  }
+  .woodland-site .brand-gradient::after {
+    background-size: 7rem, 8rem;
+    opacity: 0.1;
+  }
+}
+.dark .woodland-site .hero-gradient {
+  background-color: var(--background);
+}
+.dark .woodland-site .hero-gradient::before {
+  opacity: 0.35;
+}
+
+.woodland-site .hero-gradient dl > div {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-green) 8%, var(--card));
+  border-radius: var(--radius-2xl);
+  backdrop-filter: blur(6px);
+}
+
+/* Homepage composition follows the supplied illustrated reference. */
+.woodland-site .reference-hero {
+  background: var(--cream);
+}
+.woodland-site .reference-hero::before {
+  background-image: url("/brand/reference-hero.webp");
+  background-size: 100% 100%;
+  opacity: 1;
+  animation: none;
+  transform: none;
+}
+@media (min-width: 1024px) {
+  .woodland-site .reference-hero > .container-page {
+    max-width: 86rem;
+    min-height: calc(100vw / 2.32);
+    padding-block: 3rem 4rem;
+    gap: 3rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  .reference-hero > .container-page > div:first-child {
+    padding-inline-start: 0.5rem;
+  }
+  .reference-hero > .container-page > div:last-child {
+    visibility: hidden;
+  }
+  .reference-hero h1 {
+    font-size: clamp(2.5rem, 3.45vw, 4rem);
+    font-weight: 900;
+    line-height: 1.22;
+    margin-top: 1.5rem;
+  }
+  .reference-hero p {
+    max-width: 100%;
+    font-size: clamp(0.95rem, 1.08vw, 1.25rem);
+    line-height: 1.85;
+    margin-top: 1.75rem;
+  }
+  .reference-hero .hero-actions {
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .reference-hero .inline-flex.cursor-pointer {
+    min-height: 3.5rem;
+    padding-inline: 1.75rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+  }
+  .reference-hero dl {
+    margin-top: 2rem;
+    max-width: none;
+    gap: 1rem;
+  }
+  .reference-hero dl > div {
+    min-height: 5.8rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 1.75rem;
+  }
+  .reference-hero dt {
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+  .reference-hero dd {
+    font-size: 0.9rem;
+  }
+}
+.reference-hero > .container-page > div:first-child > span {
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  font-size: 0.95rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+}
+.woodland-site header > .container-page {
+  max-width: 86rem;
+}
+@media (min-width: 1024px) {
+  .woodland-site header > .container-page {
+    height: 5.5rem;
+  }
+  .woodland-site header nav a {
+    font-size: 1rem;
+    padding: 0.65rem 1rem;
+  }
+  .woodland-site header .inline-flex.cursor-pointer {
+    min-height: 3rem;
+    font-size: 1rem;
+    padding-inline: 1.5rem;
+    border-radius: 1rem;
+  }
+}
+@media (max-width: 1023px) {
+  .woodland-site .reference-hero::before {
+    background-image: var(--woodland-frame);
+    background-size: 100% 100%;
+    opacity: 0.5;
+  }
+  .reference-hero h1 {
+    font-weight: 900;
+  }
+  .reference-hero > .container-page > div:last-child {
+    visibility: visible;
+  }
+}
+@media (min-width: 1024px) {
+  .woodland-site .reference-hero > .container-page {
+    max-width: 90rem;
+  }
+  .reference-hero > .container-page > div:first-child {
+    width: 100%;
+    max-width: 38rem;
+    justify-self: start;
+  }
+  .reference-hero h1 {
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1.25;
+  }
+  .reference-hero p {
+    font-size: clamp(0.95rem, 1.08vw, 1.25rem);
+    line-height: 1.85;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .woodland-site header nav a {
+    font-size: 0.8rem;
+    padding-inline: 0.5rem;
+  }
+  .woodland-site header .inline-flex.cursor-pointer {
+    font-size: 0.85rem;
+    padding-inline: 0.75rem;
+  }
+}
+
+/* Reference logo lockup: English wordmark on the left, tree emblem on the right. */
+.woodland-site .brand-logo {
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+.woodland-site .brand-logo > span {
+  font-family: Arial, "Segoe UI", sans-serif;
+  text-align: left;
+}
+.woodland-site .brand-logo > span > span:first-child {
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: var(--brand-brown);
+}
+.woodland-site .brand-logo > span > span:last-child {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--brand-brown);
+  margin-top: 0.125rem;
+}
+.woodland-site .brand-logo .brand-logo-mark {
+  width: 3.6rem;
+  height: 4.4rem;
+  object-fit: contain;
+  transform: scale(1.28);
+}
+.woodland-site .brand-logo-light > span > span:first-child,
+.woodland-site .brand-logo-light > span > span:last-child {
+  color: var(--brand-dark-foreground);
+}
+.woodland-site .brand-logo-light .brand-logo-mark {
+  background: var(--cream);
+  border-radius: 0.75rem;
+  transform: none;
+}
+@media (max-width: 1279px) {
+  .woodland-site .brand-logo > span > span:first-child {
+    font-size: 1.25rem;
+  }
+  .woodland-site .brand-logo > span > span:last-child {
+    font-size: 0.75rem;
+  }
+  .woodland-site .brand-logo .brand-logo-mark {
+    width: 2.75rem;
+    height: 3.2rem;
+  }
+}
+
+/* Original supplied Accel artwork, isolated on transparent background. */
+.woodland-site .brand-logo .brand-logo-original {
+  width: 4.75rem;
+  height: 4.75rem;
+  transform: none;
+  background: transparent;
+  border-radius: 0;
+}
+.woodland-site .brand-logo-light .brand-logo-original {
+  background: transparent;
+  border-radius: 0;
+  filter: drop-shadow(0 0 1px var(--cream));
+}
+@media (max-width: 1279px) {
+  .woodland-site .brand-logo .brand-logo-original {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+/* Visual learning-format comparison, with optional detailed table. */
+.learning-visual-card {
+  background: color-mix(in srgb, var(--brand-mint) 40%, var(--card));
+}
+.learning-visual-semi {
+  background: color-mix(in srgb, var(--brand-yellow) 10%, var(--card));
+}
+.learning-visual-private {
+  background: color-mix(in srgb, var(--brand-brown) 6%, var(--card));
+}
+.learning-visual-scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 8rem;
+}
+.learning-visual-halo {
+  position: absolute;
+  width: 7.25rem;
+  height: 7.25rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--brand-green) 9%, transparent);
+}
+.learning-visual-semi .learning-visual-halo {
+  border: 2px solid color-mix(in srgb, var(--brand-green) 25%, transparent);
+}
+.learning-visual-private .learning-visual-halo {
+  border: 2px solid color-mix(in srgb, var(--brand-brown) 25%, transparent);
+  background: color-mix(in srgb, var(--brand-brown) 5%, transparent);
+}
+.learning-visual-symbol {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--brand-green);
+  stroke-width: 1.5;
+}
+.learning-visual-private .learning-visual-symbol {
+  color: var(--brand-brown);
+}
+.learning-visual-leaf,
+.learning-visual-voice {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--card);
+  border-radius: 0.85rem;
+  box-shadow: var(--shadow-soft);
+  color: var(--brand-green);
+}
+.learning-visual-leaf {
+  inset-inline-start: calc(50% - 4.75rem);
+  top: 0.9rem;
+  transform: rotate(-12deg);
+}
+.learning-visual-voice {
+  inset-inline-end: calc(50% - 4.75rem);
+  bottom: 0.6rem;
+  transform: rotate(10deg);
+}
+.learning-comparison-details[open] > summary {
+  margin-bottom: 0.5rem;
+}
+.dark .learning-visual-card {
+  background: var(--card);
+}
+@media (max-width: 767px) {
+  .learning-visual-card {
+    padding: 1.25rem;
+  }
+  .learning-visual-scene {
+    height: 6.5rem;
+  }
+  .learning-visual-halo {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+/* Message-style parent reviews: fixed space prevents the hero from jumping. */
+.review-chat-stage {
+  display: grid;
+  position: relative;
+}
+.review-message {
+  grid-area: 1 / 1;
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: 1.4rem 1.4rem 0.35rem 1.4rem;
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(8px) scale(0.985);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
+  overflow-wrap: anywhere;
+}
+.review-message-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+.review-avatar {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+.review-typing {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.2rem 1.6rem;
+  border-radius: 1.4rem 1.4rem 0.35rem 1.4rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+.review-typing span {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--muted-foreground);
+  animation: review-typing-bounce 900ms ease-in-out infinite;
+}
+.review-dot-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 2.25rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.review-dot-button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.review-dot-button span {
+  height: 0.45rem;
+  width: 0.45rem;
+  border-radius: 999px;
+  background: var(--border);
+  transition:
+    width 200ms ease,
+    background 200ms ease;
+}
+.review-dot-button .review-dot-active {
+  width: 1.4rem;
+  background: var(--primary);
+}
+@keyframes review-typing-bounce {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  35% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+@media (min-width: 1024px) {
+  .reference-hero h1 {
+    font-size: clamp(1.9rem, 2.7vw, 3.15rem);
+  }
+  .reference-hero p {
+    font-size: clamp(0.9rem, 1vw, 1.1rem);
+    line-height: 1.75;
+    margin-top: 1.25rem;
+  }
+  .reference-hero dl {
+    margin-top: 1.5rem;
+  }
+}
+@media (max-width: 639px) {
+  .reference-hero h1 {
+    font-size: 1.85rem;
+  }
+  .reference-hero p {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .review-message,
+  .review-dot-button span {
+    transition: none;
+    transform: none;
+  }
+  .review-typing span {
+    animation: none;
+  }
+}
+
+/* Compact hero facts: a quiet summary instead of three large cards. */
+.woodland-site .reference-hero .hero-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: min(100%, 26rem);
+  max-width: 100%;
+  gap: 0;
+  margin-top: 1.4rem;
+  padding: 0.65rem 0;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--background) 85%, transparent);
+}
+.woodland-site .reference-hero .hero-facts > div {
+  min-height: 0;
+  padding: 0.2rem 0.75rem;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.woodland-site .reference-hero .hero-facts > div + div {
+  border-inline-start: 1px solid var(--border);
+}
+.woodland-site .reference-hero .hero-facts dt {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.woodland-site .reference-hero .hero-facts dd {
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+/* Reversible video presentation; original illustration styles remain intact. */
+.woodland-site .reference-hero[data-hero-media="video"]::before {
+  background-image: url("/brand/reference-video-background.webp");
+  opacity: 1;
+}
+.woodland-site .reference-hero[data-hero-media="video"] > .container-page > div:last-child {
+  visibility: visible;
+}
+.hero-video {
+  perspective: 1000px;
+}
+.hero-video-frame {
+  border: 1px solid var(--border);
+  border-radius: 1.4rem;
+  padding: 0.65rem;
+  background: var(--brand-dark);
+  box-shadow:
+    var(--shadow-lift),
+    8px 10px 0 color-mix(in srgb, var(--brand-dark) 15%, transparent);
+  transform: rotateY(-4deg) rotateX(2deg);
+  transition: transform 300ms ease;
+}
+.hero-video-frame:focus-within,
+.hero-video-frame:hover {
+  transform: none;
+}
+.hero-video-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  height: 1.9rem;
+  padding-inline: 0.45rem;
+}
+.hero-video-toolbar > span:not(.hero-video-toolbar-label) {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--brand-dark-foreground);
+  opacity: 0.55;
+}
+.hero-video-toolbar-label {
+  margin-inline-start: auto;
+  color: var(--brand-dark-foreground);
+  font-size: 0.65rem;
+  opacity: 0.75;
+}
+.hero-video-screen {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 0.9rem;
+  background: var(--card);
+}
+.hero-video-play {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.hero-video-cover {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--brand-dark) 35%, transparent);
+}
+.hero-video-play-icon {
+  position: absolute;
+  inset-inline-start: calc(50% - 2rem);
+  top: calc(50% - 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: var(--shadow-lift);
+}
+.hero-video-play:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: -5px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-video-frame {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Compact small-screen layout; desktop composition stays unchanged. */
+@media (max-width: 1023px) {
+  .woodland-site .container-page {
+    padding-inline: 1rem;
+  }
+  .woodland-site header > .container-page {
+    height: 3.75rem;
+  }
+  .woodland-site header .brand-logo {
+    gap: 0.5rem;
+  }
+  .woodland-site header .brand-logo > span > span:first-child {
+    font-size: 1.15rem;
+  }
+  .woodland-site header .brand-logo > span > span:last-child {
+    font-size: 0.65rem;
+  }
+  .woodland-site header .brand-logo .brand-logo-original {
+    width: 2.75rem;
+    height: 3rem;
+    transform: none;
+  }
+  .woodland-site .reference-hero[data-hero-media="video"]::before {
+    background-size: auto 100%;
+    background-position: center;
+    opacity: 0.55;
+  }
+  .woodland-site .reference-hero > .container-page {
+    padding-block: 1.75rem 2rem;
+    gap: 1.5rem;
+  }
+  .woodland-site .reference-hero h1 {
+    margin-top: 0.85rem;
+    font-size: clamp(1.4rem, 6vw, 1.7rem);
+    line-height: 1.35;
+  }
+  .woodland-site .reference-hero p {
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.75;
+  }
+  .woodland-site .reference-hero .hero-actions {
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+  .woodland-site .reference-hero .hero-actions > a {
+    min-height: 2.75rem;
+    height: auto;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.75rem;
+    flex: 1 1 auto;
+  }
+  .woodland-site .reference-hero .hero-facts {
+    margin-top: 1rem;
+    padding-block: 0.4rem;
+  }
+  .woodland-site .reference-hero .hero-facts dt {
+    font-size: 0.95rem;
+  }
+  .woodland-site .reference-hero .hero-facts dd {
+    font-size: 0.65rem;
+  }
+  .woodland-site .review-message {
+    padding: 0.75rem;
+  }
+  .woodland-site .reference-hero .review-message blockquote {
+    margin-top: 0;
+    font-size: 0.75rem;
+    line-height: 1.7;
+  }
+  .woodland-site .review-avatar {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+  .woodland-site .hero-video {
+    max-width: 13rem;
+  }
+  .woodland-site .hero-video-frame {
+    padding: 0.4rem;
+  }
+  .woodland-site main > section:not(.reference-hero) {
+    padding-block: 2rem;
+  }
+  .woodland-site main .py-16 {
+    padding-block: 2rem;
+  }
+  .woodland-site main .mt-10 {
+    margin-top: 1.25rem;
+  }
+  .woodland-site main .mt-6 {
+    margin-top: 1rem;
+  }
+  .woodland-site main .gap-8,
+  .woodland-site main .gap-10 {
+    gap: 1.25rem;
+  }
+  .woodland-site main h2 {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  .woodland-site main .surface-card {
+    padding: 1rem;
+  }
+  .woodland-site .learning-visual-scene {
+    height: 4.5rem;
+  }
+  .woodland-site .learning-visual-halo {
+    width: 4rem;
+    height: 4rem;
+  }
+  .woodland-site .learning-visual-symbol {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .woodland-site .learning-visual-card h4,
+  .woodland-site .learning-visual-card dl {
+    margin-top: 0.75rem;
+  }
+  .woodland-site .learning-visual-card dl > div {
+    padding: 0.5rem;
+  }
+  .woodland-site a.fixed.bg-contact {
+    gap: 0.4rem;
+    padding: 0.7rem 0.85rem;
+    font-size: 0.75rem;
+  }
+  .woodland-site a.fixed.bg-contact svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+  .woodland-site footer {
+    margin-top: 2.5rem;
+  }
+  .woodland-site footer > .container-page {
+    padding-block: 2rem;
+    gap: 1.5rem;
+  }
+}
+@media (min-width: 360px) and (max-width: 639px) {
+  .woodland-site .reference-hero ~ section .grid[class~="sm:grid-cols-2"],
+  .woodland-site .reference-hero ~ section ol.grid[class~="lg:grid-cols-6"],
+  .woodland-site .reference-hero ~ section ol.grid[class~="md:grid-cols-4"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+/* Give the introductory points more prominence and breathing room. */
+.woodland-site .reference-hero .hero-intro {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.95;
+  color: var(--foreground);
+}
+.woodland-site .reference-hero .hero-intro > li + li {
+  margin-top: 1.1rem;
+}
+.woodland-site .reference-hero .hero-actions {
+  margin-top: 2rem;
+}
+@media (min-width: 1024px) {
+  .woodland-site .reference-hero h1 {
+    font-size: clamp(1.8rem, 2.4vw, 2.8rem);
+  }
+}
+@media (max-width: 1023px) {
+  .woodland-site .reference-hero .hero-intro {
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.9;
+  }
+  .woodland-site .reference-hero .hero-actions {
+    margin-top: 1.5rem;
+  }
+  .woodland-site .reference-hero h1 {
+    font-size: clamp(1.25rem, 5.3vw, 1.55rem);
   }
 }
