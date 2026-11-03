@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
+import { PolicyContent } from "@/components/site/PolicyContent";
 
 export const Route = createFileRoute("/privacy")({
   head: () => ({
@@ -49,15 +50,8 @@ const SECTIONS = [
 function PrivacyPage() {
   return (
     <SiteLayout>
-      <PageHero title="سياسة الخصوصية" description="آخر تحديث: 2026" />
-      <div className="container-page max-w-3xl py-14">
-        {SECTIONS.map((s) => (
-          <section key={s.t} className="mb-8">
-            <h2 className="text-lg">{s.t}</h2>
-            <p className="mt-2 text-sm leading-8 text-muted-foreground">{s.b}</p>
-          </section>
-        ))}
-      </div>
+      <PageHero eyebrow="الثقة والخصوصية · آخر تحديث: 2026" title="سياسة الخصوصية" description="معلومات واضحة عن بيانات أسرتك، واستخدامها، وحقوقك." />
+      <PolicyContent sections={SECTIONS} kind="privacy" />
     </SiteLayout>
   );
 }
