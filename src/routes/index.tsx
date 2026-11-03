@@ -109,6 +109,7 @@ function HomePage() {
         <div className="container-page">
           <p className="nk-eyebrow">رحلة التعلّم</p>
           <h2 className="mt-2 text-2xl md:text-4xl">6 مستويات من أول كلمة لحد النقاش</h2>
+          <p className="mt-4 max-w-3xl text-sm leading-8 text-muted-foreground">بنستخدم منهج Abridge Academy التفاعلي كأحد مساراتنا الأساسية، بتدرّج CEFR من المبتدئ تمامًا إلى ما قبل المتوسط. كل مستوى له موضوعاته ومهاراته، والبداية حسب مستوى طفلك.</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {LEVELS.map((l, i) => (
               <article key={l.n} className={`nk-level ${TONES[i]}`}>
@@ -119,6 +120,14 @@ function HomePage() {
                 <h3 className="mt-4 text-lg">{l.titleAr}</h3>
                 <p className="text-xs opacity-70" dir="ltr">{l.titleEn}</p>
                 <p className="mt-3 text-sm leading-7 opacity-85">{l.outcome}</p>
+                <details className="mt-4 border-t border-border pt-3">
+                  <summary className="cursor-pointer py-2 text-sm font-bold text-primary">إيه اللي بنتعلّمه؟</summary>
+                  <p className="mt-2 text-sm leading-7 text-muted-foreground">{l.desc}</p>
+                  <h4 className="mt-4 text-sm">موضوعات المستوى</h4>
+                  <p className="mt-2 text-xs leading-7 text-muted-foreground">{l.topics.join(" · ")}</p>
+                  <h4 className="mt-4 text-sm">مهارات بنتمرّن عليها</h4>
+                  <ul className="mt-2 list-disc space-y-2 ps-4 text-sm leading-7 text-muted-foreground">{l.skills.map((skill) => <li key={skill} dir="auto">{skill}</li>)}</ul>
+                </details>
               </article>
             ))}
           </div>

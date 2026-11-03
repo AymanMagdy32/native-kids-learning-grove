@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
+import { PolicyContent } from "@/components/site/PolicyContent";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -49,15 +50,8 @@ const SECTIONS = [
 function TermsPage() {
   return (
     <SiteLayout>
-      <PageHero title="الشروط والأحكام" description="آخر تحديث: 2026" />
-      <div className="container-page max-w-3xl py-14">
-        {SECTIONS.map((s) => (
-          <section key={s.t} className="mb-8">
-            <h2 className="text-lg">{s.t}</h2>
-            <p className="mt-2 text-sm leading-8 text-muted-foreground">{s.b}</p>
-          </section>
-        ))}
-      </div>
+      <PageHero eyebrow="قبل الاشتراك · آخر تحديث: 2026" title="الشروط والأحكام" description="كل ما يخص الاشتراك والحصص في مكان واحد، لاتفاق واضح مع أسرتك." />
+      <PolicyContent sections={SECTIONS} kind="terms" />
     </SiteLayout>
   );
 }
