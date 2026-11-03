@@ -1260,3 +1260,29 @@
 @media (max-width: 400px) {
   .academy-home-hero h1 { font-size: 1.85rem; }
 }
+
+/* Home v2 */
+.nk-hero { background: radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--brand-yellow) 18%, transparent), transparent 40%), radial-gradient(circle at 90% 80%, color-mix(in srgb, var(--brand-green) 16%, transparent), transparent 45%), var(--cream); }
+.nk-pill { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .9rem; border-radius: 999px; background: color-mix(in srgb, var(--coral-accent) 12%, var(--card)); color: var(--coral-accent); font-weight: 700; font-size: .85rem; }
+.nk-highlight { color: var(--brand-green); background: linear-gradient(transparent 62%, color-mix(in srgb, var(--brand-yellow) 55%, transparent) 62%); }
+.nk-hero-media { position: relative; }
+.nk-hero-media img { width: 100%; aspect-ratio: 5/4; object-fit: cover; border-radius: 2rem; border: 6px solid var(--card); box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--brand-dark) 45%, transparent); transform: rotate(-2deg); }
+.nk-float { position: absolute; display: flex; align-items: center; gap: .6rem; background: var(--card); padding: .7rem 1rem; border-radius: 1rem; box-shadow: 0 12px 30px -12px color-mix(in srgb, var(--brand-dark) 40%, transparent); color: var(--brand-blue); }
+.nk-float b { display: block; font-size: .9rem; color: var(--foreground); } .nk-float small { font-size: .72rem; color: var(--muted-foreground); }
+.nk-float-a { top: 8%; inset-inline-end: -1rem; } .nk-float-b { bottom: 6%; inset-inline-start: -1rem; }
+.nk-teal { --tone: var(--brand-green); } .nk-blue { --tone: var(--brand-blue); } .nk-yellow { --tone: var(--brand-yellow); } .nk-coral { --tone: var(--coral-accent); } .nk-green { --tone: var(--brand-brown); }
+.nk-skill { display: flex; align-items: center; gap: .75rem; padding: 1rem; border-radius: 1.25rem; background: var(--card); border: 1px solid var(--border); border-bottom: 4px solid var(--tone); color: var(--tone); }
+.nk-skill b { display: block; color: var(--foreground); } .nk-skill small { font-size: .75rem; color: var(--muted-foreground); }
+.nk-eyebrow { color: var(--coral-accent); font-weight: 700; font-size: .9rem; }
+.nk-card { border-radius: 1.75rem; padding: 1.75rem; background: var(--card); border: 1px solid var(--border); transition: transform .2s; }
+.nk-card:hover { transform: translateY(-4px); }
+.nk-icon { display: inline-flex; width: 3rem; height: 3rem; align-items: center; justify-content: center; border-radius: 1rem; background: color-mix(in srgb, var(--brand-green) 12%, var(--card)); color: var(--brand-green); }
+.nk-card-feature { background: var(--brand-green); color: var(--brand-dark-foreground); border: 0; }
+.nk-card-feature .nk-icon { background: color-mix(in srgb, var(--brand-dark-foreground) 18%, transparent); color: var(--brand-dark-foreground); }
+.nk-card-stat { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; text-align: center; background: var(--brand-yellow); border: 0; color: var(--brand-dark); }
+.nk-card-stat b { display: block; font-size: 2.25rem; } .nk-card-stat small { font-weight: 700; }
+.nk-levels { background: color-mix(in srgb, var(--brand-mint) 60%, var(--background)); }
+.nk-level { position: relative; border-radius: 1.5rem; padding: 1.5rem; background: var(--card); border-top: 6px solid var(--tone); }
+.nk-level-n { display: inline-flex; width: 2.5rem; height: 2.5rem; align-items: center; justify-content: center; border-radius: 50%; background: var(--tone); color: var(--brand-dark-foreground); font-weight: 800; }
+.nk-step span { display: inline-flex; width: 3rem; height: 3rem; align-items: center; justify-content: center; border-radius: 1rem; background: var(--brand-yellow); color: var(--brand-dark); font-weight: 800; font-size: 1.25rem; }
+@media (max-width: 767px) { .nk-float-a { inset-inline-end: .5rem; } .nk-float-b { inset-inline-start: .5rem; } }
