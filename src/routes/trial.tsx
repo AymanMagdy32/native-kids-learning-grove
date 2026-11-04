@@ -239,7 +239,13 @@ function TrialPage() {
           <div className="border-s-4 border-primary bg-accent p-6">
             <h2 className="text-xl">إيه اللي هيحصل بعد الحجز؟</h2>
             <ol className="mt-6 space-y-5 text-sm leading-7 text-muted-foreground">
-              {[[MessageCircleHeart, "سنتواصل معك في أقرب وقت ممكن."], [ClipboardCheck, "اختبار تحديد مستوى مجاني أونلاين."], [MonitorPlay, "حصة تجريبية كاملة مع المعلم."], [Users, "ترشيح المجموعة والمواعيد المناسبة."]].map(([Icon, text], i) => { const StepIcon = Icon as typeof Users; return <li key={i} className="flex items-start gap-3"><span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-card text-primary"><StepIcon className="size-4" /></span><span>{text as string}</span></li>; })}
+              {[
+                { icon: MessageCircleHeart, text: "سنتواصل معك في أقرب وقت ممكن." },
+                { icon: ClipboardCheck, text: "اختبار تحديد مستوى مجاني أونلاين." },
+                { icon: MonitorPlay, text: "حصة تجريبية كاملة مع المعلم." },
+                { icon: Users, text: "ترشيح المجموعة والمواعيد المناسبة." },
+              ].map(({ icon: Icon, text }) => <li key={text} className="flex items-start gap-3"><span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-card text-primary"><Icon className="size-4" /></span><span>{text}</span></li>)}
+            </ol>
           </div>
           <div className="border-t border-border pt-6">
             <ShieldCheck className="size-6 text-primary" />
