@@ -10,9 +10,11 @@ import {
   MonitorPlay,
   PenLine,
   Sparkles,
+  ArrowLeft,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
+import { CurriculumGuide } from "@/components/site/CurriculumGuide";
 
 export const Route = createFileRoute("/samples")({
   head: () => ({
@@ -251,25 +253,26 @@ function PhonicsJourney() {
         aria-label="مستويات تعلّم الصوتيات"
       >
         {PHONICS_OVERVIEW.map((item, i) => (
-          <button
+          <Button
             key={item.title}
             type="button"
             aria-pressed={active === i}
             aria-controls="phonics-detail"
             onClick={() => setActive(i)}
-            className={`flex min-h-24 flex-col items-center justify-center gap-2 rounded-2xl border p-2 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring ${active === i ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card text-foreground hover:bg-accent"}`}
+            variant="outline"
+            className={`h-auto min-h-24 flex-col gap-2 p-2 text-center ${active === i ? "border-primary bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground" : "border-border bg-card text-foreground hover:bg-accent"}`}
           >
             <item.icon className="size-5" aria-hidden="true" />
             <span className="text-[11px] font-medium" dir="ltr">
               Level {i + 1}
             </span>
             <span className="text-xs font-bold">{item.title}</span>
-          </button>
+          </Button>
         ))}
       </div>
       <div
         id="phonics-detail"
-        className="surface-card mt-4 overflow-hidden p-5 md:p-7"
+        className="mt-4 overflow-hidden border-y border-border py-6 md:py-8"
         aria-live="polite"
         aria-atomic="true"
       >
@@ -334,22 +337,21 @@ function PhonicsJourney() {
           </p>
         </details>
         <div className="mt-4 flex items-center justify-between gap-3">
-          <button
+          <Button
             type="button"
             disabled={active === 0}
             onClick={() => setActive((n) => Math.max(0, n - 1))}
-            className="min-h-11 rounded-xl border border-border px-4 py-2 text-xs font-bold hover:bg-accent disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-ring"
+            variant="outline"
           >
             المستوى السابق
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
             disabled={active === 5}
             onClick={() => setActive((n) => Math.min(5, n + 1))}
-            className="min-h-11 rounded-xl bg-primary px-4 py-2 text-xs font-bold text-primary-foreground hover:bg-primary/90 disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-ring"
           >
             المستوى التالي
-          </button>
+          </Button>
         </div>
       </div>
       <p className="mt-3 text-xs leading-6 text-muted-foreground">
@@ -364,20 +366,27 @@ function SamplesPage() {
     <SiteLayout>
       <PageHero
         eyebrow="نماذج تعليمية"
-        title="شوف طريقة التعليم قبل ما تحجز"
+        title="رحلة طفلك في تعلّم الإنجليزي"
         description="كل النماذج دي صممها متخصصون لتعليم الإنجليزية كلغة ثانية، ومهيأة خصيصًا للتعليم الأونلاين التفاعلي."
       />
-      <div className="container-page py-14">
-        <section className="mb-14">
+      <nav aria-label="أقسام التعليم" className="border-b border-border bg-background">
+        <div className="container-page flex flex-wrap gap-x-8 gap-y-2 py-4 text-sm font-bold text-primary">
+          <a href="#curriculum" className="py-2">المنهج والمستويات</a><a href="#materials" className="py-2">نماذج من الحصص</a><a href="#phonics" className="py-2">الصوتيات والقراءة</a>
+        </div>
+      </nav>
+      <CurriculumGuide />
+      <div className="container-page py-12 md:py-16">
+        <section id="materials" className="mb-14 scroll-mt-28">
+          <p className="nk-eyebrow">من داخل الحصة</p>
           <h2 className="text-2xl">نماذج حقيقية من موادنا</h2>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
             أوراق عمل، مهارات مناظرة، بطاقات تعليمية، وعروض تفاعلية صممها خبراء — اتفرّج عليها
             مباشرة من هنا.
           </p>
-          <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
             {REAL_SAMPLES.map((s) => (
               <article key={s.title} className="surface-card flex flex-col overflow-hidden p-0">
-                <div className="aspect-[4/3] w-full overflow-hidden bg-secondary">
+                <div className="aspect-[16/10] w-full overflow-hidden border-b border-border bg-secondary">
                   {s.previewImage ? (
                     <img
                       src={s.previewImage}
@@ -416,15 +425,8 @@ function SamplesPage() {
 
         <PhonicsJourney />
 
-        <div className="surface-card flex flex-wrap items-center justify-between gap-4 p-7">
-          <p className="text-sm leading-7 text-muted-foreground">
-            عايز تشوف الطريقة على أرض الواقع؟ احجز حصة تجريبية مجانية لطفلك.
-          </p>
-          <Button asChild size="lg">
-            <Link to="/trial">احجز التجربة المجانية</Link>
-          </Button>
-        </div>
       </div>
+      <section className="bg-accent py-10"><div className="container-page flex flex-wrap items-center justify-between gap-5"><div><h2 className="text-2xl">خلي طفلك يجرّب بنفسه</h2><p className="mt-2 text-sm leading-7 text-muted-foreground">حصة تجريبية مجانية تساعدك تشوف الطريقة قبل ما تقرر.</p></div><Button asChild size="lg"><Link to="/trial">احجز التجربة المجانية <ArrowLeft /></Link></Button></div></section>
     </SiteLayout>
   );
 }
