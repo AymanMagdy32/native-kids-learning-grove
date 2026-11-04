@@ -1,173 +1,106 @@
+/* Palette: deep teal, sunny yellow, soft white. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Languages, LineChart, MessageCircleHeart, ArrowLeft, Sparkles, Mic, Headphones, BookOpen,
-  PenLine, Users, User, Clock, ShieldCheck, Star, CheckCircle2,
-} from "lucide-react";
+import { ArrowLeft, BookOpen, Check, Headphones, Languages, LineChart, MessageCircle, Mic, PenLine, Play, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { LEVELS } from "@/components/home/learning-data";
-import lessonAsset from "@/assets/native-lesson.jpg.asset.json";
+import learningPhoto from "@/assets/native-kid-learning.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Native Kid Academy | إنجليزي أونلاين للأطفال والمراهقين" },
-      { name: "description", content: "تعليم إنجليزي أونلاين للأطفال من 4 إلى 15 سنة بأسلوب الغمر والتفاعل، 6 مستويات، متابعة شهرية وحصة تجريبية مجانية." },
-      { property: "og:title", content: "Native Kid Academy | إنجليزي أونلاين للأطفال" },
-      { property: "og:description", content: "حصص تفاعلية، 6 مستويات واضحة، ومتابعة شهرية لتقدّم طفلك." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => ({ meta: [
+    { title: "Native Kid Academy | رحلة إنجليزي ممتعة لطفلك" },
+    { name: "description", content: "إنجليزي أونلاين للأطفال من 4 إلى 15 سنة. اكتشف منهجنا التفاعلي من 6 مستويات، متابعة تقدّم طفلك، واحجز حصة تجريبية مجانية." },
+    { property: "og:title", content: "Native Kid Academy | رحلة إنجليزي ممتعة لطفلك" },
+    { property: "og:description", content: "تعليم تفاعلي، مسار واضح، واهتمام بكل طفل. اكتشف مستويات الإنجليزي واحجز التجربة المجانية." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: HomePage,
 });
 
-const SKILLS = [
-  { icon: Mic, t: "Speaking", ar: "التحدث", c: "nk-teal" },
-  { icon: Headphones, t: "Listening", ar: "الاستماع", c: "nk-blue" },
-  { icon: BookOpen, t: "Reading", ar: "القراءة", c: "nk-yellow" },
-  { icon: PenLine, t: "Writing", ar: "الكتابة", c: "nk-coral" },
-];
-const WHY = [
-  { icon: Languages, t: "الغمر باللغة", d: "الحصة كلها بالإنجليزي بالصور والمواقف، فالطفل يكتسب اللغة بشكل طبيعي." },
-  { icon: MessageCircleHeart, t: "تفاعل حقيقي", d: "ألعاب وقصص وتمثيل أدوار، والطفل بيتكلم أغلب وقت الحصة." },
-  { icon: LineChart, t: "تقرير شهري", d: "الحضور والواجبات وتطوّر كل مهارة، مكتوب بوضوح لولي الأمر." },
-  { icon: ShieldCheck, t: "بيئة آمنة", d: "مجموعات صغيرة ومعلمين مدرّبين على التعامل مع الأطفال." },
+const BENEFITS = [
+  { icon: MessageCircle, title: "بيتكلّم… مش بس بيسمع", body: "قصص وألعاب وتمثيل أدوار تحوّل كل حصة لفرصة حقيقية لاستخدام الإنجليزي." },
+  { icon: BookOpen, title: "كل خطوة لها هدف", body: "من الكلمات الأولى للمناقشات، منهج متدرّج يربط التحدث بالقراءة والكتابة." },
+  { icon: LineChart, title: "تقدّمه واضح ليك", body: "متابعة شهرية للحضور والواجبات وتطوّر المهارات، عشان تكون جزء من رحلة طفلك." },
+  { icon: ShieldCheck, title: "اهتمام يناسب طفلك", body: "مجموعات صغيرة أو حصص فردية، وبداية حسب المستوى مش العمر بس." },
 ];
 const STEPS = [
-  { n: "1", t: "احجز التجربة", d: "بيانات بسيطة عن الطفل." },
-  { n: "2", t: "تحديد المستوى", d: "نعرف نقطة البداية." },
-  { n: "3", t: "الحصة التجريبية", d: "طفلك يجرّب بنفسه." },
-  { n: "4", t: "ابدأ الرحلة", d: "مجموعة ومستوى مناسبين." },
+  { n: "01", title: "احجز الحصة المجانية", body: "شاركنا عمر طفلك وهدفك من تعلّم الإنجليزي، وفريقنا يتواصل معك." },
+  { n: "02", title: "نكتشف نقطة البداية", body: "نحدّد المستوى، وطفلك يجرّب طريقة التعلّم في حصة تفاعلية." },
+  { n: "03", title: "نبدأ الرحلة سوا", body: "نختار المسار المناسب لطفلك ونواصل معك متابعة تقدّمه." },
 ];
-const TONES = ["nk-teal", "nk-blue", "nk-yellow", "nk-coral", "nk-green", "nk-blue"];
 
 function HomePage() {
   return (
     <SiteLayout>
-      {/* Hero: centered with floating image card */}
-      <section className="nk-hero">
-        <div className="container-page grid items-center gap-10 py-14 md:grid-cols-2 md:py-20">
-          <div>
-            <span className="nk-pill"><Sparkles className="size-4" /> الحصة الأولى مجانية</span>
-            <h1 className="mt-5 text-4xl leading-tight md:text-5xl">
-              طفلك يتكلم إنجليزي <span className="nk-highlight">بثقة</span> من أول شهر
-            </h1>
-            <p className="mt-5 max-w-lg text-base leading-8 text-muted-foreground">
-              Native Kid Academy — حصص أونلاين حية للأعمار من 4 إلى 15 سنة، بمنهج من 6 مستويات واهتمام خاص بالصوتيات والنطق.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Button asChild size="lg"><Link to="/trial">احجز حصة مجانية <ArrowLeft className="size-4" /></Link></Button>
-              <Button asChild variant="outline" size="lg"><Link to="/samples">شوف طريقة التعليم</Link></Button>
-            </div>
-            <div className="mt-8 flex items-center gap-2 text-sm text-muted-foreground">
-              {[0, 1, 2, 3, 4].map((i) => <Star key={i} className="size-4 fill-current text-yellow-accent" />)}
-              <span className="ms-1">أولياء أمور راضيين عن تقدّم أولادهم</span>
+      <div className="premium-home">
+        <section className="premium-hero">
+          <img src={learningPhoto} alt="طفلان يستمتعان بالتعلّم معًا على اللابتوب" width={1920} height={1024} fetchPriority="high" className="premium-hero-photo" />
+          <div className="container-page premium-hero-inner">
+            <div className="premium-hero-copy">
+              <p className="premium-eyebrow"><span /> لغة جديدة. فرص أكبر.</p>
+              <p className="mt-5 font-bold text-primary" dir="ltr">Native Kid Academy</p>
+              <h1 className="mt-3">إنجليزي لطفلك.<br /><span className="premium-underline">ثقة تكبر معاه.</span></h1>
+              <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">تعلّم حقيقي، ضحكات كتير، وخطوات واضحة. حصص إنجليزي أونلاين للأطفال والمراهقين من 4 إلى 15 سنة، يكون فيها طفلك بطل الحصة.</p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button>
+                <Button asChild size="lg" variant="outline"><Link to="/" hash="courses">اكتشف المستويات <BookOpen /></Link></Button>
+              </div>
+              <p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-4 text-primary" /> جرّب طريقة التعلّم قبل ما تقرر</p>
             </div>
           </div>
-          <div className="nk-hero-media">
-            <img src={lessonAsset.url} alt="حصة إنجليزي أونلاين تفاعلية للأطفال" width={1280} height={1024} fetchPriority="high" />
-            <div className="nk-float nk-float-a"><Clock className="size-5" /><div><b>55 دقيقة</b><small>لكل حصة</small></div></div>
-            <div className="nk-float nk-float-b"><Users className="size-5" /><div><b>مجموعات صغيرة</b><small>أو حصص فردية</small></div></div>
+          <div className="premium-photo-label"><span className="premium-live-dot" /><span>تفاعل حقيقي. من راحة البيت.</span></div>
+        </section>
+
+        <section aria-label="رحلة طفلك بالأرقام" className="premium-trust">
+          <div className="container-page grid grid-cols-2 gap-y-6 py-8 md:grid-cols-4">
+            {[{ value: "4–15", label: "سنة · أطفال ومراهقين" }, { value: "6", label: "مستويات بخطوات واضحة" }, { value: "4", label: "مهارات لغوية أساسية" }, { value: "شهريًا", label: "متابعة تقدّم لولي الأمر" }].map(({ value, label }) => <div key={label} className="premium-trust-item"><b dir="auto">{value}</b><span>{label}</span></div>)}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Skills strip */}
-      <section className="container-page -mt-4 pb-6">
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
-          {SKILLS.map(({ icon: Icon, t, ar, c }) => (
-            <div key={t} className={`nk-skill ${c}`}><Icon className="size-6" /><div><b>{ar}</b><small>{t}</small></div></div>
-          ))}
-        </div>
-      </section>
-
-      {/* Why: bento */}
-      <section className="py-14 md:py-20">
-        <div className="container-page">
-          <p className="nk-eyebrow">ليه Native Kid؟</p>
-          <h2 className="mt-2 text-2xl md:text-4xl">تعليم ممتع… ونتيجة تقدر تشوفها</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-4">
-            {WHY.map(({ icon: Icon, t, d }, i) => (
-              <article key={t} className={`nk-card ${i === 0 ? "md:col-span-2 nk-card-feature" : ""}`}>
-                <span className="nk-icon"><Icon className="size-6" /></span>
-                <h3 className="mt-5 text-xl">{t}</h3>
-                <p className="mt-2 text-sm leading-7 opacity-80">{d}</p>
-              </article>
-            ))}
-            <article className="nk-card nk-card-stat md:col-span-2">
-              <div><b>6</b><small>مستويات</small></div>
-              <div><b><bdi>4–15</bdi></b><small>سنة</small></div>
-              <div><b>2</b><small>حصة أسبوعيًا</small></div>
-            </article>
+        <section id="about" className="premium-section">
+          <div className="container-page">
+            <div className="premium-section-heading"><div><p className="premium-eyebrow">تعليم يحبه طفلك. وتطمن له.</p><h2 className="mt-3">صغير في السن،<br />كبير في اللي يقدر يحققه.</h2></div><p>مش مجرد حفظ كلمات. بنساعد طفلك يفهم، يعبّر، ويستخدم اللغة في مواقف قريبة من عالمه.</p></div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {BENEFITS.map(({ icon: Icon, title, body }, i) => <article key={title} className="premium-benefit premium-reveal"><div className="flex items-center justify-between"><span className="premium-icon"><Icon className="size-6" /></span><span className="text-xs text-muted-foreground" dir="ltr">0{i + 1}</span></div><h3 className="mt-6 text-xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{body}</p></article>)}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Levels timeline */}
-      <section className="nk-levels py-14 md:py-20">
-        <div className="container-page">
-          <p className="nk-eyebrow">رحلة التعلّم</p>
-          <h2 className="mt-2 text-2xl md:text-4xl">6 مستويات من أول كلمة لحد النقاش</h2>
-          <p className="mt-4 max-w-3xl text-sm leading-8 text-muted-foreground">بنستخدم منهج Abridge Academy التفاعلي كأحد مساراتنا الأساسية، بتدرّج CEFR من المبتدئ تمامًا إلى ما قبل المتوسط. كل مستوى له موضوعاته ومهاراته، والبداية حسب مستوى طفلك.</p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {LEVELS.map((l, i) => (
-              <article key={l.n} className={`nk-level ${TONES[i]}`}>
-                <div className="flex items-center justify-between">
-                  <span className="nk-level-n">{l.n}</span>
-                  <span className="text-xs font-bold" dir="ltr">{l.cefr}</span>
-                </div>
-                <h3 className="mt-4 text-lg">{l.titleAr}</h3>
-                <p className="text-xs opacity-70" dir="ltr">{l.titleEn}</p>
-                <p className="mt-3 text-sm leading-7 opacity-85">{l.outcome}</p>
-                <details className="mt-4 border-t border-border pt-3">
-                  <summary className="cursor-pointer py-2 text-sm font-bold text-primary">إيه اللي بنتعلّمه؟</summary>
-                  <p className="mt-2 text-sm leading-7 text-muted-foreground">{l.desc}</p>
-                  <h4 className="mt-4 text-sm">موضوعات المستوى</h4>
-                  <p className="mt-2 text-xs leading-7 text-muted-foreground">{l.topics.join(" · ")}</p>
-                  <h4 className="mt-4 text-sm">مهارات بنتمرّن عليها</h4>
-                  <ul className="mt-2 list-disc space-y-2 ps-4 text-sm leading-7 text-muted-foreground">{l.skills.map((skill) => <li key={skill} dir="auto">{skill}</li>)}</ul>
-                </details>
-              </article>
-            ))}
+        <section id="courses" className="premium-section premium-soft-band">
+          <div className="container-page">
+            <div className="premium-section-heading"><div><p className="premium-eyebrow">المنهج · من أول كلمة لأفكار أكبر</p><h2 className="mt-3">بداية تناسبه.<br />ومسار يكمل معاه.</h2></div><p>بنستخدم منهج Abridge Academy التفاعلي كأحد مساراتنا الأساسية، بتدرّج CEFR من المبتدئ تمامًا إلى ما قبل المتوسط. البداية حسب مستوى طفلك.</p></div>
+            <div className="mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {LEVELS.map((level) => <article className="premium-course premium-reveal" key={level.n}>
+                <div className="flex items-center justify-between"><span className="premium-level-number" dir="ltr">0{level.n}</span><span className="premium-cefr" dir="ltr">{level.cefr}</span></div>
+                <h3 className="mt-5 text-xl">{level.titleAr}</h3><p className="mt-1 text-xs text-muted-foreground" dir="ltr">{level.titleEn}</p>
+                <p className="mt-4 text-sm leading-7 text-muted-foreground">{level.outcome}</p>
+                <details className="premium-course-details"><summary>تفاصيل المستوى <ArrowLeft className="size-4" /></summary><p className="mt-4 text-sm leading-7 text-muted-foreground">{level.desc}</p><h4 className="mt-5 text-sm">موضوعات المستوى</h4><p className="mt-2 text-sm leading-7 text-muted-foreground">{level.topics.join(" · ")}</p><h4 className="mt-5 text-sm">مهارات بنتمرّن عليها</h4><ul className="mt-3 space-y-3">{level.skills.map(skill => <li key={skill} className="flex items-start gap-2 text-sm leading-7 text-muted-foreground"><Check className="mt-1 size-4 text-primary" /><span dir="auto">{skill}</span></li>)}</ul></details>
+              </article>)}
+            </div>
+            <div className="mt-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center"><p className="text-sm text-muted-foreground">مش متأكد طفلك يبدأ منين؟ بنحدد المستوى معك في التجربة.</p><Button asChild variant="link"><Link to="/samples">شوف المنهج وطريقة الحصة <ArrowLeft /></Link></Button></div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Formats */}
-      <section className="py-14 md:py-20">
-        <div className="container-page grid gap-5 md:grid-cols-2">
-          {[
-            { icon: Users, t: "حصص المجموعات", d: "تواصل وتفاعل مع أطفال من نفس السن والمستوى.", pts: ["منهج منظم", "ألعاب جماعية", "تكلفة أقل"] },
-            { icon: User, t: "حصص فردية", d: "اهتمام كامل وخطة مخصصة لسرعة طفلك.", pts: ["خطة مخصصة", "مواعيد مرنة", "تقدّم أسرع"] },
-          ].map(({ icon: Icon, t, d, pts }) => (
-            <article key={t} className="nk-card">
-              <span className="nk-icon"><Icon className="size-6" /></span>
-              <h3 className="mt-5 text-2xl">{t}</h3>
-              <p className="mt-2 text-sm leading-7 text-muted-foreground">{d}</p>
-              <ul className="mt-5 space-y-2">
-                {pts.map((p) => <li key={p} className="flex items-center gap-2 text-sm"><CheckCircle2 className="size-4 text-primary" />{p}</li>)}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
+        <section className="premium-section" id="start">
+          <div className="container-page"><p className="premium-eyebrow">بداية سهلة، من غير حيرة</p><h2 className="mt-3">رحلته تبدأ بـ 3 خطوات.</h2><ol className="mt-12 grid gap-8 md:grid-cols-3">{STEPS.map(({ n, title, body }) => <li key={n} className="premium-step"><span dir="ltr">{n}</span><h3 className="mt-5 text-xl">{title}</h3><p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">{body}</p></li>)}</ol></div>
+        </section>
 
-      {/* Steps + CTA combined */}
-      <section className="academy-booking py-14 md:py-20">
-        <div className="container-page">
-          <h2 className="text-2xl md:text-4xl">ابدأ في 4 خطوات بسيطة</h2>
-          <ol className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-4">
-            {STEPS.map(({ n, t, d }) => (
-              <li key={n} className="nk-step"><span>{n}</span><h3 className="mt-3 text-base">{t}</h3><p className="mt-1 text-sm opacity-75">{d}</p></li>
-            ))}
-          </ol>
-          <div className="mt-12 flex flex-col items-start justify-between gap-5 border-t border-brand-dark-foreground/20 pt-8 md:flex-row md:items-center">
-            <p className="text-lg">جرّب حصة مجانية قبل ما تقرر — فريقنا هيتواصل معك.</p>
-            <Button asChild size="lg"><Link to="/trial">احجز التجربة المجانية <ArrowLeft className="size-4" /></Link></Button>
+        <section id="teaching" className="premium-section premium-teaching-band">
+          <div className="container-page grid items-start gap-10 md:grid-cols-2">
+            <div><p className="premium-eyebrow">داخل الحصة</p><h2 className="mt-3">المعلم يوجّه.<br />وطفلك يشارك.</h2><p className="mt-5 max-w-lg text-sm leading-8 text-muted-foreground">من نشاط يجذب انتباهه لموقف يستخدم فيه اللي اتعلّمه. صوت طفلك له مساحة في كل حصة، مع ملاحظات تساعده ياخد الخطوة اللي بعدها.</p><Button asChild variant="link" className="mt-5 px-0"><Link to="/samples">اكتشف شكل الحصة <ArrowLeft /></Link></Button></div>
+            <div><div className="grid grid-cols-2 gap-4">{[{ icon: Mic, ar: "يتكلم بثقة", en: "Speaking" }, { icon: Headphones, ar: "يسمع ويفهم", en: "Listening" }, { icon: BookOpen, ar: "يقرأ ويكتشف", en: "Reading" }, { icon: PenLine, ar: "يكتب ويعبّر", en: "Writing" }].map(({ icon: Icon, ar, en }) => <div key={en} className="premium-skill"><Icon className="size-6 text-primary" /><h3 className="mt-4 text-base">{ar}</h3><p dir="ltr" className="mt-1 text-xs text-muted-foreground">{en}</p></div>)}</div><p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground"><Users className="size-4 text-primary" /> حصص مجموعات أو فردية حسب احتياج طفلك</p></div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section className="premium-section">
+          <div className="container-page premium-parent-note"><div className="premium-parent-heading"><ShieldCheck className="size-8 text-primary" /><p className="premium-eyebrow mt-4">لأن قرارك مهم</p><h2 className="mt-3">خليك مطمّن.<br />وخليك جزء من الرحلة.</h2></div><div className="space-y-7">{[{ title: "تجربة قبل الاشتراك", body: "طفلك يتعرّف على طريقة التعلّم، وأنت تشوف هل هي مناسبة له." }, { title: "متابعة مش مجرد حضور", body: "تعرف اللي اتعلّمه طفلك، والمهارات اللي بنشتغل عليها، من خلال متابعة شهرية." }, { title: "إجابات واضحة لأسئلتك", body: "فريقنا يساعدك تختار المستوى وشكل الحصص المناسب قبل البداية." }].map(item => <div key={item.title} className="flex gap-4"><Check className="mt-1 size-5 text-primary" /><div><h3 className="text-lg">{item.title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{item.body}</p></div></div>)}<Button asChild variant="link" className="px-0"><Link to="/faq">أسئلة أولياء الأمور <ArrowLeft /></Link></Button></div></div>
+        </section>
+
+        <section id="contact" className="premium-final">
+          <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center"><div><p className="text-sm text-brand-dark-foreground/75">أول خطوة صغيرة. بداية لحاجة كبيرة.</p><h2 className="mt-3">خلّي الإنجليزي جزء من عالمه.</h2><p className="mt-4 text-sm leading-7 text-brand-dark-foreground/75">احجز حصة مجانية، واتعرّف على البداية المناسبة لطفلك.</p></div><Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز التجربة المجانية <ArrowLeft /></Link></Button></div>
+        </section>
+      </div>
     </SiteLayout>
   );
 }
