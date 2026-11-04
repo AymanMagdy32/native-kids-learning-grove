@@ -1292,7 +1292,7 @@
 .academy-page-heading h1 { color: var(--foreground); }
 .curriculum-choice { justify-content: flex-start; white-space: normal; height: auto; min-height: 78px; gap: 12px; padding: 12px; background: var(--card); border-color: var(--border); }
 .curriculum-number { display: grid; place-items: center; width: 32px; height: 32px; flex-shrink: 0; background: var(--accent); color: var(--primary); border-radius: var(--radius); font-weight: 800; }
-.academy-site .curriculum-choice-active { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+.academy-site .inline-flex.cursor-pointer.curriculum-choice-active { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
 .curriculum-choice-active .curriculum-number { background: var(--primary-foreground); color: var(--primary); }
 .curriculum-detail { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
 .trial-form { border: 1px solid var(--border); border-top: 4px solid var(--primary); border-radius: var(--radius); padding: 28px; }
