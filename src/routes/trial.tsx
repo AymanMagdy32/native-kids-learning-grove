@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { z } from "zod";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, MessageCircleHeart, ShieldCheck, ArrowLeft, ClipboardCheck, MonitorPlay, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -133,22 +133,23 @@ function TrialPage() {
     <SiteLayout>
       <PageHero
         eyebrow="تجربة مجانية"
-        title="احجز حصة تجريبية مجانية"
-        description="املأ البيانات وهنتواصل معك لتحديد الموعد المناسب. مفيش أي التزام أو دفع."
+        title="أول خطوة… حصة يجربها طفلك"
+        description="حصة تجريبية مجانية وتحديد مستوى، من غير دفع أو التزام بالاشتراك. نعرف طفلك ونختار له البداية المناسبة."
       />
-      <div className="container-page grid gap-10 py-14 lg:grid-cols-[3fr_2fr]">
-        <form onSubmit={onSubmit} noValidate className="surface-card space-y-5 p-7">
+      <div className="container-page grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:py-16">
+        <form onSubmit={onSubmit} noValidate className="trial-form space-y-6">
+          <div className="border-b border-border pb-5"><p className="text-xs font-bold text-primary">طلب الحصة التجريبية</p><h2 className="mt-2 text-2xl">نتعرّف عليك وعلى طفلك</h2></div>
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <Label htmlFor="parent_name">اسم ولي الأمر *</Label>
-              <Input id="parent_name" name="parent_name" maxLength={100} className="mt-2" />
+              <Input id="parent_name" name="parent_name" autoComplete="name" maxLength={100} aria-invalid={!!errors["parent_name"]} className="mt-2" />
               {errors["parent_name"] && (
                 <p className="mt-1 text-xs text-destructive">{errors["parent_name"]}</p>
               )}
             </div>
             <div>
               <Label htmlFor="phone">رقم الهاتف / واتساب *</Label>
-              <Input id="phone" name="phone" dir="ltr" maxLength={20} className="mt-2" />
+              <Input id="phone" name="phone" type="tel" autoComplete="tel" dir="ltr" maxLength={20} aria-invalid={!!errors["phone"]} className="mt-2" />
               {errors["phone"] && (
                 <p className="mt-1 text-xs text-destructive">{errors["phone"]}</p>
               )}
@@ -188,18 +189,20 @@ function TrialPage() {
                   ["phone", "مكالمة هاتفية"],
                 ] as const
               ).map(([v, l]) => (
-                <button
+                <Button
                   key={v}
                   type="button"
                   onClick={() => setContact(v)}
-                  className={`rounded-xl border px-4 py-2 text-sm transition-colors ${
+                  aria-pressed={contact === v}
+                  variant="outline"
+                  className={`${
                     contact === v
                       ? "border-primary bg-primary/10 font-bold text-primary"
                       : "border-border"
                   }`}
                 >
                   {l}
-                </button>
+                </Button>
               ))}
             </div>
           </fieldset>
@@ -227,26 +230,32 @@ function TrialPage() {
 
           <Button type="submit" size="lg" disabled={submitting} className="w-full sm:w-auto">
             {submitting ? "جارٍ الإرسال…" : "أرسل طلب الحجز عبر واتساب"}
+            <ArrowLeft className="size-4" />
           </Button>
+          <p className="text-xs leading-6 text-muted-foreground">طلبك هيفتح في واتساب، وتقدر تراجعه قبل إرساله لتأكيد الموعد مع الفريق.</p>
         </form>
 
-        <aside className="space-y-5">
-          <div className="surface-card p-6">
-            <h2 className="text-lg">إيه اللي هيحصل بعد الحجز؟</h2>
-            <ol className="mt-4 space-y-3 text-sm leading-7 text-muted-foreground">
-              <li>1. سنتواصل معك في أقرب وقت ممكن.</li>
-              <li>2. اختبار تحديد مستوى مجاني أونلاين.</li>
-              <li>3. حصة تجريبية كاملة مع المعلم.</li>
-              <li>4. ترشيح المجموعة والمواعيد المناسبة.</li>
+        <aside className="space-y-6 lg:sticky lg:top-32">
+          <div className="border-s-4 border-primary bg-accent p-6">
+            <h2 className="text-xl">إيه اللي هيحصل بعد الحجز؟</h2>
+            <ol className="mt-6 space-y-5 text-sm leading-7 text-muted-foreground">
+              {[
+                { icon: MessageCircleHeart, text: "سنتواصل معك في أقرب وقت ممكن." },
+                { icon: ClipboardCheck, text: "اختبار تحديد مستوى مجاني أونلاين." },
+                { icon: MonitorPlay, text: "حصة تجريبية كاملة مع المعلم." },
+                { icon: Users, text: "ترشيح المجموعة والمواعيد المناسبة." },
+              ].map(({ icon: Icon, text }) => <li key={text} className="flex items-start gap-3"><span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-card text-primary"><Icon className="size-4" /></span><span>{text}</span></li>)}
             </ol>
           </div>
-          <div className="surface-card p-6">
-            <h2 className="text-lg">خصوصية بيانات طفلك</h2>
+          <div className="border-t border-border pt-6">
+            <ShieldCheck className="size-6 text-primary" />
+            <h2 className="mt-3 text-lg">خصوصية بيانات طفلك</h2>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
               بنجمع الحد الأدنى من البيانات، ولا نشارك أي معلومات مع أطراف خارجية. البيانات محمية
               بصلاحيات وصول صارمة داخل النظام.
             </p>
           </div>
+          <Button asChild variant="link" className="px-0"><Link to="/samples">شوف المنهج ومستويات التعلّم <ArrowLeft /></Link></Button>
         </aside>
       </div>
     </SiteLayout>

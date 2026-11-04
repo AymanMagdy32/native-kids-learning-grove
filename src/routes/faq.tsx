@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
+import { MessageCircleHeart, BookOpen, ArrowLeft } from "lucide-react";
 
 const FAQS = [
   {
@@ -79,29 +80,31 @@ function FaqPage() {
     <SiteLayout>
       <PageHero
         eyebrow="الأسئلة الشائعة"
-        title="إجابات سريعة لأهم أسئلتك"
-        description="لو لم تجد إجابتك هنا، احجز التجربة المجانية وسنجيب على كل استفساراتك في المكالمة."
+        title="خلّينا نطمنك قبل أول حصة"
+        description="من اختيار المستوى لمتابعة التقدّم — إجابات على الأسئلة اللي بتهم كل ولي أمر."
       />
-      <div className="container-page grid gap-10 py-14 lg:grid-cols-[2fr_1fr]">
-        <Accordion type="single" collapsible className="w-full">
+      <div className="container-page grid gap-10 py-12 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] lg:py-16">
+        <div><p className="mb-5 text-xs font-bold text-primary">الأعمار · الحصص · المتابعة</p><Accordion type="single" collapsible defaultValue="item-0" className="w-full">
           {FAQS.map((f, i) => (
             <AccordionItem key={f.q} value={`item-${i}`}>
-              <AccordionTrigger className="text-start text-base">{f.q}</AccordionTrigger>
+              <AccordionTrigger className="gap-4 py-6 text-start text-base"><span className="flex items-start gap-3"><span className="mt-1 text-xs text-primary" aria-hidden="true">0{i + 1}</span><span>{f.q}</span></span></AccordionTrigger>
               <AccordionContent className="text-sm leading-8 text-muted-foreground">
                 {f.a}
               </AccordionContent>
             </AccordionItem>
           ))}
-        </Accordion>
+        </Accordion></div>
 
-        <aside className="surface-card h-fit p-6 lg:sticky lg:top-24">
-          <h2 className="text-lg">عندك سؤال تاني؟</h2>
+        <aside className="h-fit border-s-4 border-primary bg-accent p-6 lg:sticky lg:top-32">
+          <MessageCircleHeart className="size-8 text-primary" />
+          <h2 className="mt-4 text-xl">إحنا معاك في القرار</h2>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
             احجز التجربة المجانية وفريقنا هيتواصل معك ويجاوب على كل أسئلتك.
           </p>
           <Button asChild size="lg" className="mt-5 w-full">
-            <Link to="/trial">احجز الآن</Link>
+            <Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link>
           </Button>
+          <div className="mt-6 border-t border-border pt-5"><BookOpen className="size-5 text-primary" /><h3 className="mt-2 text-base">حابب تعرف المنهج؟</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">شوف موضوعات ومهارات كل مستوى، ونماذج من مواد الحصص.</p><Button asChild variant="link" className="mt-2 px-0"><Link to="/samples">استكشف المنهج <ArrowLeft /></Link></Button></div>
         </aside>
       </div>
     </SiteLayout>
