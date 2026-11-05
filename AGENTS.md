@@ -10,6 +10,6 @@
 <!-- LOVABLE:END -->
 
 - Keep shared academy branding in semantic CSS tokens and the shared Logo component; uploaded logo artwork uses a CDN asset pointer so all pages show the same source.
-- Keep the homepage a concise presentation with introduction, benefits, starting steps, and one final booking section; detailed teaching content remains on the samples page.
+- Keep homepage section navigation anchored to real homepage sections and render all curriculum detail from shared LEVELS data; samples remains the full teaching guide.
 - Render curriculum descriptions, topics, skills, and outcomes from shared LEVELS data in the samples guide and expandable homepage summaries so both views stay consistent.
 - Use shared PageHero and PolicyContent for informational pages so navigation, reading hierarchy, and academy styling stay consistent.

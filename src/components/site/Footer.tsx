@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="mt-24 brand-gradient text-brand-dark-foreground">
+    <footer className="mt-24 text-brand-dark-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo variant="light" />
@@ -39,8 +39,8 @@ export function Footer() {
           <h2 className="text-sm font-bold text-brand-dark-foreground">السياسات</h2>
           <ul className="mt-4 space-y-2 text-sm text-brand-dark-foreground/75">
             <li>
-              <Link to="/trial" className="hover:text-brand-dark-foreground">
-                Free Trial
+              <Link to="/faq" className="hover:text-brand-dark-foreground">
+                المساعدة والأسئلة
               </Link>
             </li>
             <li>
