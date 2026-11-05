@@ -6,7 +6,7 @@ export function WhatsAppContact() {
       href={whatsappLink("تواصل مع فريق Native Kid")}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="تواصل معنا عبر واتساب على +20 150 335 0223"
+      aria-label="تواصل معنا عبر واتساب على +20 102 298 6424"
       className="fixed right-4 z-40 inline-flex items-center gap-2.5 rounded-full bg-contact px-5 py-3.5 font-bold text-contact-foreground shadow-lg shadow-foreground/15 transition duration-200 hover:bg-contact-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-contact motion-safe:hover:-translate-y-1 sm:right-6"
       style={{ bottom: "calc(1rem + env(safe-area-inset-bottom, 0px))" }}
     >

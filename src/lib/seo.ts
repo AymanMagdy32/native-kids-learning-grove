@@ -16,10 +16,10 @@ export const ACADEMY_SCHEMA = {
   logo: `${SITE_URL}${logoAsset.url}`,
   description:
     "تعليم إنجليزي أونلاين للأطفال والمراهقين من 4 إلى 15 سنة، مع التركيز على الصوتيات والتحدث والاستماع والقراءة والكتابة.",
-  telephone: "+201503350223",
+  telephone: "+201022986424",
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+201503350223",
+    telephone: "+201022986424",
     contactType: "customer support",
     availableLanguage: ["Arabic", "English"],
   },
