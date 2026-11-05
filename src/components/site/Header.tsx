@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 
 const NAV = [
-  { to: "/", label: "الرئيسية" },
-  { to: "/samples", label: "شوف طريقة التعليم" },
-  { to: "/faq", label: "الأسئلة الشائعة" },
+  { to: "/", hash: "courses", label: "المستويات" },
+  { to: "/", hash: "about", label: "عن الأكاديمية" },
+  { to: "/", hash: "teaching", label: "طريقة التعليم" },
+  { to: "/faq", hash: "", label: "أسئلة الأهالي" },
+  { to: "/", hash: "contact", label: "تواصل معنا" },
 ] as const;
 
 function FacebookIcon() {
@@ -70,9 +72,8 @@ export function Header() {
             <Link
               key={item.to}
               to={item.to}
+              hash={item.hash}
               className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-primary"
-              activeProps={{ className: "bg-accent text-primary" }}
-              activeOptions={{ exact: item.to === "/" }}
             >
               {item.label}
             </Link>
@@ -81,7 +82,7 @@ export function Header() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <SocialLinks className="border-e border-border pe-2" />
-          <Button asChild>
+          <Button asChild variant="sunshine">
             <Link to="/trial">احجز تجربة مجانية</Link>
           </Button>
         </div>
@@ -106,17 +107,16 @@ export function Header() {
               <Link
                 key={item.to}
                 to={item.to}
+                hash={item.hash}
                 onClick={() => setOpen(false)}
                 className="rounded-xl px-3 py-3 text-base font-medium text-foreground hover:bg-accent hover:text-primary"
-                activeProps={{ className: "bg-accent text-primary" }}
-                activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
               </Link>
             ))}
             <SocialLinks className="my-2 justify-center" />
             <div className="mt-2 flex flex-col gap-2">
-              <Button asChild size="lg" onClick={() => setOpen(false)}>
+              <Button asChild variant="sunshine" size="lg" onClick={() => setOpen(false)}>
                 <Link to="/trial">احجز تجربة مجانية</Link>
               </Button>
             </div>

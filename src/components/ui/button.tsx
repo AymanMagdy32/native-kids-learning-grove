@@ -9,6 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        sunshine: "bg-yellow-accent text-foreground shadow-sm hover:bg-yellow-accent/85",
         default:
           "bg-primary-action text-primary-foreground shadow hover:bg-primary-action/90 active:bg-primary-action/95",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
