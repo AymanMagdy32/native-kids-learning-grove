@@ -7,10 +7,8 @@ import { Logo } from "./Logo";
 
 const NAV = [
   { to: "/", hash: "courses", label: "المستويات" },
-  { to: "/", hash: "about", label: "عن الأكاديمية" },
   { to: "/samples", hash: "", label: "شوف نماذج من المحتوى" },
   { to: "/faq", hash: "", label: "أسئلة الأهالي" },
-  { to: "/", hash: "contact", label: "تواصل معنا" },
 ] as const;
 
 function FacebookIcon() {
