@@ -1,6 +1,6 @@
 /* Palette: deep teal, sunny yellow, soft white. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, BookOpen, Check, Headphones, Languages, LineChart, MessageCircle, Mic, PenLine, Play, ShieldCheck, Users } from "lucide-react";
+import { ArrowLeft, BookOpen, Check, Headphones, LineChart, MessageCircle, Mic, PenLine, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { LEVELS } from "@/components/home/learning-data";
