@@ -8,7 +8,7 @@ import { Logo } from "./Logo";
 const NAV = [
   { to: "/", hash: "courses", label: "المستويات" },
   { to: "/", hash: "about", label: "عن الأكاديمية" },
-  { to: "/", hash: "teaching", label: "طريقة التعليم" },
+  { to: "/samples", hash: "", label: "شوف نماذج من المحتوى" },
   { to: "/faq", hash: "", label: "أسئلة الأهالي" },
   { to: "/", hash: "contact", label: "تواصل معنا" },
 ] as const;
@@ -70,7 +70,7 @@ export function Header() {
         <nav className="hidden items-center gap-1 lg:flex" aria-label="التنقل الرئيسي">
           {NAV.map((item) => (
             <Link
-              key={item.to}
+              key={`${item.to}#${item.hash}`}
               to={item.to}
               hash={item.hash}
               className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-primary"
@@ -105,7 +105,7 @@ export function Header() {
           <nav className="container-page flex flex-col gap-1 py-4" aria-label="قائمة الجوال">
             {NAV.map((item) => (
               <Link
-                key={item.to}
+                key={`${item.to}#${item.hash}`}
                 to={item.to}
                 hash={item.hash}
                 onClick={() => setOpen(false)}
