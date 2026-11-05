@@ -44,7 +44,7 @@ function HomePage() {
               <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">تعلّم حقيقي، ضحكات كتير، وخطوات واضحة. حصص إنجليزي أونلاين للأطفال والمراهقين من 4 إلى 15 سنة، يكون فيها طفلك بطل الحصة.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button>
-                <Button asChild size="lg" variant="outline"><Link to="/" hash="courses">اكتشف المستويات <BookOpen /></Link></Button>
+                <Button asChild size="lg" variant="outline"><Link to="/samples">شوف نماذج من المحتوى <BookOpen /></Link></Button>
               </div>
               <p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-4 text-primary" /> جرّب طريقة التعلّم قبل ما تقرر</p>
             </div>
