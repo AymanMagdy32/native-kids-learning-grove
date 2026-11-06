@@ -89,13 +89,17 @@ function TrialPage() {
     }
 
     setErrors({});
-    setSubmitting(true);
-    setSubmitting(false);
+    // Open WhatsApp in a new tab (WhatsApp refuses to load inside embedded frames)
+    const win = window.open(buildWhatsAppLink(parsed.data), "_blank", "noopener,noreferrer");
+    if (!win) {
+      try {
+        (window.top ?? window).location.href = buildWhatsAppLink(parsed.data);
+      } catch {
+        /* fall back to the button on the confirmation screen */
+      }
+    }
     setSubmitted(parsed.data);
     setDone(true);
-
-    // Redirect to WhatsApp so the operations team gets the lead instantly
-    window.location.assign(buildWhatsAppLink(parsed.data));
   }
 
   if (done && submitted) {
