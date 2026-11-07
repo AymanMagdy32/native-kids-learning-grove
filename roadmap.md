@@ -9,3 +9,8 @@
 - [x] Refresh navigation and footer without inventing prices, teachers, reviews, or contact details.
 - [x] Verify desktop/mobile layouts and the course-to-trial booking journey; WhatsApp handoff checked without sending.
 - [ ] Real teacher profiles, testimonials, pricing, and live booking destination await academy-supplied details.
+
+# Free parent guide
+- [ ] Add the free bilingual guide badge, benefit, dedicated preview section, and final supporting line.
+- [ ] Add the two parent-guide FAQs without changing existing answers or the main trial CTA.
+- [ ] Verify the guide preview and layouts on desktop and mobile.
