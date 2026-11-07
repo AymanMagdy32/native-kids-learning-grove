@@ -1,6 +1,6 @@
 /* Palette: deep teal, sunny yellow, soft white. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, BookOpen, Check, Headphones, LineChart, MessageCircle, Mic, PenLine, ShieldCheck, Users } from "lucide-react";
+import { ArrowLeft, AudioLines, BookOpen, Check, Gift, Headphones, House, LineChart, MessageCircle, Mic, PenLine, Play, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { LEVELS } from "@/components/home/learning-data";
@@ -23,6 +23,12 @@ const BENEFITS = [
   { icon: BookOpen, title: "كل خطوة لها هدف", body: "من الكلمات الأولى للمناقشات، منهج متدرّج يربط التحدث بالقراءة والكتابة." },
   { icon: LineChart, title: "تقدّمه واضح ليك", body: "متابعة شهرية للحضور والواجبات وتطوّر المهارات، عشان تكون جزء من رحلة طفلك." },
   { icon: ShieldCheck, title: "اهتمام يناسب طفلك", body: "مجموعات صغيرة أو حصص فردية، وبداية حسب المستوى مش العمر بس." },
+  { icon: Gift, title: "دليل مجاني لولي الأمر مع كل كورس", body: "تفهم اللي بيتعلمه ابنك وتساعده في البيت حتى لو إنجليزيتك مش قوية." },
+];
+const PARENT_GUIDE_BENEFITS = [
+  { icon: BookOpen, title: "ملخص بسيط بعد كل وحدة", body: "تعرف ابنك اتعلم إيه بالظبط، بالعربي والإنجليزي، من غير ما تخمّن." },
+  { icon: AudioLines, title: "نطق صحيح بالصوت", body: "تسجيلات قصيرة تسمع منها النطق الصح وتعيده مع ابنك." },
+  { icon: House, title: "أنشطة سهلة في البيت", body: "ألعاب بسيطة بتاخد دقايق قليلة، من غير تحضير." },
 ];
 const STEPS = [
   { n: "01", title: "احجز الحصة المجانية", body: "شاركنا عمر طفلك وهدفك من تعلّم الإنجليزي، وفريقنا يتواصل معك." },
@@ -47,6 +53,7 @@ function HomePage() {
                 <Button asChild size="lg" variant="outline"><Link to="/samples">شوف نماذج من المحتوى <BookOpen /></Link></Button>
               </div>
               <p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-4 text-primary" /> جرّب طريقة التعلّم قبل ما تقرر</p>
+              <span className="premium-guide-chip"><Gift className="size-4" /> + دليل مجاني لولي الأمر</span>
             </div>
           </div>
           <div className="premium-photo-label"><span className="premium-live-dot" /><span>تفاعل حقيقي. من راحة البيت.</span></div>
@@ -64,6 +71,40 @@ function HomePage() {
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {BENEFITS.map(({ icon: Icon, title, body }, i) => <article key={title} className="premium-benefit premium-reveal"><div className="flex items-center justify-between"><span className="premium-icon"><Icon className="size-6" /></span><span className="text-xs text-muted-foreground" dir="ltr">0{i + 1}</span></div><h3 className="mt-6 text-xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{body}</p></article>)}
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="parent-guide-title" className="premium-section premium-guide-section">
+          <div className="container-page">
+            <div className="premium-section-heading">
+              <div>
+                <p className="premium-guide-eyebrow"><Gift className="size-4" /> هدية مجانية مع كل كورس</p>
+                <h2 id="parent-guide-title" className="mt-3">ساعد ابنك من البيت…<br />حتى لو إنجليزيتك مش قوية</h2>
+              </div>
+              <p>بعد كل وحدة بتستلم دليل مبسّط بالعربي والإنجليزي، يخليك فاهم ابنك اتعلم إيه وتساعده بثقة.</p>
+            </div>
+            <div className="premium-guide-layout mt-10">
+              <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+                {PARENT_GUIDE_BENEFITS.map(({ icon: Icon, title, body }) => (
+                  <article key={title} className="premium-guide-benefit">
+                    <span className="premium-icon"><Icon className="size-5" /></span>
+                    <div><h3 className="text-base">{title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{body}</p></div>
+                  </article>
+                ))}
+              </div>
+              <article className="premium-guide-sheet" aria-label="نموذج توضيحي لدليل الأهل">
+                <div className="premium-guide-sheet-top"><span className="premium-guide-sheet-tag">نموذج توضيحي</span><span className="text-xs text-muted-foreground">دليلك بعد الوحدة</span></div>
+                <div className="premium-guide-sheet-title"><span className="premium-guide-sheet-icon"><BookOpen className="size-5" /></span><div><p className="text-xs font-bold text-primary">Unit · الوحدة</p><h3 className="mt-1 text-xl">الألوان <span className="font-sans text-sm font-medium text-muted-foreground" dir="ltr">/ Colors</span></h3></div></div>
+                <p className="mt-7 text-sm font-bold">كلمات اتعلمناها</p>
+                <ul className="premium-guide-word-list mt-3">
+                  <li><span dir="ltr">Red</span><span>أحمر</span><span className="premium-guide-play" aria-hidden="true"><Play className="size-3" fill="currentColor" /></span></li>
+                  <li><span dir="ltr">Blue</span><span>أزرق</span><span className="premium-guide-play" aria-hidden="true"><Play className="size-3" fill="currentColor" /></span></li>
+                </ul>
+                <div className="premium-guide-tip mt-5"><span className="text-xs font-bold text-primary">Try at home · جرّبوا في البيت</span><p className="mt-2 text-sm leading-7">اختاروا حاجة حمرا وحاجة زرقا في البيت، وسمّوا لونها مع بعض.</p></div>
+              </article>
+            </div>
+            <p className="premium-guide-reassurance mt-7"><Check className="size-4 text-primary" /> الحصص مع ابنك بالإنجليزي بس عشان يتعلم أسرع، أما الدليل بالعربي والإنجليزي فده ليك إنت في البيت.</p>
+            <div className="premium-guide-close mt-8"><div><h3 className="text-lg">وإنت كمان بتتعلم</h3><p className="mt-1 text-sm leading-7 text-muted-foreground">كل ورقة بتقوّي إنجليزيتك خطوة خطوة.</p></div><Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button></div>
           </div>
         </section>
 
@@ -98,7 +139,7 @@ function HomePage() {
         </section>
 
         <section id="contact" className="premium-final">
-          <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center"><div><p className="text-sm text-brand-dark-foreground/75">أول خطوة صغيرة. بداية لحاجة كبيرة.</p><h2 className="mt-3">خلّي الإنجليزي جزء من عالمه.</h2><p className="mt-4 text-sm leading-7 text-brand-dark-foreground/75">احجز حصة مجانية، واتعرّف على البداية المناسبة لطفلك.</p></div><Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز التجربة المجانية <ArrowLeft /></Link></Button></div>
+          <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center"><div><p className="text-sm text-brand-dark-foreground/75">أول خطوة صغيرة. بداية لحاجة كبيرة.</p><h2 className="mt-3">خلّي الإنجليزي جزء من عالمه.</h2><p className="mt-4 text-sm leading-7 text-brand-dark-foreground/75">احجز حصة مجانية، واتعرّف على البداية المناسبة لطفلك.</p><p className="mt-3 text-sm leading-7 text-brand-dark-foreground/75">احجز حصة تجريبية مجانية، وابنك وإنت تبدأوا سوا.</p></div><Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز التجربة المجانية <ArrowLeft /></Link></Button></div>
         </section>
       </div>
     </SiteLayout>
