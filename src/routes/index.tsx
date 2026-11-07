@@ -52,8 +52,10 @@ function HomePage() {
                 <Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button>
                 <Button asChild size="lg" variant="outline"><Link to="/samples">شوف نماذج من المحتوى <BookOpen /></Link></Button>
               </div>
-              <p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-4 text-primary" /> جرّب طريقة التعلّم قبل ما تقرر</p>
-              <span className="premium-guide-chip"><Gift className="size-4" /> + دليل مجاني لولي الأمر</span>
+              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <p className="flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-4 text-primary" /> جرّب طريقة التعلّم قبل ما تقرر</p>
+                <span className="premium-guide-chip"><Gift className="size-4" /> + دليل مجاني لولي الأمر</span>
+              </div>
             </div>
           </div>
           <div className="premium-photo-label"><span className="premium-live-dot" /><span>تفاعل حقيقي. من راحة البيت.</span></div>
@@ -68,7 +70,7 @@ function HomePage() {
         <section id="about" className="premium-section">
           <div className="container-page">
             <div className="premium-section-heading"><div><p className="premium-eyebrow">تعليم يحبه طفلك. وتطمن له.</p><h2 className="mt-3">صغير في السن،<br />كبير في اللي يقدر يحققه.</h2></div><p>مش مجرد حفظ كلمات. بنساعد طفلك يفهم، يعبّر، ويستخدم اللغة في مواقف قريبة من عالمه.</p></div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {BENEFITS.map(({ icon: Icon, title, body }, i) => <article key={title} className="premium-benefit premium-reveal"><div className="flex items-center justify-between"><span className="premium-icon"><Icon className="size-6" /></span><span className="text-xs text-muted-foreground" dir="ltr">0{i + 1}</span></div><h3 className="mt-6 text-xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{body}</p></article>)}
             </div>
           </div>
@@ -104,7 +106,7 @@ function HomePage() {
               </article>
             </div>
             <p className="premium-guide-reassurance mt-7"><Check className="size-4 text-primary" /> الحصص مع ابنك بالإنجليزي بس عشان يتعلم أسرع، أما الدليل بالعربي والإنجليزي فده ليك إنت في البيت.</p>
-            <div className="premium-guide-close mt-8"><div><h3 className="text-lg">وإنت كمان بتتعلم</h3><p className="mt-1 text-sm leading-7 text-muted-foreground">كل ورقة بتقوّي إنجليزيتك خطوة خطوة.</p></div><Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button></div>
+            <div className="premium-guide-close mt-8"><p className="text-base font-bold">وإنت كمان بتتعلم: كل ورقة بتقوّي إنجليزيتك خطوة خطوة.</p><Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button></div>
           </div>
         </section>
 
