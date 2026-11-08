@@ -55,7 +55,7 @@ function HomePage() {
               </div>
               <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
                 <p className="flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-4 text-primary" /> جرّب طريقة التعلّم قبل ما تقرر</p>
-                <a href="#parent-guide" className="premium-guide-chip"><span aria-hidden="true">🎁</span> كل كورس معاه دليل مجاني بالعربي والإنجليزي لولي الأمر</a>
+                <a href="#parent-guide" className="premium-guide-chip"><span aria-hidden="true">🎁</span> كل كورس معاه دليل مجاني بالعربي والإنجليزي لولي الأمر، هيساعدك تمارسي معاه اللغة في البيت، وتطوّري الإنجليزي بتاعك معاه خطوة بخطوة.</a>
               </div>
             </div>
           </div>
@@ -105,8 +105,6 @@ function HomePage() {
 
             </div>
             <aside className="premium-guide-reassurance mt-8 premium-reveal"><div><h3 className="text-base font-bold">ليه الحصص بالإنجليزي بس؟</h3><p className="mt-2 text-sm leading-7">لأن الطفل بيتعلم اللغة أسرع لما بيسمعها وبيستخدمها طول الحصة. الدليل بالعربي والإنجليزي ده ليك إنت في البيت، عشان تفهم وتساعد.</p></div></aside>
-            <figure className="premium-guide-testimonial mt-6 premium-reveal">{/* Placeholder: replace this quote and attribution with an approved parent testimonial. */}<span className="premium-guide-testimonial-label">حكاية ولي أمر · مثال توضيحي</span><blockquote className="mt-3 text-base font-bold leading-8">«كنت فاكرة إني مش هقدر أساعده، بس بعد ٣ دقائق في اليوم بقى بيقولي Hello Mama!»</blockquote><figcaption className="mt-2 text-sm text-muted-foreground">— ولية أمر</figcaption></figure>
-            <div className="premium-guide-close mt-8"><Button asChild size="lg" variant="sunshine"><Link to="/trial" hash="booking-form">احجز حصة مجانية <ArrowLeft /></Link></Button><Button asChild size="lg" variant="outline"><a href="#parent-guide-preview"><BookOpen /> شوف الوحدة الأولى مجاناً</a></Button></div>
           </div>
         </section>
 
