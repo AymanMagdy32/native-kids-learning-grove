@@ -1,6 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Trash2 } from "lucide-react";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,6 +24,7 @@ import {
   listRequests,
   listStaff,
   updateRequest,
+  deleteRequest,
   requestHistory,
 } from "@/lib/requests/functions";
 import { stages, stageLabels } from "@/lib/requests/schema";
@@ -58,6 +70,31 @@ function StaffPage() {
   const [offset, setOffset] = useState(0);
   const [selected, setSelected] = useState<string | null>(null);
   const [notice, setNotice] = useState("");
+  const [pendingDelete, setPendingDelete] = useState<Lead | null>(null);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState("");
+  async function confirmDelete() {
+    if (!pendingDelete || deleting) return;
+    setDeleting(true);
+    setDeleteError("");
+    try {
+      const { id } = await deleteRequest({
+        data: { id: pendingDelete.id, revision: pendingDelete.revision },
+      });
+      if (selected === id) setSelected(null);
+      cache.removeQueries({ queryKey: ["staff-history", id] });
+      setPendingDelete(null);
+      setNotice("الطلب اتحذف نهائيًا.");
+      if (leads.data?.length === 1 && offset > 0) setOffset((value) => Math.max(0, value - 50));
+      await cache.invalidateQueries({ queryKey: ["staff-requests"] });
+    } catch {
+      setDeleteError(
+        "مقدرناش نأكد الحذف. حدّث الطلبات قبل المحاولة تاني؛ ممكن زميل يكون عدّل الطلب أو خدمة الحذف لسه مش مفعّلة.",
+      );
+    } finally {
+      setDeleting(false);
+    }
+  }
   useEffect(() => {
     staffSession()
       .then(setSession)
@@ -302,16 +339,32 @@ function StaffPage() {
                         المتابعة: {dateLabel(lead.follow_up_at)}
                       </p>
                     )}
-                    <Button
-                      className="mt-4 w-full"
-                      variant="outline"
-                      onClick={() => {
-                        setSelected(lead.id);
-                        setNotice("");
-                      }}
-                    >
-                      تفاصيل وتحديث الطلب
-                    </Button>
+                    <div className="mt-4 flex items-center gap-2">
+                      <Button
+                        className="min-w-0 flex-1"
+                        variant="outline"
+                        onClick={() => {
+                          setSelected(lead.id);
+                          setNotice("");
+                        }}
+                      >
+                        تفاصيل وتحديث الطلب
+                      </Button>
+                      <Button
+                        type="button"
+                        size="icon"
+                        variant="outline"
+                        className="size-11 shrink-0 text-destructive hover:bg-destructive/10 hover:text-destructive"
+                        aria-label={`احذف طلب ${lead.parent_name}`}
+                        title="حذف الطلب"
+                        onClick={() => {
+                          setPendingDelete(lead);
+                          setDeleteError("");
+                        }}
+                      >
+                        <Trash2 className="size-5" />
+                      </Button>
+                    </div>
                   </article>
                 ))}
               </div>
@@ -354,6 +407,44 @@ function StaffPage() {
           </>
         )}
       </div>
+      <AlertDialog
+        open={!!pendingDelete}
+        onOpenChange={(open) => {
+          if (!open && !deleting) {
+            setPendingDelete(null);
+            setDeleteError("");
+          }
+        }}
+      >
+        <AlertDialogContent dir="rtl" className="w-[calc(100%-2rem)] rounded-2xl">
+          <AlertDialogHeader className="text-start sm:text-start">
+            <AlertDialogTitle>حذف طلب {pendingDelete?.parent_name}؟</AlertDialogTitle>
+            <AlertDialogDescription className="leading-7">
+              الطلب وكل سجل متابعته هيتحذفوا نهائيًا. مش هتقدر ترجعهم من لوحة الفريق.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          {deleteError && (
+            <p role="alert" className="text-sm leading-7 text-destructive">
+              {deleteError}
+            </p>
+          )}
+          <AlertDialogFooter className="gap-2 sm:space-x-0">
+            <AlertDialogCancel disabled={deleting} className="min-h-11">
+              إلغاء
+            </AlertDialogCancel>
+            <AlertDialogAction
+              disabled={deleting}
+              className="min-h-11 bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={(event) => {
+                event.preventDefault();
+                void confirmDelete();
+              }}
+            >
+              {deleting ? "بنحذف الطلب…" : "احذف نهائيًا"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </SiteLayout>
   );
 }

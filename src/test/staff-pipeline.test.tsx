@@ -8,6 +8,7 @@ const mocks = vi.hoisted(() => ({
   team: vi.fn(),
   history: vi.fn(),
   update: vi.fn(),
+  delete: vi.fn(),
   login: vi.fn(),
   logout: vi.fn(),
 }));
@@ -17,6 +18,7 @@ vi.mock("@/lib/requests/functions", () => ({
   listStaff: mocks.team,
   requestHistory: mocks.history,
   updateRequest: mocks.update,
+  deleteRequest: mocks.delete,
   staffLogin: mocks.login,
   staffLogout: mocks.logout,
 }));
@@ -70,6 +72,39 @@ describe("Staff pipeline", () => {
     Element.prototype.scrollIntoView = vi.fn();
   });
   afterEach(cleanup);
+  it("does not delete until confirmed, and cancel keeps the request", async () => {
+    renderPage();
+    fireEvent.click(await screen.findByRole("button", { name: "احذف طلب Test Parent" }));
+    await screen.findByRole("alertdialog");
+    expect(mocks.delete).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "إلغاء" }));
+    expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
+    expect(mocks.delete).not.toHaveBeenCalled();
+    expect(screen.getByText("Test Parent")).toBeInTheDocument();
+  });
+  it("deletes the selected request and refreshes the pipeline after confirmation", async () => {
+    mocks.delete.mockResolvedValueOnce({ id: lead.id });
+    renderPage();
+    fireEvent.click(await screen.findByRole("button", { name: "احذف طلب Test Parent" }));
+    mocks.list.mockResolvedValue([]);
+    fireEvent.click(screen.getByRole("button", { name: "احذف نهائيًا" }));
+    await screen.findByText("الطلب اتحذف نهائيًا.");
+    expect(mocks.delete).toHaveBeenCalledWith({ data: { id: lead.id, revision: 1 } });
+    await screen.findByText("مفيش طلبات بالاختيارات دي.");
+    expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
+  });
+  it("keeps the request visible when deletion fails", async () => {
+    mocks.delete.mockRejectedValueOnce(new Error("Conflict"));
+    renderPage();
+    fireEvent.click(await screen.findByRole("button", { name: "احذف طلب Test Parent" }));
+    fireEvent.click(screen.getByRole("button", { name: "احذف نهائيًا" }));
+    await screen.findByRole("alert");
+    expect(screen.getByRole("alertdialog")).toBeInTheDocument();
+    expect(screen.queryByText("الطلب اتحذف نهائيًا.")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "احذف طلب Test Parent", hidden: true }),
+    ).toBeInTheDocument();
+  });
   it("does not request lead data before staff authentication", async () => {
     mocks.session.mockResolvedValue({ configured: true, authenticated: false });
     renderPage();

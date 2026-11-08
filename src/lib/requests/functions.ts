@@ -164,3 +164,16 @@ export const resetStaffPassword = createServerFn({ method: "POST" })
     const { completeRecovery } = await import("./recovery.server");
     return completeRecovery(data.access_token, data.password);
   });
+
+export const deleteRequest = createServerFn({ method: "POST" })
+  .inputValidator(z.object({ id: z.string().uuid(), revision: z.number().int().min(1) }))
+  .handler(async ({ data }) => {
+    const { requireStaff, databaseFetch } = await import("./database.server");
+    const id = await databaseFetch(
+      "/rest/v1/rpc/academy_delete_request",
+      { method: "POST", body: JSON.stringify({ p_id: data.id, p_revision: data.revision }) },
+      await requireStaff(),
+    );
+    if (id !== data.id) throw new Error("تعذّر تأكيد حذف الطلب.");
+    return { id: String(id) };
+  });

@@ -13,6 +13,12 @@ await db.exec(
     "utf8",
   ),
 );
+await db.exec(
+  await readFile(
+    new URL("../supabase/migrations/202611080002_delete_academy_requests.sql", import.meta.url),
+    "utf8",
+  ),
+);
 const id = "11111111-1111-4111-8111-111111111111",
   staff = "22222222-2222-4222-8222-222222222222",
   outsider = "33333333-3333-4333-8333-333333333333";
@@ -84,6 +90,35 @@ for (let i = 0; i < 2; i++)
   await db.query("select public.academy_submit_request($1,$2)", [crypto.randomUUID(), data]);
 await assert.rejects(() =>
   db.query("select public.academy_submit_request($1,$2)", [crypto.randomUUID(), data]),
+);
+await assert.rejects(() => db.query("select public.academy_delete_request($1,2)", [id]));
+await db.exec(`reset role; set role authenticated; set request.jwt.claim.sub='${outsider}'`);
+await assert.rejects(() => db.query("select public.academy_delete_request($1,2)", [id]));
+await db.exec(`set request.jwt.claim.sub='${staff}'`);
+await assert.rejects(() => db.query("delete from public.academy_requests where id=$1", [id]));
+await assert.rejects(() => db.query("select public.academy_delete_request($1,1)", [id]));
+assert.equal(
+  (
+    await db.query(
+      "select count(*)::int as count from public.academy_request_events where request_id=$1",
+      [id],
+    )
+  ).rows[0].count,
+  2,
+);
+await db.query("select public.academy_delete_request($1,2)", [id]);
+assert.equal(
+  (await db.query("select * from public.academy_requests where id=$1", [id])).rows.length,
+  0,
+);
+assert.equal(
+  (await db.query("select * from public.academy_request_events where request_id=$1", [id])).rows
+    .length,
+  0,
+);
+await db.query("select public.academy_delete_request($1,2)", [id]);
+console.log(
+  "PASS: deletion requires staff authorization and a current revision, removes related history, and tolerates retries.",
 );
 console.log(
   "PASS: SQL migration, anonymous isolation, non-staff isolation, staff authorization, validation, idempotency, conflict protection, schedule validation, audit trail, per-phone rate limit.",
