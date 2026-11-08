@@ -14,6 +14,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SamplesRouteImport } from './routes/samples'
 import { Route as StaffRouteImport } from './routes/staff'
+import { Route as StaffResetPasswordRouteImport } from './routes/staff-reset-password'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrialRouteImport } from './routes/trial'
 
@@ -42,6 +43,11 @@ const StaffRoute = StaffRouteImport.update({
   path: '/staff',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffResetPasswordRoute = StaffResetPasswordRouteImport.update({
+  id: '/staff-reset-password',
+  path: '/staff-reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/samples': typeof SamplesRoute
   '/staff': typeof StaffRoute
+  '/staff-reset-password': typeof StaffResetPasswordRoute
   '/terms': typeof TermsRoute
   '/trial': typeof TrialRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/samples': typeof SamplesRoute
   '/staff': typeof StaffRoute
+  '/staff-reset-password': typeof StaffResetPasswordRoute
   '/terms': typeof TermsRoute
   '/trial': typeof TrialRoute
 }
@@ -78,15 +86,31 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/samples': typeof SamplesRoute
   '/staff': typeof StaffRoute
+  '/staff-reset-password': typeof StaffResetPasswordRoute
   '/terms': typeof TermsRoute
   '/trial': typeof TrialRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/faq' | '/privacy' | '/samples' | '/staff' | '/terms' | '/trial'
+    | '/'
+    | '/faq'
+    | '/privacy'
+    | '/samples'
+    | '/staff'
+    | '/staff-reset-password'
+    | '/terms'
+    | '/trial'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/faq' | '/privacy' | '/samples' | '/staff' | '/terms' | '/trial'
+  to:
+    | '/'
+    | '/faq'
+    | '/privacy'
+    | '/samples'
+    | '/staff'
+    | '/staff-reset-password'
+    | '/terms'
+    | '/trial'
   id:
     | '__root__'
     | '/'
@@ -94,6 +118,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/samples'
     | '/staff'
+    | '/staff-reset-password'
     | '/terms'
     | '/trial'
   fileRoutesById: FileRoutesById
@@ -104,6 +129,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   SamplesRoute: typeof SamplesRoute
   StaffRoute: typeof StaffRoute
+  StaffResetPasswordRoute: typeof StaffResetPasswordRoute
   TermsRoute: typeof TermsRoute
   TrialRoute: typeof TrialRoute
 }
@@ -145,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaffRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff-reset-password': {
+      id: '/staff-reset-password'
+      path: '/staff-reset-password'
+      fullPath: '/staff-reset-password'
+      preLoaderRoute: typeof StaffResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -168,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   SamplesRoute: SamplesRoute,
   StaffRoute: StaffRoute,
+  StaffResetPasswordRoute: StaffResetPasswordRoute,
   TermsRoute: TermsRoute,
   TrialRoute: TrialRoute,
 }

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
@@ -145,7 +145,8 @@ function StaffPage() {
         {session?.configured && !session.authenticated && (
           <form onSubmit={login} className="surface-card mt-8 max-w-md space-y-5 p-6">
             <p className="text-sm leading-7">
-              الدخول متاح لحسابات الفريق المعتمدة بس. لو نسيت كلمة السر، تواصل مع مسؤول الأكاديمية.
+              الدخول متاح لحسابات الفريق المعتمدة بس. لو نسيت كلمة السر، اطلب رابط استعادة من مسؤول
+              الأكاديمية.
             </p>
             <div>
               <Label htmlFor="staff-email">الإيميل</Label>
@@ -173,6 +174,12 @@ function StaffPage() {
                 maxLength={200}
               />
             </div>
+            <Link
+              to="/staff-reset-password"
+              className="inline-flex min-h-11 items-center text-sm font-bold text-primary underline"
+            >
+              مساعدة في استعادة كلمة السر
+            </Link>
             <Button type="submit" disabled={busy} className="w-full">
               {busy ? "بنسجّل الدخول…" : "دخول الفريق"}
             </Button>

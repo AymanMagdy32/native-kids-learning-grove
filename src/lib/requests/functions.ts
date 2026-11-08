@@ -150,3 +150,17 @@ export const updateRequest = createServerFn({ method: "POST" })
       await requireStaff(),
     )) as Lead;
   });
+
+export const resetStaffPassword = createServerFn({ method: "POST" })
+  .inputValidator(
+    z.object({
+      access_token: z.string().min(20).max(8192),
+      password: z.string().min(12, "استخدم ١٢ حرف على الأقل").max(128),
+    }),
+  )
+  .handler(async ({ data }) => {
+    const { setResponseHeader } = await import("@tanstack/react-start/server");
+    setResponseHeader("Cache-Control", "no-store");
+    const { completeRecovery } = await import("./recovery.server");
+    return completeRecovery(data.access_token, data.password);
+  });

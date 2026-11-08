@@ -45,7 +45,7 @@ With variables present but the database unreachable or migration missing, saving
 - Dates are stored as UTC timestamps. Dashboard summaries use Africa/Cairo; date inputs use the staff device timezone, labeled in the UI.
 - Per-phone rate limiting and a honeypot are basic abuse protection, not a replacement for deployment-level rate limiting/CAPTCHA. Add that before high-volume advertising.
 - Repeated requests with new IDs are not automatically merged, since families can have multiple children.
-- Login uses Supabase Auth's password endpoint/rate limits. Password reset/provisioning is currently administered through Supabase; there is no public account-management UI.
+- Login uses Supabase Auth's password endpoint/rate limits. Recovery emails and account provisioning are administered through Supabase; `/staff-reset-password` handles setting a new password from a valid recovery email.
 - Live database activation and real end-to-end verification require the intended project, migration access, and configured hosting environment.
 
 ## Verification
@@ -53,3 +53,9 @@ With variables present but the database unreachable or migration missing, saving
 - `npm test`: validation, staff access boundary, failure/retry/double-submit behavior, and WhatsApp-only fallback.
 - `npx tsc --noEmit` and `npm run build`.
 - SQL integration check against disposable PostgreSQL in WASM (never touches a real project): install `@electric-sql/pglite` temporarily with `npm install --no-save --package-lock=false @electric-sql/pglite`, then run `node scripts/test-request-database.mjs`. Alternatively set `PGLITE_MODULE` to an existing local installation. It creates a fresh in-memory database and tests the actual migration, RLS, role authorization, idempotency, rate limit, audit trail, and concurrent-edit rejection.
+
+## Password recovery
+
+`/staff-reset-password` handles the default Supabase recovery-email redirect with fragment `access_token` and `type=recovery`. It clears the fragment immediately and keeps the token in memory only. The server checks the current account's staff membership before updating its password. A successful reset returns the user to normal password login and attempts to revoke the recovery session.
+
+In Supabase Authentication → URL Configuration, set the Site URL to the full hosted recovery page URL (for example `https://your-site.example/staff-reset-password`) when sending recovery emails from the Supabase dashboard; add that exact URL under Redirect URLs too. Replace localhost configuration. Request a fresh email after changing the URL and use the newest link once. Preview and production domains need separate appropriate URLs. Do not share recovery links or tokens. PKCE `code` callbacks/custom token-hash email templates are not handled by this page; use the default dashboard recovery email flow.

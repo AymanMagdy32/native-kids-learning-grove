@@ -23,6 +23,10 @@ vi.mock("@/lib/requests/functions", () => ({
 vi.mock("@/components/site/SiteLayout", () => ({
   SiteLayout: ({ children }: { children: ReactNode }) => <>{children}</>,
 }));
+vi.mock("@tanstack/react-router", async (original) => ({
+  ...(await original<typeof import("@tanstack/react-router")>()),
+  Link: ({ children, to }: { children: ReactNode; to: string }) => <a href={to}>{children}</a>,
+}));
 import { Route } from "@/routes/staff";
 const Page = Route.options.component as ComponentType;
 const lead = {
