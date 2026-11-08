@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SamplesRouteImport } from './routes/samples'
+import { Route as StaffRouteImport } from './routes/staff'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TrialRouteImport } from './routes/trial'
 
@@ -36,6 +37,11 @@ const SamplesRoute = SamplesRouteImport.update({
   path: '/samples',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/samples': typeof SamplesRoute
+  '/staff': typeof StaffRoute
   '/terms': typeof TermsRoute
   '/trial': typeof TrialRoute
 }
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/samples': typeof SamplesRoute
+  '/staff': typeof StaffRoute
   '/terms': typeof TermsRoute
   '/trial': typeof TrialRoute
 }
@@ -69,15 +77,25 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/privacy': typeof PrivacyRoute
   '/samples': typeof SamplesRoute
+  '/staff': typeof StaffRoute
   '/terms': typeof TermsRoute
   '/trial': typeof TrialRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/faq' | '/privacy' | '/samples' | '/terms' | '/trial'
+  fullPaths:
+    '/' | '/faq' | '/privacy' | '/samples' | '/staff' | '/terms' | '/trial'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/faq' | '/privacy' | '/samples' | '/terms' | '/trial'
-  id: '__root__' | '/' | '/faq' | '/privacy' | '/samples' | '/terms' | '/trial'
+  to: '/' | '/faq' | '/privacy' | '/samples' | '/staff' | '/terms' | '/trial'
+  id:
+    | '__root__'
+    | '/'
+    | '/faq'
+    | '/privacy'
+    | '/samples'
+    | '/staff'
+    | '/terms'
+    | '/trial'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -85,6 +103,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   PrivacyRoute: typeof PrivacyRoute
   SamplesRoute: typeof SamplesRoute
+  StaffRoute: typeof StaffRoute
   TermsRoute: typeof TermsRoute
   TrialRoute: typeof TrialRoute
 }
@@ -119,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SamplesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -141,6 +167,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   PrivacyRoute: PrivacyRoute,
   SamplesRoute: SamplesRoute,
+  StaffRoute: StaffRoute,
   TermsRoute: TermsRoute,
   TrialRoute: TrialRoute,
 }

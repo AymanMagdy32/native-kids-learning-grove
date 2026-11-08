@@ -24,3 +24,9 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+## Trial requests and staff pipeline
+
+The trial form supports database-backed saving and a protected staff dashboard at `/staff`.
+Activation requires the academy Supabase migration, approved staff accounts, and server runtime settings.
+See [request pipeline setup](docs/request-pipeline-setup.md). Until configured, the existing WhatsApp flow remains available and does not claim that a request has been saved.
