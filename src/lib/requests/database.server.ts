@@ -2,8 +2,11 @@ import { getCookie, setResponseHeader } from "@tanstack/react-start/server";
 
 export const sessionCookie = "academy_staff_session";
 export function databaseConfig() {
-  const url = process.env["SUPABASE_URL"];
-  const key = process.env["SUPABASE_ANON_KEY"];
+  const academyUrl = process.env["ACADEMY_DATABASE_URL"];
+  const academyKey = process.env["ACADEMY_DATABASE_KEY"];
+  const useAcademyConfig = !!(academyUrl || academyKey);
+  const url = useAcademyConfig ? academyUrl : process.env["SUPABASE_URL"];
+  const key = useAcademyConfig ? academyKey : process.env["SUPABASE_ANON_KEY"];
   if (!url || !key) return null;
   const parsed = new URL(url);
   if (parsed.protocol !== "https:") throw new Error("Database must use HTTPS");

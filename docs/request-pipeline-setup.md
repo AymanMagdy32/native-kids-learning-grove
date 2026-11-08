@@ -24,9 +24,9 @@ Do not use another project's database or put service-role keys in the app.
    ```
 
 4. Set **server runtime** environment variables in the hosting project:
-   - `SUPABASE_URL`: the selected academy project URL.
-   - `SUPABASE_ANON_KEY`: that project's anon/publishable API key. No service-role key is needed.
-     Do not prefix them with `VITE_`. Do not commit actual values. For local development use an ignored `.env.local`; production needs its own runtime settings.
+   - `ACADEMY_DATABASE_URL`: the selected academy project URL.
+   - `ACADEMY_DATABASE_KEY`: that project's anon/publishable API key. No service-role key is needed.
+     These names avoid Lovable’s reserved `SUPABASE_` prefix. Legacy `SUPABASE_URL` + `SUPABASE_ANON_KEY` remain supported as a pair when neither academy setting is present. Do not prefix them with `VITE_`. Do not commit actual values. For local development use an ignored `.env.local`; production needs its own runtime settings.
 5. Deploy/rebuild the application with these settings. Allow the selected Supabase domain in this execution environment if testing here.
 6. Visit `/staff` and sign in with an approved account. The route is intentionally absent from the public navigation and marked noindex; authentication and RLS enforce access.
 7. Submit a clearly marked test trial request. Confirm it appears once, survives refresh, and can be assigned and moved through the stages. Test a non-staff account and anonymous REST reads: neither may see leads or history. Remove the test data as administrator afterward if desired.

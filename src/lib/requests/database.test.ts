@@ -6,6 +6,8 @@ describe("Database access boundary", () => {
   beforeEach(() => {
     vi.stubEnv("SUPABASE_URL", "https://example.supabase.co");
     vi.stubEnv("SUPABASE_ANON_KEY", "test-public-key");
+    vi.stubEnv("ACADEMY_DATABASE_URL", "");
+    vi.stubEnv("ACADEMY_DATABASE_KEY", "");
     cookie.mockReset();
   });
   afterEach(() => {
@@ -14,6 +16,18 @@ describe("Database access boundary", () => {
   });
   it("fails closed when no database is configured", () => {
     vi.stubEnv("SUPABASE_URL", "");
+    expect(databaseConfig()).toBeNull();
+  });
+  it("uses the hosting-safe pair ahead of legacy settings", () => {
+    vi.stubEnv("ACADEMY_DATABASE_URL", "https://academy.supabase.co");
+    vi.stubEnv("ACADEMY_DATABASE_KEY", "sb_publishable_test");
+    expect(databaseConfig()).toEqual({
+      url: "https://academy.supabase.co",
+      key: "sb_publishable_test",
+    });
+  });
+  it("does not mix credentials from different configuration pairs", () => {
+    vi.stubEnv("ACADEMY_DATABASE_URL", "https://academy.supabase.co");
     expect(databaseConfig()).toBeNull();
   });
   it("rejects an insecure database destination", () => {
