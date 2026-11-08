@@ -81,7 +81,7 @@ function HomePage() {
           <div className="container-page">
             <div className="premium-guide-heading premium-reveal">
               <p className="premium-guide-eyebrow"><span aria-hidden="true">🎁</span> هدية مجانية مع كل كورس</p>
-              <h2 id="parent-guide-title" className="mt-4">ساعد ابنك من البيت…<br />حتى لو إنجليزيتك مش قوية</h2>
+              <h2 id="parent-guide-title" className="mt-4">ساعد ابنك من البيت… حتى لو إنجليزيتك مش قوية</h2>
               <p className="mt-4 max-w-3xl text-sm leading-8 text-muted-foreground">مع كل كورس بتستلم «دليل البيت»: دليل بالعربي والإنجليزي بعد كل وحدة، يخليك تفهم ابنك اتعلم إيه وتساعده بثقة، من غير ما تحتاج تكون متقن للإنجليزي.</p>
             </div>
             <div className="premium-guide-layout mt-10">
@@ -95,20 +95,14 @@ function HomePage() {
                 ))}
                 </div>
                 <article id="parent-guide-preview" className="premium-guide-document mt-8 scroll-mt-28" aria-labelledby="guide-preview-title">
-                  <div className="flex flex-wrap items-center justify-between gap-3 p-5">
+                  <div className="premium-guide-document-heading">
                     <div><p className="text-xs font-bold text-primary">شوف الدليل بنفسك</p><h3 id="guide-preview-title" className="mt-2 text-lg">الوحدة الأولى من دليل ولي الأمر</h3></div>
                     <Button asChild variant="outline" size="sm"><a href="https://drive.google.com/file/d/1YAh39uUf-JvkMNSLkpWX0sZg7-6zNiTi/view?usp=sharing" target="_blank" rel="noopener noreferrer">افتح الدليل في صفحة جديدة <Download /></a></Button>
                   </div>
                   <iframe src="https://drive.google.com/file/d/1YAh39uUf-JvkMNSLkpWX0sZg7-6zNiTi/preview" title="معاينة الوحدة الأولى من دليل ولي الأمر" loading="lazy" allow="fullscreen" className="premium-guide-document-frame" />
                 </article>
               </div>
-              <div className="premium-guide-booklet-wrap premium-reveal" aria-label="شكل دليل ولي الأمر">
-                <div className="premium-guide-booklet">
-                  <div className="premium-guide-page premium-guide-page-back"><span className="premium-guide-page-label">Unit 1 · الوحدة الأولى</span><h3>كلمات جديدة</h3><p dir="ltr">RED · BLUE · GREEN</p><span className="premium-guide-page-check">✓ جرّب كلمة النهارده مع ابنك</span></div>
-                  <div className="premium-guide-page premium-guide-page-middle"><span className="premium-guide-page-label">دليل البيت</span><h3>هل يستطيع طفلك؟</h3><p>يسمّي الألوان من حوله</p><p>يستخدم اللون في جملة بسيطة</p></div>
-                  <div className="premium-guide-cover"><span className="premium-guide-cover-sun" /><BookOpen className="size-8" /><span className="premium-guide-cover-en" dir="ltr">Parent Guide</span><strong>دليل ولي الأمر</strong><span className="premium-guide-cover-unit" dir="ltr">Unit 1</span><span className="premium-guide-cover-lines" /></div>
-                </div>
-              </div>
+
             </div>
             <aside className="premium-guide-reassurance mt-8 premium-reveal"><div><h3 className="text-base font-bold">ليه الحصص بالإنجليزي بس؟</h3><p className="mt-2 text-sm leading-7">لأن الطفل بيتعلم اللغة أسرع لما بيسمعها وبيستخدمها طول الحصة. الدليل بالعربي والإنجليزي ده ليك إنت في البيت، عشان تفهم وتساعد.</p></div></aside>
             <figure className="premium-guide-testimonial mt-6 premium-reveal">{/* Placeholder: replace this quote and attribution with an approved parent testimonial. */}<span className="premium-guide-testimonial-label">حكاية ولي أمر · مثال توضيحي</span><blockquote className="mt-3 text-base font-bold leading-8">«كنت فاكرة إني مش هقدر أساعده، بس بعد ٣ دقائق في اليوم بقى بيقولي Hello Mama!»</blockquote><figcaption className="mt-2 text-sm text-muted-foreground">— ولية أمر</figcaption></figure>
