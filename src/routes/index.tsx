@@ -45,21 +45,26 @@ function HomePage() {
           <img src={learningPhoto} alt="طفلان يستمتعان بالتعلّم معًا على اللابتوب" width={1920} height={1024} fetchPriority="high" className="premium-hero-photo" />
           <div className="container-page premium-hero-inner">
             <div className="premium-hero-copy">
-              <p className="premium-eyebrow"><span /> لغة جديدة. فرص أكبر.</p>
+              <p className="premium-eyebrow"><span /> حصص لطفلك. وخطوات ليكي في البيت.</p>
               <p className="mt-5 font-bold text-primary" dir="ltr">Native Kid Academy</p>
-              <h1 className="mt-3">إنجليزي لطفلك.<br /><span className="premium-underline">ثقة تكبر معاه.</span></h1>
-              <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">تعلّم حقيقي، ضحكات كتير، وخطوات واضحة. حصص إنجليزي أونلاين للأطفال والمراهقين من 4 إلى 15 سنة، يكون فيها طفلك بطل الحصة.</p>
+              <h1 className="mt-3">إنجليزي يبدأ في الحصة.<br /><span className="premium-underline">ويكمل معاكي في البيت.</span></h1>
+              <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">حصص إنجليزي أونلاين من 4 لـ15 سنة، ومع كل وحدة دليل ليكي بالعربي والإنجليزي. تعرفي اتعلّم إيه، وتمارسي معاه بخطوات بسيطة، حتى لو إنجليزيتك مش قوية.</p>
+              <a href="#parent-guide" className="premium-home-partner" aria-label="اكتشفي دليل البيت المضمّن مع كل كورس">
+                <span className="premium-home-partner-top"><span className="premium-home-partner-label"><BookOpen className="size-4" /> دليل البيت · جزء من كل كورس</span><span className="premium-home-partner-free">من غير تكلفة إضافية</span></span>
+                <strong>ابنك يتعلّم. وإنتي معاه خطوة بخطوة.</strong>
+                <span className="premium-home-partner-copy">كلمات ونطق وأنشطة جاهزة بعد كل وحدة، تساعدك تتمرّني معاه وتراجعي إنجليزيتك إنتي كمان.</span>
+                <span className="premium-home-partner-bottom"><span><Clock3 className="size-4" /> نشاط بسيط في ٣ دقايق</span><span>شوفي الدليل <ArrowLeft className="size-4" /></span></span>
+              </a>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button>
                 <Button asChild size="lg" variant="outline"><Link to="/samples" hash="materials">شوف نماذج من المحتوى <BookOpen /></Link></Button>
               </div>
               <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
                 <p className="flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-4 text-primary" /> جرّب طريقة التعلّم قبل ما تقرر</p>
-                <a href="#parent-guide" className="premium-guide-chip"><span aria-hidden="true">🎁</span> كل كورس معاه دليل مجاني بالعربي والإنجليزي لولي الأمر، هيساعدك تمارسي معاه اللغة في البيت، وتطوّري الإنجليزي بتاعك معاه خطوة بخطوة.</a>
               </div>
             </div>
           </div>
-          <div className="premium-photo-label"><span className="premium-live-dot" /><span>تفاعل حقيقي. من راحة البيت.</span></div>
+          <div className="premium-photo-label"><span className="premium-live-dot" /><span>في الحصة يتعلّم. وفي البيت تتمرّنوا سوا.</span></div>
         </section>
 
         <section aria-label="رحلة طفلك بالأرقام" className="premium-trust">
@@ -80,7 +85,7 @@ function HomePage() {
         <section id="parent-guide" aria-labelledby="parent-guide-title" className="premium-section premium-guide-section">
           <div className="container-page">
             <div className="premium-guide-heading premium-reveal">
-              <p className="premium-guide-eyebrow"><span aria-hidden="true">🎁</span> هدية مجانية مع كل كورس</p>
+              <p className="premium-guide-eyebrow"><BookOpen className="size-4" /> دليل البيت · معاكي طول الكورس</p>
               <h2 id="parent-guide-title" className="mt-4">ساعد ابنك من البيت… حتى لو إنجليزيتك مش قوية</h2>
               <p className="mt-4 max-w-3xl text-sm leading-8 text-muted-foreground">مع كل كورس بتستلم «دليل البيت»: دليل بالعربي والإنجليزي بعد كل وحدة، يخليك تفهم ابنك اتعلم إيه وتساعده بثقة، من غير ما تحتاج تكون متقن للإنجليزي.</p>
             </div>
