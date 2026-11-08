@@ -42,14 +42,16 @@ export const Route = createFileRoute("/samples")({
 
 const REAL_SAMPLES = [
   {
+    id: "worksheet",
     title: "ورقة عمل (Worksheet)",
-    desc: "نموذج من أوراق العمل اللي بنستخدمها في الحصص والواجبات.",
+    desc: "شوفي شكل التدريب اللي بيكمّل الحصة. ورقة العمل بتدي الطفل فرصة يطبّق اللي اتعلّمه، والمعلم يراجع فهمه.",
     href: "https://drive.google.com/file/d/1_jjQGr233k6PCuFa2UxxqFil5kTH37ai/view?usp=sharing",
     embed: "https://drive.google.com/file/d/1_jjQGr233k6PCuFa2UxxqFil5kTH37ai/preview",
     icon: PenLine,
     cta: "افتح ورقة العمل",
   },
   {
+    id: "debating",
     title: "مهارات المناظرة (Debating Skills)",
     desc: "ورقة عمل “Should Cars Be Banned?” لتدريب الطالب على بناء الحجج المؤيدة والمعارضة، وكتابة حجة مضادة، والتعبير عن رأيه بوضوح.",
     href: "/sample-files/worksheet-should-cars-be-banned-abridge-academy.pdf",
@@ -58,20 +60,31 @@ const REAL_SAMPLES = [
     cta: "افتح ورقة المناظرة",
   },
   {
+    id: "flashcards",
     title: "بطاقات تعليمية (Flashcards)",
-    desc: "نموذج من بطاقات المفردات المصوّرة لتثبيت الكلمات الجديدة.",
+    desc: "شوفي إزاي بنربط الكلمة بصورة، ونستخدم البطاقات في أسئلة وألعاب تساعد الطفل يفتكر المفردات ويستخدمها.",
     href: "https://drive.google.com/file/d/1K4TBdSjI2kgB6elZIw2AeGrp6EilhD8Y/view",
     embed: "https://drive.google.com/file/d/1K4TBdSjI2kgB6elZIw2AeGrp6EilhD8Y/preview",
     icon: Sparkles,
     cta: "افتح البطاقات",
   },
   {
+    id: "lesson-preview",
     title: "شرائح تفاعلية (Slides)",
-    desc: "نموذج من العروض التفاعلية اللي بيشوفها الطالب أثناء الحصة.",
+    desc: "ده نموذج للمادة اللي المعلم بيستخدمها عشان يسأل الطفل ويشجّعه يشارك. العرض جزء من حصة مباشرة، مش فيديو الطفل بيتفرّج عليه لوحده.",
     href: "https://view.genially.com/6234ea9e38e8190012c4066b",
     embed: "https://view.genially.com/6234ea9e38e8190012c4066b",
     icon: MonitorPlay,
     cta: "افتح العرض التفاعلي",
+  },
+  {
+    id: "home-guide",
+    title: "دليل البيت لولي الأمر",
+    desc: "شوفي إزاي تعرفي طفلك اتعلّم إيه بعد كل وحدة، وتجرّبي معاه نشاط بسيط بالعربي والإنجليزي. الدليل بيساعدك تكمّلي معاه في البيت حتى لو إنجليزيتك مش قوية.",
+    href: "https://drive.google.com/file/d/1YAh39uUf-JvkMNSLkpWX0sZg7-6zNiTi/view?usp=sharing",
+    embed: "https://drive.google.com/file/d/1YAh39uUf-JvkMNSLkpWX0sZg7-6zNiTi/preview",
+    icon: BookOpen,
+    cta: "افتحي الدليل في صفحة جديدة",
   },
 ];
 
@@ -371,9 +384,26 @@ function SamplesPage() {
       />
       <nav aria-label="أقسام التعليم" className="border-b border-border bg-background">
         <div className="container-page flex flex-wrap gap-x-8 gap-y-2 py-4 text-sm font-bold text-primary">
-          <a href="#curriculum" className="py-2">المنهج والمستويات</a><a href="#materials" className="py-2">نماذج من الحصص</a><a href="#phonics" className="py-2">الصوتيات والقراءة</a>
+          <a href="#by-age" className="sample-shortcut">حسب سن طفلك</a>
+          <a href="#worksheet" className="sample-shortcut">ورقة عمل</a>
+          <a href="#home-guide" className="sample-shortcut">دليل البيت</a>
+          <a href="#lesson-preview" className="sample-shortcut">شكل الحصة</a>
+          <a href="#curriculum" className="sample-shortcut">المنهج والمستويات</a>
+          <a href="#phonics" className="sample-shortcut">الصوتيات والقراءة</a>
         </div>
       </nav>
+      <section id="by-age" className="container-page scroll-mt-28 py-10" aria-labelledby="age-title">
+        <p className="nk-eyebrow">اختاري البداية الأقرب لطفلك</p>
+        <h2 id="age-title" className="mt-2 text-2xl">نفس الهدف… وطريقة تناسب سنّه</h2>
+        <p className="mt-3 text-sm leading-7 text-muted-foreground">دي أمثلة لطريقة التعلّم حسب السن، مش تحديد للمستوى. بنختار البداية بعد التجربة وتحديد المستوى، وبنراعي سن الطفل كمان.</p>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {[
+            { age: "٤–٦ سنين", title: "نسمع ونلعب ونتكلّم", text: "صور وكلمات ومشاركة قصيرة. البطاقات بتوضح طريقة ربط الكلمة بمعناها.", href: "#flashcards", cta: "شوفي البطاقات" },
+            { age: "٧–١٠ سنين", title: "نستخدم اللي اتعلّمناه", text: "أسئلة وتدريب على اللغة في مواقف قريبة من الطفل. ورقة العمل بتوضح شكل التطبيق.", href: "#worksheet", cta: "شوفي ورقة العمل" },
+            { age: "١١–١٥ سنة", title: "نعبّر عن رأينا", text: "حوارات وأفكار حسب المستوى. ورقة المناظرة مثال للطالب المستعد يناقش ويكتب حججه.", href: "#debating", cta: "شوفي نموذج المناظرة" },
+          ].map(item => <article key={item.age} className="surface-card p-5"><p className="text-sm font-bold text-primary">{item.age}</p><h3 className="mt-2 text-lg">{item.title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p><Button asChild variant="link" className="mt-3 px-0"><a href={item.href}>{item.cta} <ArrowLeft /></a></Button></article>)}
+        </div>
+      </section>
       <CurriculumGuide />
       <div className="container-page py-12 md:py-16">
         <section id="materials" className="mb-14 scroll-mt-28">
@@ -385,39 +415,15 @@ function SamplesPage() {
           </p>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             {REAL_SAMPLES.map((s) => (
-              <article key={s.title} className="surface-card flex flex-col overflow-hidden p-0">
-                <div className="aspect-[16/10] w-full overflow-hidden border-b border-border bg-secondary">
-                  {s.previewImage ? (
-                    <img
-                      src={s.previewImage}
-                      alt={`معاينة ${s.title}`}
-                      loading="lazy"
-                      className="size-full bg-card object-contain object-top"
-                    />
-                  ) : (
-                    <iframe
-                      src={s.embed}
-                      title={s.title}
-                      loading="lazy"
-                      allow="fullscreen"
-                      className="size-full border-0"
-                    />
-                  )}
-                </div>
-                <div className="flex flex-1 flex-col gap-3 p-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex size-10 items-center justify-center rounded-2xl bg-accent text-primary">
-                      <s.icon className="size-5" />
-                    </span>
-                    <h3 className="text-base">{s.title}</h3>
-                  </div>
+              <article id={s.id} key={s.id} className="surface-card sample-material scroll-mt-28 flex flex-col overflow-hidden p-0">
+                <div className="flex flex-col gap-3 p-5">
+                  <div className="flex items-center gap-3"><span className="flex size-10 shrink-0 items-center justify-center rounded-2xl bg-accent text-primary"><s.icon className="size-5" /></span><h3 className="text-base">{s.title}</h3></div>
                   <p className="text-sm leading-7 text-muted-foreground">{s.desc}</p>
-                  <Button asChild variant="outline" className="mt-auto">
-                    <a href={s.href} target="_blank" rel="noopener noreferrer">
-                      {s.cta}
-                    </a>
-                  </Button>
                 </div>
+                <div className="sample-material-preview">
+                  {s.previewImage ? <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`افتحي ${s.title} كامل في صفحة جديدة`}><img src={s.previewImage} alt="معاينة الصفحة الأولى: Should Cars Be Banned? تدريب على الحجج المؤيدة والمعارضة والحجة المضادة" loading="lazy" className="size-full bg-card object-contain object-top" /></a> : <iframe src={s.embed} title={`معاينة ${s.title}`} loading="lazy" allow="fullscreen" className="size-full border-0" />}
+                </div>
+                <div className="mt-auto p-5"><Button asChild variant="outline" className="sample-external-button w-full"><a href={s.href} target="_blank" rel="noopener noreferrer">{s.cta} <ArrowLeft /></a></Button><p className="mt-2 text-xs leading-6 text-muted-foreground">لو المعاينة مش ظاهرة، افتحي النموذج في صفحة جديدة.</p></div>
               </article>
             ))}
           </div>

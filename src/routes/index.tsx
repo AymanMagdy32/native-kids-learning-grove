@@ -47,8 +47,8 @@ function HomePage() {
             <div className="premium-hero-copy">
               <p className="premium-eyebrow"><span /> حصص لطفلك. وخطوات ليكي في البيت.</p>
               <p className="mt-5 font-bold text-primary" dir="ltr">Native Kid Academy</p>
-              <h1 className="mt-3">إنجليزي يبدأ في الحصة.<br /><span className="premium-underline">ويكمل معاكي في البيت.</span></h1>
-              <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">حصص إنجليزي أونلاين من 4 لـ15 سنة، ومع كل وحدة دليل ليكي بالعربي والإنجليزي. تعرفي اتعلّم إيه، وتمارسي معاه بخطوات بسيطة، حتى لو إنجليزيتك مش قوية.</p>
+              <h1 className="mt-3">ابنك يتكلّم إنجليزي بثقة.<br /><span className="premium-underline">خطوة بخطوة، في الحصة والبيت.</span></h1>
+              <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">حصص أونلاين من 4 لـ15 سنة، فيها طفلك يسمع ويتكلّم ويشارك، ببداية تناسب مستواه. ومع كل وحدة، دليل بالعربي والإنجليزي يساعدك تكمّلي معاه في البيت.</p>
               <a href="#parent-guide" className="premium-home-partner" aria-label="اكتشفي دليل البيت المضمّن مع كل كورس">
                 <span className="premium-home-partner-top"><span className="premium-home-partner-label"><BookOpen className="size-4" /> دليل البيت · جزء من كل كورس</span><span className="premium-home-partner-free">من غير تكلفة إضافية</span></span>
                 <strong>ابنك يتعلّم. وإنتي معاه خطوة بخطوة.</strong>
@@ -79,6 +79,13 @@ function HomePage() {
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {BENEFITS.map(({ icon: Icon, title, body }, i) => <article key={title} className="premium-benefit premium-reveal"><div className="flex items-center justify-between"><span className="premium-icon"><Icon className="size-6" /></span><span className="text-xs text-muted-foreground" dir="ltr">0{i + 1}</span></div><h3 className="mt-6 text-xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{body}</p></article>)}
             </div>
+          </div>
+        </section>
+
+        <section id="teaching" className="premium-section premium-teaching-band">
+          <div className="container-page grid items-start gap-10 md:grid-cols-2">
+            <div><p className="premium-eyebrow">داخل الحصة</p><h2 className="mt-3">المعلم يوجّه.<br />وطفلك يشارك.</h2><p className="mt-5 max-w-lg text-sm leading-8 text-muted-foreground">من نشاط يجذب انتباهه لموقف يستخدم فيه اللي اتعلّمه. صوت طفلك له مساحة في كل حصة، مع ملاحظات تساعده ياخد الخطوة اللي بعدها.</p><Button asChild variant="link" className="mt-5 px-0"><Link to="/samples">اكتشف شكل الحصة <ArrowLeft /></Link></Button></div>
+            <div><div className="grid grid-cols-2 gap-4">{[{ icon: Mic, ar: "يتكلم بثقة", en: "Speaking" }, { icon: Headphones, ar: "يسمع ويفهم", en: "Listening" }, { icon: BookOpen, ar: "يقرأ ويكتشف", en: "Reading" }, { icon: PenLine, ar: "يكتب ويعبّر", en: "Writing" }].map(({ icon: Icon, ar, en }) => <div key={en} className="premium-skill"><Icon className="size-6 text-primary" /><h3 className="mt-4 text-base">{ar}</h3><p dir="ltr" className="mt-1 text-xs text-muted-foreground">{en}</p></div>)}</div><p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground"><Users className="size-4 text-primary" /> حصص مجموعات أو فردية حسب احتياج طفلك</p></div>
           </div>
         </section>
 
@@ -132,12 +139,7 @@ function HomePage() {
           <div className="container-page"><p className="premium-eyebrow">بداية سهلة، من غير حيرة</p><h2 className="mt-3">رحلته تبدأ بـ 3 خطوات.</h2><ol className="mt-12 grid gap-8 md:grid-cols-3">{STEPS.map(({ n, title, body }) => <li key={n} className="premium-step"><span dir="ltr">{n}</span><h3 className="mt-5 text-xl">{title}</h3><p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">{body}</p></li>)}</ol></div>
         </section>
 
-        <section id="teaching" className="premium-section premium-teaching-band">
-          <div className="container-page grid items-start gap-10 md:grid-cols-2">
-            <div><p className="premium-eyebrow">داخل الحصة</p><h2 className="mt-3">المعلم يوجّه.<br />وطفلك يشارك.</h2><p className="mt-5 max-w-lg text-sm leading-8 text-muted-foreground">من نشاط يجذب انتباهه لموقف يستخدم فيه اللي اتعلّمه. صوت طفلك له مساحة في كل حصة، مع ملاحظات تساعده ياخد الخطوة اللي بعدها.</p><Button asChild variant="link" className="mt-5 px-0"><Link to="/samples">اكتشف شكل الحصة <ArrowLeft /></Link></Button></div>
-            <div><div className="grid grid-cols-2 gap-4">{[{ icon: Mic, ar: "يتكلم بثقة", en: "Speaking" }, { icon: Headphones, ar: "يسمع ويفهم", en: "Listening" }, { icon: BookOpen, ar: "يقرأ ويكتشف", en: "Reading" }, { icon: PenLine, ar: "يكتب ويعبّر", en: "Writing" }].map(({ icon: Icon, ar, en }) => <div key={en} className="premium-skill"><Icon className="size-6 text-primary" /><h3 className="mt-4 text-base">{ar}</h3><p dir="ltr" className="mt-1 text-xs text-muted-foreground">{en}</p></div>)}</div><p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground"><Users className="size-4 text-primary" /> حصص مجموعات أو فردية حسب احتياج طفلك</p></div>
-          </div>
-        </section>
+
 
         <section className="premium-section">
           <div className="container-page premium-parent-note"><div className="premium-parent-heading"><ShieldCheck className="size-8 text-primary" /><p className="premium-eyebrow mt-4">لأن قرارك مهم</p><h2 className="mt-3">خليك مطمّن.<br />وخليك جزء من الرحلة.</h2></div><div className="space-y-7">{[{ title: "تجربة قبل الاشتراك", body: "طفلك يتعرّف على طريقة التعلّم، وأنت تشوف هل هي مناسبة له." }, { title: "متابعة مش مجرد حضور", body: "تعرف اللي اتعلّمه طفلك، والمهارات اللي بنشتغل عليها، من خلال متابعة شهرية." }, { title: "إجابات واضحة لأسئلتك", body: "فريقنا يساعدك تختار المستوى وشكل الحصص المناسب قبل البداية." }].map(item => <div key={item.title} className="flex gap-4"><Check className="mt-1 size-5 text-primary" /><div><h3 className="text-lg">{item.title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{item.body}</p></div></div>)}<Button asChild variant="link" className="px-0"><Link to="/faq">أسئلة أولياء الأمور <ArrowLeft /></Link></Button></div></div>

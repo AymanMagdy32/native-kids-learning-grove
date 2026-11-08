@@ -255,8 +255,7 @@ function TrialPage() {
             <ShieldCheck className="size-6 text-primary" />
             <h2 className="mt-3 text-lg">خصوصية بيانات طفلك</h2>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">
-              بنجمع الحد الأدنى من البيانات، ولا نشارك أي معلومات مع أطراف خارجية. البيانات محمية
-              بصلاحيات وصول صارمة داخل النظام.
+              بنجمع الحد الأدنى من البيانات، وبنستخدمها للتواصل بخصوص الحصة. تقدري تراجعي سياسة الخصوصية قبل إرسال طلبك.
             </p>
           </div>
           <Button asChild variant="link" className="px-0"><Link to="/samples">شوف المنهج ومستويات التعلّم <ArrowLeft /></Link></Button>

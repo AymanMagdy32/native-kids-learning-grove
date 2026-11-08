@@ -1458,3 +1458,10 @@
   .premium-hero h1 { font-size: clamp(27px, 6.9vw, 34px); line-height: 1.55; }
   .premium-photo-label { max-width: calc(100% - 32px); line-height: 1.7; }
 }
+
+.sample-shortcut { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+.sample-shortcut:hover { background: var(--accent); }
+.sample-shortcut:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.sample-material-preview { height: clamp(260px, 35vw, 360px); border-block: 1px solid var(--border); background: var(--secondary); }
+.sample-material-preview > a { display: block; height: 100%; }
+.sample-external-button { min-height: 48px; white-space: normal; text-align: center; }
