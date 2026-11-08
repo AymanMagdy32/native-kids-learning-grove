@@ -1,6 +1,6 @@
 /* Palette: deep teal, sunny yellow, soft white. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, AudioLines, BookOpen, Check, Gift, Headphones, House, LineChart, MessageCircle, Mic, PenLine, Play, ShieldCheck, Users } from "lucide-react";
+import { ArrowLeft, AudioLines, BookOpen, Check, Clock3, Download, Gift, Headphones, ListChecks, LineChart, MessageCircle, Mic, PenLine, Play, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { LEVELS } from "@/components/home/learning-data";
@@ -26,9 +26,10 @@ const BENEFITS = [
   { icon: Gift, title: "دليل مجاني لولي الأمر مع كل كورس", body: "تفهم اللي بيتعلمه ابنك وتساعده في البيت حتى لو إنجليزيتك مش قوية." },
 ];
 const PARENT_GUIDE_BENEFITS = [
-  { icon: BookOpen, title: "ملخص بسيط بعد كل وحدة", body: "تعرف ابنك اتعلم إيه بالظبط، بالعربي والإنجليزي، من غير ما تخمّن." },
-  { icon: AudioLines, title: "نطق صحيح بالصوت", body: "تسجيلات قصيرة تسمع منها النطق الصح وتعيده مع ابنك." },
-  { icon: House, title: "أنشطة سهلة في البيت", body: "ألعاب بسيطة بتاخد دقايق قليلة، من غير تحضير." },
+  { icon: Clock3, title: "٣ دقائق في اليوم تكفي", body: "نشاط بسيط في آخر كل درس، من غير تحضير." },
+  { icon: BookOpen, title: "اعرف ابنك اتعلم إيه بالظبط", body: "ملخص لكل درس بالعربي والإنجليزي." },
+  { icon: AudioLines, title: "نطق صح بدون قلق", body: "الكلمات مكتوبة بحروف عربي تساعدك على النطق، وتسجيلات صوتية." },
+  { icon: ListChecks, title: "تابع تقدمه بنفسك", body: "قايمة «هل يستطيع طفلك؟» تشوف بيها تقدمه." },
 ];
 const STEPS = [
   { n: "01", title: "احجز الحصة المجانية", body: "شاركنا عمر طفلك وهدفك من تعلّم الإنجليزي، وفريقنا يتواصل معك." },
@@ -50,11 +51,11 @@ function HomePage() {
               <p className="mt-6 max-w-lg text-base leading-8 text-muted-foreground">تعلّم حقيقي، ضحكات كتير، وخطوات واضحة. حصص إنجليزي أونلاين للأطفال والمراهقين من 4 إلى 15 سنة، يكون فيها طفلك بطل الحصة.</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button>
-                <Button asChild size="lg" variant="outline"><Link to="/samples">شوف نماذج من المحتوى <BookOpen /></Link></Button>
+                <Button asChild size="lg" variant="outline"><Link to="/" hash="parent-guide">شوف نماذج من المحتوى <BookOpen /></Link></Button>
               </div>
               <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
                 <p className="flex items-center gap-2 text-xs text-muted-foreground"><Check className="size-4 text-primary" /> جرّب طريقة التعلّم قبل ما تقرر</p>
-                <span className="premium-guide-chip"><Gift className="size-4" /> + دليل مجاني لولي الأمر</span>
+                <Link to="/" hash="parent-guide" className="premium-guide-chip"><Gift className="size-4" /> كل كورس معاه دليل مجاني بالعربي والإنجليزي لولي الأمر</Link>
               </div>
             </div>
           </div>
@@ -76,37 +77,46 @@ function HomePage() {
           </div>
         </section>
 
-        <section aria-labelledby="parent-guide-title" className="premium-section premium-guide-section">
+        <section id="parent-guide" aria-labelledby="parent-guide-title" className="premium-section premium-guide-section">
           <div className="container-page">
-            <div className="premium-section-heading">
-              <div>
-                <p className="premium-guide-eyebrow"><Gift className="size-4" /> هدية مجانية مع كل كورس</p>
-                <h2 id="parent-guide-title" className="mt-3">ساعد ابنك من البيت…<br />حتى لو إنجليزيتك مش قوية</h2>
-              </div>
-              <p>بعد كل وحدة بتستلم دليل مبسّط بالعربي والإنجليزي، يخليك فاهم ابنك اتعلم إيه وتساعده بثقة.</p>
+            <div className="premium-guide-heading">
+              <p className="premium-guide-eyebrow"><Gift className="size-4" /> هدية مجانية مع كل كورس</p>
+              <h2 id="parent-guide-title" className="mt-4">ساعد ابنك من البيت…<br />حتى لو إنجليزيتك مش قوية</h2>
+              <p className="mt-4 max-w-3xl text-sm leading-8 text-muted-foreground">مع كل كورس بتستلم «دليل البيت»: دليل بالعربي والإنجليزي بعد كل وحدة، يخليك تفهم ابنك اتعلم إيه وتساعده بثقة، من غير ما تحتاج تكون متقن للإنجليزي.</p>
             </div>
             <div className="premium-guide-layout mt-10">
-              <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+              <div className="premium-guide-benefits-column">
+                <div className="grid gap-3 sm:grid-cols-2">
                 {PARENT_GUIDE_BENEFITS.map(({ icon: Icon, title, body }) => (
                   <article key={title} className="premium-guide-benefit">
                     <span className="premium-icon"><Icon className="size-5" /></span>
                     <div><h3 className="text-base">{title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{body}</p></div>
                   </article>
                 ))}
+                </div>
+                <article className="premium-guide-sheet mt-6" aria-labelledby="guide-sample-title">
+                  <div className="premium-guide-sheet-top"><span className="premium-guide-sheet-tag">نموذج توضيحي</span><span className="text-xs text-muted-foreground">دليلك بعد الوحدة</span></div>
+                  <div className="premium-guide-sheet-title"><span className="premium-guide-sheet-icon"><BookOpen className="size-5" /></span><div><p className="text-xs font-bold text-primary">Unit · الوحدة</p><h3 id="guide-sample-title" className="mt-1 text-xl">الألوان <span className="font-sans text-sm font-medium text-muted-foreground" dir="ltr">/ Colors</span></h3></div></div>
+                  <p className="mt-7 text-sm font-bold">كلمات اتعلمناها</p>
+                  <ul className="premium-guide-word-list mt-3">
+                    {[{ word: "Red", ar: "أحمر" }, { word: "Blue", ar: "أزرق" }].map(({ word, ar }) => (
+                      <li key={word}><span dir="ltr">{word}</span><span>{ar}</span><Button type="button" variant="ghost" size="icon" className="premium-guide-play" aria-label={`استمع لنطق ${word}`} title={`استمع لنطق ${word}`} onClick={() => { if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.speak(new SpeechSynthesisUtterance(word)); }}><Play className="size-3" fill="currentColor" /></Button></li>
+                    ))}
+                  </ul>
+                  <div className="premium-guide-tip mt-5"><span className="text-xs font-bold text-primary">Try at home · جرّبوا في البيت</span><p className="mt-2 text-sm leading-7">اختاروا حاجة حمرا وحاجة زرقا في البيت، وسمّوا لونها مع بعض.</p></div>
+                </article>
               </div>
-              <article className="premium-guide-sheet" aria-label="نموذج توضيحي لدليل الأهل">
-                <div className="premium-guide-sheet-top"><span className="premium-guide-sheet-tag">نموذج توضيحي</span><span className="text-xs text-muted-foreground">دليلك بعد الوحدة</span></div>
-                <div className="premium-guide-sheet-title"><span className="premium-guide-sheet-icon"><BookOpen className="size-5" /></span><div><p className="text-xs font-bold text-primary">Unit · الوحدة</p><h3 className="mt-1 text-xl">الألوان <span className="font-sans text-sm font-medium text-muted-foreground" dir="ltr">/ Colors</span></h3></div></div>
-                <p className="mt-7 text-sm font-bold">كلمات اتعلمناها</p>
-                <ul className="premium-guide-word-list mt-3">
-                  <li><span dir="ltr">Red</span><span>أحمر</span><span className="premium-guide-play" aria-hidden="true"><Play className="size-3" fill="currentColor" /></span></li>
-                  <li><span dir="ltr">Blue</span><span>أزرق</span><span className="premium-guide-play" aria-hidden="true"><Play className="size-3" fill="currentColor" /></span></li>
-                </ul>
-                <div className="premium-guide-tip mt-5"><span className="text-xs font-bold text-primary">Try at home · جرّبوا في البيت</span><p className="mt-2 text-sm leading-7">اختاروا حاجة حمرا وحاجة زرقا في البيت، وسمّوا لونها مع بعض.</p></div>
-              </article>
+              <div className="premium-guide-booklet-wrap" aria-label="شكل دليل ولي الأمر">
+                <div className="premium-guide-booklet">
+                  <div className="premium-guide-page premium-guide-page-back"><span className="premium-guide-page-label">Unit 1 · الوحدة الأولى</span><h3>كلمات جديدة</h3><p dir="ltr">RED · BLUE · GREEN</p><span className="premium-guide-page-check">✓ جرّب كلمة النهارده مع ابنك</span></div>
+                  <div className="premium-guide-page premium-guide-page-middle"><span className="premium-guide-page-label">دليل البيت</span><h3>هل يستطيع طفلك؟</h3><p>يسمّي الألوان من حوله</p><p>يستخدم اللون في جملة بسيطة</p></div>
+                  <div className="premium-guide-cover"><span className="premium-guide-cover-sun" /><BookOpen className="size-8" /><span className="premium-guide-cover-en" dir="ltr">Parent Guide</span><strong>دليل ولي الأمر</strong><span className="premium-guide-cover-unit" dir="ltr">Unit 1</span><span className="premium-guide-cover-lines" /></div>
+                </div>
+              </div>
             </div>
-            <p className="premium-guide-reassurance mt-7"><Check className="size-4 text-primary" /> الحصص مع ابنك بالإنجليزي بس عشان يتعلم أسرع، أما الدليل بالعربي والإنجليزي فده ليك إنت في البيت.</p>
-            <div className="premium-guide-close mt-8"><p className="text-base font-bold">وإنت كمان بتتعلم: كل ورقة بتقوّي إنجليزيتك خطوة خطوة.</p><Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button></div>
+            <aside className="premium-guide-reassurance mt-8"><div><h3 className="text-base font-bold">ليه الحصص بالإنجليزي بس؟</h3><p className="mt-2 text-sm leading-7">لأن الطفل بيتعلم اللغة أسرع لما بيسمعها وبيستخدمها طول الحصة. الدليل بالعربي والإنجليزي ده ليك إنت في البيت، عشان تفهم وتساعد.</p></div></aside>
+            <figure className="premium-guide-testimonial mt-6"><span className="premium-guide-testimonial-label">صيغة مقترحة لشهادة ولي أمر</span><blockquote className="mt-3 text-base font-bold leading-8">«كنت فاكرة إني مش هقدر أساعده، بس بعد ٣ دقائق في اليوم بقى بيقولي Hello Mama!»</blockquote><figcaption className="mt-2 text-sm text-muted-foreground">— ولية أمر</figcaption></figure>
+            <div className="premium-guide-close mt-8"><Button asChild size="lg" variant="sunshine"><Link to="/trial" hash="booking-form">احجز حصة مجانية <ArrowLeft /></Link></Button><Button asChild size="lg" variant="outline"><a href="https://drive.google.com/file/d/1YAh39uUf-JvkMNSLkpWX0sZg7-6zNiTi/view?usp=sharing" target="_blank" rel="noopener noreferrer"><Download /> شوف الوحدة الأولى مجاناً</a></Button></div>
           </div>
         </section>
 

@@ -141,7 +141,7 @@ function TrialPage() {
         description="حصة تجريبية مجانية وتحديد مستوى، من غير دفع أو التزام بالاشتراك. نعرف طفلك ونختار له البداية المناسبة."
       />
       <div className="container-page grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:py-16">
-        <form onSubmit={onSubmit} noValidate className="trial-form space-y-6">
+        <form id="booking-form" onSubmit={onSubmit} noValidate className="trial-form space-y-6">
           <div className="border-b border-border pb-5"><p className="text-xs font-bold text-primary">طلب الحصة التجريبية</p><h2 className="mt-2 text-2xl">نتعرّف عليك وعلى طفلك</h2></div>
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
