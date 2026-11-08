@@ -11,6 +11,6 @@
 - [ ] Real teacher profiles, testimonials, pricing, and live booking destination await academy-supplied details.
 
 # Free parent guide
-- [ ] Add the free bilingual guide badge, benefit, dedicated preview section, and final supporting line.
-- [ ] Add the two parent-guide FAQs without changing existing answers or the main trial CTA.
-- [ ] Verify the guide preview and layouts on desktop and mobile.
+- [x] Add the free bilingual guide badge, benefit, dedicated preview section, and final supporting line.
+- [x] Add the two parent-guide FAQs without changing existing answers or the main trial CTA.
+- [x] Verify the guide preview and layouts on desktop and mobile.
