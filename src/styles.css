@@ -948,7 +948,7 @@
 
 /* Reversible video presentation; original illustration styles remain intact. */
 .woodland-site .reference-hero[data-hero-media="video"]::before {
-  background-image: url("/brand/reference-video-background.webp");
+  background-image: url("/brand/reference-hero.webp");
   opacity: 1;
 }
 .woodland-site .reference-hero[data-hero-media="video"] > .container-page > div:last-child {
@@ -1465,3 +1465,14 @@
 .sample-material-preview { height: clamp(260px, 35vw, 360px); border-block: 1px solid var(--border); background: var(--secondary); }
 .sample-material-preview > a { display: block; height: 100%; }
 .sample-external-button { min-height: 48px; white-space: normal; text-align: center; }
+
+.academy-logo-lockup { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.academy-logo-mark { width: 44px; height: 44px; flex-shrink: 0; object-fit: contain; }
+.academy-logo-name { display: flex; flex-direction: column; gap: 3px; color: var(--primary); line-height: 1.2; white-space: nowrap; }
+.academy-logo-name strong { font-size: 17px; font-weight: 800; }
+.academy-logo-name > span { font-size: 12px; font-weight: 500; letter-spacing: .12em; }
+@media (max-width: 1023px) {
+  .academy-logo-mark { width: 38px; height: 38px; }
+  .academy-logo-name strong { font-size: 14px; }
+  .academy-logo-name > span { font-size: 10px; }
+}

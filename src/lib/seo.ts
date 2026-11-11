@@ -1,4 +1,4 @@
-import logoAsset from "@/assets/native-kid-original-logo.jpg.asset.json";
+import { BRAND_MARK } from "@/lib/brand";
 
 export const SITE_URL = "https://www.nativekidacademy.com";
 
@@ -13,7 +13,7 @@ export const ACADEMY_SCHEMA = {
   name: "Native Kid Academy",
   alternateName: "أكاديمية نيتف كيد",
   url: SITE_URL,
-  logo: `${SITE_URL}${logoAsset.url}`,
+  logo: `${SITE_URL}${BRAND_MARK}`,
   description:
     "تعليم إنجليزي أونلاين للأطفال والمراهقين من 4 إلى 15 سنة، مع التركيز على الصوتيات والتحدث والاستماع والقراءة والكتابة.",
   telephone: "+201022986424",

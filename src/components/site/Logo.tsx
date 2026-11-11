@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/native-kid-original-logo.jpg.asset.json";
+import { BRAND_MARK } from "@/lib/brand";
 
 export function Logo({ variant = "default" }: { variant?: "default" | "light" }) {
   return (
@@ -9,14 +9,10 @@ export function Logo({ variant = "default" }: { variant?: "default" | "light" })
       dir="ltr"
       aria-label="Native Kid Academy — الرئيسية"
     >
-      <img
-        src={logoAsset.url}
-        alt="شعار أكاديمية نيتف كيد"
-        className="academy-logo object-contain"
-        loading="eager"
-        width={1145}
-        height={768}
-      />
+      <span className="academy-logo academy-logo-lockup">
+        <img src={BRAND_MARK} alt="" className="academy-logo-mark" width={128} height={128} loading="eager" />
+        <span className="academy-logo-name"><strong>Native Kid</strong><span>Academy</span></span>
+      </span>
     </Link>
   );
 }
