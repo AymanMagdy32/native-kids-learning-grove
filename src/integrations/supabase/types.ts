@@ -134,6 +134,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      academy_delete_request: {
+        Args: { p_id: string; p_revision: number }
+        Returns: string
+      }
       academy_is_staff: { Args: never; Returns: boolean }
       academy_submit_request: {
         Args: { p_id: string; p_request: Json }
