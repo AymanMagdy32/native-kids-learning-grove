@@ -1,3 +1,4 @@
+import { BRAND_FAVICON, BRAND_APPLE_ICON } from "@/lib/brand";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -106,7 +107,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&family=Readex+Pro:wght@400;500;700&display=swap" },
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: BRAND_FAVICON, type: "image/png", sizes: "64x64" },
+      { rel: "apple-touch-icon", href: BRAND_APPLE_ICON, sizes: "180x180" },
     ],
   }),
   shellComponent: RootShell,

@@ -10,7 +10,7 @@ export function Logo({ variant = "default" }: { variant?: "default" | "light" })
       aria-label="Native Kid Academy — الرئيسية"
     >
       <span className="academy-logo academy-logo-lockup">
-        <img src={BRAND_MARK} alt="" className="academy-logo-mark" width={128} height={128} loading="eager" />
+        <img src={BRAND_MARK} alt="" className="academy-logo-mark" width={256} height={256} loading="eager" />
         <span className="academy-logo-name"><strong>Native Kid</strong><span>Academy</span></span>
       </span>
     </Link>

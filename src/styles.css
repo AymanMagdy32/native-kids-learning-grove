@@ -1467,12 +1467,12 @@
 .sample-external-button { min-height: 48px; white-space: normal; text-align: center; }
 
 .academy-logo-lockup { display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
-.academy-logo-mark { width: 44px; height: 44px; flex-shrink: 0; object-fit: contain; }
+.academy-logo-mark { width: 48px; height: 48px; flex-shrink: 0; object-fit: contain; border-radius: 8px; }
 .academy-logo-name { display: flex; flex-direction: column; gap: 3px; color: var(--primary); line-height: 1.2; white-space: nowrap; }
 .academy-logo-name strong { font-size: 17px; font-weight: 800; }
 .academy-logo-name > span { font-size: 12px; font-weight: 500; letter-spacing: .12em; }
 @media (max-width: 1023px) {
-  .academy-logo-mark { width: 38px; height: 38px; }
+  .academy-logo-mark { width: 42px; height: 42px; }
   .academy-logo-name strong { font-size: 14px; }
   .academy-logo-name > span { font-size: 10px; }
 }
