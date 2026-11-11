@@ -122,7 +122,7 @@ function HomePage() {
 
         <section id="courses" className="premium-section premium-soft-band">
           <div className="container-page">
-            <div className="premium-section-heading"><div><p className="premium-eyebrow">المنهج · من أول كلمة لأفكار أكبر</p><h2 className="mt-3">بداية تناسبه.<br />ومسار يكمل معاه.</h2></div><p>بنستخدم منهج Abridge Academy التفاعلي كأحد مساراتنا الأساسية، بتدرّج CEFR من المبتدئ تمامًا إلى ما قبل المتوسط. البداية حسب مستوى طفلك.</p></div>
+            <div className="premium-section-heading"><div><p className="premium-eyebrow">المنهج · من أول كلمة لأفكار أكبر</p><h2 className="mt-3">بداية تناسبه.<br />ومسار يكمل معاه.</h2></div></div>
             <div className="mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {LEVELS.map((level) => <article className="premium-course premium-reveal" key={level.n}>
                 <div className="flex items-center justify-between"><span className="premium-level-number" dir="ltr">0{level.n}</span><span className="premium-cefr" dir="ltr">{level.cefr}</span></div>
