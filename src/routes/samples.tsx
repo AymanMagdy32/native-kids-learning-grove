@@ -33,7 +33,7 @@ export const Route = createFileRoute("/samples")({
       },
       {
         property: "og:description",
-        content: "أمثلة حقيقية من دروسنا وواجباتنا وتقارير التقدّم قبل ما تحجز التجربة المجانية.",
+        content: "أمثلة حقيقية من دروسنا وواجباتنا وتقارير التقدّم قبل ما تحجز التجربة وتحديد المستوى.",
       },
     ],
   }),
@@ -432,7 +432,7 @@ function SamplesPage() {
         <PhonicsJourney />
 
       </div>
-      <section className="bg-accent py-10"><div className="container-page flex flex-wrap items-center justify-between gap-5"><div><h2 className="text-2xl">خلي طفلك يجرّب بنفسه</h2><p className="mt-2 text-sm leading-7 text-muted-foreground">حصة تجريبية مجانية تساعدك تشوف الطريقة قبل ما تقرر.</p></div><Button asChild size="lg"><Link to="/trial">احجز التجربة المجانية <ArrowLeft /></Link></Button></div></section>
+      <section className="bg-accent py-10"><div className="container-page flex flex-wrap items-center justify-between gap-5"><div><h2 className="text-2xl">خلي طفلك يجرّب بنفسه</h2><p className="mt-2 text-sm leading-7 text-muted-foreground">حصة تجريبية وتحديد مستوى تساعدك تشوف الطريقة قبل ما تقرر.</p></div><Button asChild size="lg" className="h-auto min-h-12 whitespace-normal text-center"><Link to="/trial">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></Link></Button></div></section>
     </SiteLayout>
   );
 }

@@ -25,16 +25,16 @@ export const Route = createFileRoute("/trial")({
     meta: [
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "احجز حصة تجريبية مجانية | Native Kid Academy" },
+      { title: "احجز حصة تجريبية وتحديد مستوى | Native Kid Academy" },
       {
         name: "description",
         content:
-          "احجز حصة إنجليزي تجريبية مجانية لطفلك أونلاين. املأ النموذج وسيتواصل معك فريق الأكاديمية لتحديد الموعد.",
+          "احجز حصة إنجليزي تجريبية لطفلك أونلاين. املأ النموذج وسيتواصل معك فريق الأكاديمية لتحديد الموعد.",
       },
-      { property: "og:title", content: "احجز حصة تجريبية مجانية | Native Kid Academy" },
+      { property: "og:title", content: "احجز حصة تجريبية وتحديد مستوى | Native Kid Academy" },
       {
         property: "og:description",
-        content: "خطوة واحدة تفصل طفلك عن أول حصة إنجليزي تفاعلية مجانية.",
+        content: "خطوة واحدة تفصل طفلك عن أول حصة إنجليزي تفاعلية.",
       },
     ],
   }),
@@ -169,9 +169,9 @@ function TrialPage() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="تجربة مجانية"
+        eyebrow="تجربة وتحديد مستوى"
         title="أول خطوة… حصة يجربها طفلك"
-        description="حصة تجريبية مجانية وتحديد مستوى، من غير دفع أو التزام بالاشتراك. نعرف طفلك ونختار له البداية المناسبة."
+        description="حصة تجريبية وتحديد مستوى عشان نعرف طفلك ونختار له البداية المناسبة. فريقنا هيوضح لك التفاصيل قبل تأكيد الحجز."
       />
       <div className="container-page grid items-start gap-10 py-12 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] lg:py-16">
         <form id="booking-form" onSubmit={onSubmit} noValidate className="trial-form space-y-6">
@@ -304,7 +304,7 @@ function TrialPage() {
               : !availabilityChecked
                 ? "لحظة واحدة…"
                 : savingEnabled
-                  ? "سجّل طلب الحصة المجانية"
+                  ? "سجّل طلب التجربة وتحديد المستوى"
                   : "جهّز طلب الحجز على واتساب"}
             <ArrowLeft className="size-4" />
           </Button>
@@ -321,7 +321,7 @@ function TrialPage() {
             <ol className="mt-6 space-y-5 text-sm leading-7 text-muted-foreground">
               {[
                 { icon: MessageCircleHeart, text: "سنتواصل معك في أقرب وقت ممكن." },
-                { icon: ClipboardCheck, text: "اختبار تحديد مستوى مجاني أونلاين." },
+                { icon: ClipboardCheck, text: "تحديد مستوى أونلاين." },
                 { icon: MonitorPlay, text: "حصة تجريبية كاملة مع المعلم." },
                 { icon: Users, text: "ترشيح المجموعة والمواعيد المناسبة." },
               ].map(({ icon: Icon, text }) => (

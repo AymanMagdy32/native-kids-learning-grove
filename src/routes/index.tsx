@@ -9,9 +9,9 @@ import learningPhoto from "@/assets/native-kid-learning.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
     { title: "Native Kid Academy | رحلة إنجليزي ممتعة لطفلك" },
-    { name: "description", content: "إنجليزي أونلاين للأطفال من 4 إلى 15 سنة. اكتشف منهجنا التفاعلي من 6 مستويات، متابعة تقدّم طفلك، واحجز حصة تجريبية مجانية." },
+    { name: "description", content: "إنجليزي أونلاين للأطفال من 4 إلى 15 سنة. اكتشف منهجنا التفاعلي من 6 مستويات، متابعة تقدّم طفلك، واحجز حصة تجريبية وتحديد مستوى." },
     { property: "og:title", content: "Native Kid Academy | رحلة إنجليزي ممتعة لطفلك" },
-    { property: "og:description", content: "تعليم تفاعلي، مسار واضح، واهتمام بكل طفل. اكتشف مستويات الإنجليزي واحجز التجربة المجانية." },
+    { property: "og:description", content: "تعليم تفاعلي، مسار واضح، واهتمام بكل طفل. اكتشف مستويات الإنجليزي واحجز تجربة وحدّد مستوى طفلك." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
@@ -32,7 +32,7 @@ const PARENT_GUIDE_BENEFITS = [
   { icon: ListChecks, title: "تابع تقدمه بنفسك", body: "قايمة «هل يستطيع طفلك؟» تشوف بيها تقدمه." },
 ];
 const STEPS = [
-  { n: "01", title: "احجز الحصة المجانية", body: "شاركنا عمر طفلك وهدفك من تعلّم الإنجليزي، وفريقنا يتواصل معك." },
+  { n: "01", title: "احجز تجربة وحدّد مستوى طفلك", body: "شاركنا عمر طفلك وهدفك من تعلّم الإنجليزي، وفريقنا يتواصل معك." },
   { n: "02", title: "نكتشف نقطة البداية", body: "نحدّد المستوى، وطفلك يجرّب طريقة التعلّم في حصة تفاعلية." },
   { n: "03", title: "نبدأ الرحلة سوا", body: "نختار المسار المناسب لطفلك ونواصل معك متابعة تقدّمه." },
 ];
@@ -56,7 +56,7 @@ function HomePage() {
                 <span className="premium-home-partner-bottom"><span><Clock3 className="size-4" /> نشاط بسيط في ٣ دقايق</span><span>شوفي الدليل <ArrowLeft className="size-4" /></span></span>
               </a>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link></Button>
+                <Button asChild size="lg" variant="sunshine" className="h-auto min-h-12 whitespace-normal text-center"><Link to="/trial">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></Link></Button>
                 <Button asChild size="lg" variant="outline"><Link to="/samples" hash="materials">شوف نماذج من المحتوى <BookOpen /></Link></Button>
               </div>
               <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -146,7 +146,7 @@ function HomePage() {
         </section>
 
         <section id="contact" className="premium-final">
-          <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center"><div><p className="text-sm text-brand-dark-foreground/75">أول خطوة صغيرة. بداية لحاجة كبيرة.</p><h2 className="mt-3">خلّي الإنجليزي جزء من عالمه.</h2><p className="mt-4 text-sm leading-7 text-brand-dark-foreground/75">احجز حصة مجانية، واتعرّف على البداية المناسبة لطفلك.</p><p className="mt-3 text-sm leading-7 text-brand-dark-foreground/75">احجز حصة تجريبية مجانية، وابنك وإنت تبدأوا سوا.</p></div><Button asChild size="lg" variant="sunshine"><Link to="/trial">احجز التجربة المجانية <ArrowLeft /></Link></Button></div>
+          <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center"><div><p className="text-sm text-brand-dark-foreground/75">أول خطوة صغيرة. بداية لحاجة كبيرة.</p><h2 className="mt-3">خلّي الإنجليزي جزء من عالمه.</h2><p className="mt-4 text-sm leading-7 text-brand-dark-foreground/75">احجز تجربة وحدّد مستوى طفلك، واتعرّف على البداية المناسبة لطفلك.</p><p className="mt-3 text-sm leading-7 text-brand-dark-foreground/75">احجز حصة تجريبية وتحديد مستوى، وابنك وإنت تبدأوا سوا.</p></div><Button asChild size="lg" variant="sunshine" className="h-auto min-h-12 whitespace-normal text-center"><Link to="/trial">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></Link></Button></div>
         </section>
       </div>
     </SiteLayout>

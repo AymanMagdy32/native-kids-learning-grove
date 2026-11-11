@@ -19,8 +19,8 @@ const FAQS = [
     a: "المجموعات الصغيرة حتى 6 طلاب، والحصص شبه الخاصة من طالبين إلى 3 طلاب، والحصص الخاصة لطالب واحد مع المعلم.",
   },
   {
-    q: "هل الحصة التجريبية مجانية فعلًا؟",
-    a: "نعم، الحصة التجريبية واختبار تحديد المستوى مجانيان تمامًا وبدون أي التزام بالاشتراك.",
+    q: "إزاي أحجز تجربة وأحدّد مستوى طفلي؟",
+    a: "املأ نموذج الحجز، وفريقنا هيتواصل معاك يوضح تفاصيل التجربة وتحديد المستوى قبل تأكيد الميعاد.",
   },
   {
     q: "ما هي مدة الحصة وعددها أسبوعيًا؟",
@@ -107,10 +107,10 @@ function FaqPage() {
           <MessageCircleHeart className="size-8 text-primary" />
           <h2 className="mt-4 text-xl">إحنا معاك في القرار</h2>
           <p className="mt-2 text-sm leading-7 text-muted-foreground">
-            احجز التجربة المجانية وفريقنا هيتواصل معك ويجاوب على كل أسئلتك.
+            احجز تجربة وحدّد مستوى طفلك وفريقنا هيتواصل معك ويجاوب على كل أسئلتك.
           </p>
-          <Button asChild size="lg" className="mt-5 w-full">
-            <Link to="/trial">احجز حصة مجانية <ArrowLeft /></Link>
+          <Button asChild size="lg" className="mt-5 w-full h-auto min-h-12 whitespace-normal text-center">
+            <Link to="/trial">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></Link>
           </Button>
           <div className="mt-6 border-t border-border pt-5"><BookOpen className="size-5 text-primary" /><h3 className="mt-2 text-base">حابب تعرف المنهج؟</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">شوف موضوعات ومهارات كل مستوى، ونماذج من مواد الحصص.</p><Button asChild variant="link" className="mt-2 px-0"><Link to="/samples">استكشف المنهج <ArrowLeft /></Link></Button></div>
         </aside>

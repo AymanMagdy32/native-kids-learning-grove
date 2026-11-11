@@ -23,7 +23,7 @@ export function Footer() {
             </li>
             <li>
               <Link to="/trial" className="hover:text-brand-dark-foreground">
-                حصة تجريبية مجانية
+                حصة تجريبية وتحديد مستوى
               </Link>
             </li>
             <li>

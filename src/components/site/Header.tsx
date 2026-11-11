@@ -80,8 +80,8 @@ export function Header() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <SocialLinks className="border-e border-border pe-2" />
-          <Button asChild variant="sunshine">
-            <Link to="/trial">احجز تجربة مجانية</Link>
+          <Button asChild variant="sunshine" className="h-auto min-h-12 whitespace-normal text-center">
+            <Link to="/trial">احجز تجربة وحدّد مستوى طفلك</Link>
           </Button>
         </div>
 
@@ -115,7 +115,7 @@ export function Header() {
             <SocialLinks className="my-2 justify-center" />
             <div className="mt-2 flex flex-col gap-2">
               <Button asChild variant="sunshine" size="lg" onClick={() => setOpen(false)}>
-                <Link to="/trial">احجز تجربة مجانية</Link>
+                <Link to="/trial">احجز تجربة وحدّد مستوى طفلك</Link>
               </Button>
             </div>
           </nav>

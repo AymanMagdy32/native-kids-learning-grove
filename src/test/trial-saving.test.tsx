@@ -21,7 +21,7 @@ vi.mock("@tanstack/react-router", async (original) => ({
 import { Route } from "@/routes/trial";
 const Page = Route.options.component as ComponentType;
 async function fillForm() {
-  await screen.findByRole("button", { name: "سجّل طلب الحصة المجانية" });
+  await screen.findByRole("button", { name: "سجّل طلب التجربة وتحديد المستوى" });
   fireEvent.change(screen.getByLabelText("اسم ولي الأمر *"), { target: { value: "Test Parent" } });
   fireEvent.change(screen.getByLabelText("رقم الهاتف / واتساب *"), {
     target: { value: "01012345678" },
@@ -53,11 +53,11 @@ describe("Saving trial requests before WhatsApp", () => {
       .mockResolvedValueOnce({ id: "11111111-1111-4111-8111-111111111111" });
     render(<Page />);
     await fillForm();
-    fireEvent.click(screen.getByRole("button", { name: "سجّل طلب الحصة المجانية" }));
+    fireEvent.click(screen.getByRole("button", { name: "سجّل طلب التجربة وتحديد المستوى" }));
     await screen.findByRole("alert");
     expect(screen.queryByText("طلبك اتسجل بنجاح")).not.toBeInTheDocument();
     expect(screen.getByLabelText("اسم ولي الأمر *")).toHaveValue("Test Parent");
-    fireEvent.click(screen.getByRole("button", { name: "سجّل طلب الحصة المجانية" }));
+    fireEvent.click(screen.getByRole("button", { name: "سجّل طلب التجربة وتحديد المستوى" }));
     await screen.findByText("طلبك اتسجل بنجاح");
     expect(mocks.save).toHaveBeenCalledTimes(2);
     expect(mocks.save.mock.calls[0]?.[0].data.submission_id).toBe(
@@ -74,7 +74,7 @@ describe("Saving trial requests before WhatsApp", () => {
     );
     render(<Page />);
     await fillForm();
-    const button = screen.getByRole("button", { name: "سجّل طلب الحصة المجانية" });
+    const button = screen.getByRole("button", { name: "سجّل طلب التجربة وتحديد المستوى" });
     const form = button.closest("form")!;
     fireEvent.submit(form);
     fireEvent.submit(form);
