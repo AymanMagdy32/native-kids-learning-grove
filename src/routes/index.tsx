@@ -1,7 +1,8 @@
+import { LearningJourney } from "@/components/home/LearningJourney";
 import { HomeMaterials } from "@/components/home/HomeMaterials";
 /* Palette: logo royal blue, yellow, coral, and green. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, AudioLines, BookOpen, Check, Clock3, Gift, Headphones, ListChecks, LineChart, MessageCircle, Mic, PenLine, ShieldCheck, Users } from "lucide-react";
+import { ArrowLeft, AudioLines, BookOpen, Check, Clock3, Gift, ListChecks, LineChart, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { LEVELS } from "@/components/home/learning-data";
@@ -76,12 +77,7 @@ function HomePage() {
 
         <HomeMaterials />
 
-        <section id="teaching" className="premium-section premium-teaching-band">
-          <div className="container-page grid items-start gap-10 md:grid-cols-2">
-            <div><p className="premium-eyebrow">داخل الحصة</p><h2 className="mt-3">المعلم يوجّه.<br />وطفلك يشارك.</h2><p className="mt-5 max-w-lg text-sm leading-8 text-muted-foreground">من نشاط يجذب انتباهه لموقف يستخدم فيه اللي اتعلّمه. صوت طفلك له مساحة في كل حصة، مع ملاحظات تساعده ياخد الخطوة اللي بعدها.</p><Button asChild variant="link" className="mt-5 px-0"><Link to="/samples">اكتشف شكل الحصة <ArrowLeft /></Link></Button></div>
-            <div><div className="grid grid-cols-2 gap-4">{[{ icon: Mic, ar: "يتكلم بثقة", en: "Speaking" }, { icon: Headphones, ar: "يسمع ويفهم", en: "Listening" }, { icon: BookOpen, ar: "يقرأ ويكتشف", en: "Reading" }, { icon: PenLine, ar: "يكتب ويعبّر", en: "Writing" }].map(({ icon: Icon, ar, en }) => <div key={en} className="premium-skill"><Icon className="size-6 text-primary" /><h3 className="mt-4 text-base">{ar}</h3><p dir="ltr" className="mt-1 text-xs text-muted-foreground">{en}</p></div>)}</div><p className="mt-5 flex items-center gap-2 text-xs text-muted-foreground"><Users className="size-4 text-primary" /> حصص مجموعات أو فردية حسب احتياج طفلك</p></div>
-          </div>
-        </section>
+        <LearningJourney />
 
         <section id="parent-guide" aria-labelledby="parent-guide-title" className="premium-section premium-guide-section">
           <div className="container-page">

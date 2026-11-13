@@ -1,3 +1,30 @@
+export type CurriculumUnit = { n: number; en: string; ar: string };
+
+const LEVEL_ONE_UNITS: CurriculumUnit[] = [
+  { n: 1, en: "Introductions", ar: "التعارف" },
+  { n: 2, en: "Art", ar: "الفن" },
+  { n: 3, en: "Fruits", ar: "الفواكه" },
+  { n: 4, en: "Weather", ar: "الطقس" },
+  { n: 5, en: "Toys", ar: "الألعاب" },
+  { n: 6, en: "My body", ar: "جسمي" },
+  { n: 7, en: "My family", ar: "عائلتي" },
+  { n: 8, en: "My school", ar: "مدرستي" },
+  { n: 9, en: "My week", ar: "أسبوعي" },
+  { n: 10, en: "Time", ar: "الوقت" },
+];
+const LEVEL_TWO_UNITS: CurriculumUnit[] = [
+  { n: 1, en: "My Friends", ar: "أصحابي" },
+  { n: 2, en: "Pets", ar: "الحيوانات الأليفة" },
+  { n: 3, en: "Sports", ar: "الرياضة" },
+  { n: 4, en: "Animals", ar: "الحيوانات" },
+  { n: 5, en: "Eating Out", ar: "الأكل برّه" },
+  { n: 6, en: "My Home", ar: "بيتي" },
+  { n: 7, en: "School", ar: "المدرسة" },
+  { n: 8, en: "Hobbies", ar: "الهوايات" },
+  { n: 9, en: "Clothes", ar: "الملابس" },
+  { n: 10, en: "Out and About", ar: "الخروجات" },
+];
+
 export type Level = {
   n: number;
   cefr: string;
@@ -5,6 +32,7 @@ export type Level = {
   titleAr: string;
   desc: string;
   topics: string[];
+  units?: CurriculumUnit[];
   skills: string[];
   outcome: string;
 };
@@ -16,19 +44,8 @@ export const LEVELS: Level[] = [
     titleEn: "English Foundations",
     titleAr: "أساسيات الإنجليزي",
     desc: "الطفل يبني أساس اللغة من خلال موضوعات قريبة منه وجُمل بسيطة يقدر يستخدمها فورًا.",
-    topics: [
-      "التعارف",
-      "المشاعر",
-      "الأرقام",
-      "الألوان",
-      "العائلة",
-      "المدرسة",
-      "الطقس",
-      "اللعب",
-      "أجزاء الجسم",
-      "الروتين اليومي",
-      "الوقت",
-    ],
+    topics: LEVEL_ONE_UNITS.map((unit) => unit.ar),
+    units: LEVEL_ONE_UNITS,
     skills: [
       "مفردات أساسية يستخدمها كل يوم",
       "تكوين جُمل قصيرة صحيحة",
@@ -43,19 +60,8 @@ export const LEVELS: Level[] = [
     titleEn: "Building Communication",
     titleAr: "بداية التواصل",
     desc: "ننتقل من الكلمات المفردة إلى جُمل وحوارات حقيقية بين الطلاب.",
-    topics: [
-      "الأصدقاء",
-      "الحيوانات الأليفة",
-      "الرياضة",
-      "الحيوانات",
-      "الطعام",
-      "البيت",
-      "المدرسة",
-      "الهوايات",
-      "الملابس",
-      "المواصلات",
-      "الأنشطة الخارجية",
-    ],
+    topics: LEVEL_TWO_UNITS.map((unit) => unit.ar),
+    units: LEVEL_TWO_UNITS,
     skills: [
       "تكوين الأسئلة والرد عليها",
       "وصف الأشخاص والأشياء",
