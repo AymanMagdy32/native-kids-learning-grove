@@ -30,7 +30,7 @@ const BENEFITS = [
 const PARENT_GUIDE_BENEFITS = [
   { icon: Clock3, title: "٣ دقائق في اليوم تكفي", body: "نشاط بسيط في آخر كل درس، من غير تحضير." },
   { icon: BookOpen, title: "اعرف ابنك اتعلم إيه بالظبط", body: "ملخص لكل درس بالعربي والإنجليزي." },
-  { icon: AudioLines, title: "نطق صح بدون قلق", body: "الكلمات مكتوبة بحروف عربي تساعدك على النطق، وتسجيلات صوتية." },
+  { icon: AudioLines, title: "نطق صح بدون قلق", body: "الكلمات مكتوبة بحروف عربي تساعدك على النطق." },
   { icon: ListChecks, title: "تابع تقدمه بنفسك", body: "قايمة «هل يستطيع طفلك؟» تشوف بيها تقدمه." },
 ];
 const STEPS = [
