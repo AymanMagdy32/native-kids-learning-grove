@@ -8,8 +8,8 @@
 
 /*
  * Native Kid Academy design system.
- * Brand foundation: the supplied logo’s teal, royal blue, sunshine yellow, coral, and green.
- * Teal leads actions; blue anchors typography, with restrained yellow and coral accents.
+ * Brand foundation: the supplied logo’s royal blue, sunshine yellow, coral, and leaf green.
+ * Royal blue leads the UI; yellow highlights actions and coral/green add playful accents.
  * Exact logo samples are preserved as hex tokens; UI tints derive from them.
  * Keep component colors semantic so every page shares the same palette.
  */
@@ -86,17 +86,17 @@
 }
 
 :root {
-  --brand-green: #009c95;
+  --brand-green: #419d43;
   --brand-brown: #134276;
   --brand-mint: #e7f6f3;
-  --brand-blue: #0751ae;
-  --brand-yellow: #ffbd08;
-  --coral-accent: #ff584b;
+  --brand-blue: #104da6;
+  --brand-yellow: #ffb800;
+  --coral-accent: #ff5945;
   --orange-accent: var(--brand-yellow);
   --contact: #008579;
   --contact-hover: #006b61;
   --contact-foreground: #ffffff;
-  --primary-action: #008579;
+  --primary-action: var(--brand-blue);
   --yellow-accent: var(--brand-yellow);
   --overlay: #152b45;
   --space-unit: 0.25rem;
@@ -107,7 +107,7 @@
   --card-foreground: var(--foreground);
   --popover: var(--card);
   --popover-foreground: var(--foreground);
-  --primary: #008579;
+  --primary: var(--brand-blue);
   --primary-foreground: #ffffff;
   --secondary: var(--brand-mint);
   --secondary-foreground: var(--foreground);
@@ -1304,19 +1304,31 @@
   .curriculum-number { width: 26px; height: 26px; }
 }
 
-/* Premium academy: deep teal / sunshine / soft neutrals.
-   Display: Baloo Bhaijaan 2. Body: Readex Pro. */
+/* Native Kid Academy: logo-led royal blue, yellow, coral, and leaf green. */
 .academy-site {
-  --foreground: oklch(0.28 0.045 192);
-  --primary: oklch(0.42 0.07 192);
+  --foreground: #162e53;
+  --primary: var(--brand-blue);
   --primary-action: var(--primary);
-  --brand-dark: oklch(0.29 0.046 192);
-  --yellow-accent: oklch(0.86 0.15 86);
-  --cream: oklch(0.985 0.004 155);
-  --muted-foreground: oklch(0.47 0.024 190);
-  --border: oklch(0.91 0.012 170);
-  --premium-tint: oklch(0.95 0.015 165);
-  --premium-shadow: 0 16px 40px -24px color-mix(in oklch, var(--foreground) 25%, transparent);
+  --brand-dark: #093574;
+  --yellow-accent: var(--brand-yellow);
+  --cream: #f5f8ff;
+  --secondary: #edf3ff;
+  --accent: #eaf1ff;
+  --accent-foreground: var(--primary);
+  --muted: #f3f6fc;
+  --muted-foreground: #53627a;
+  --border: #dce5f5;
+  --input: #aabbd5;
+  --ring: var(--primary);
+  --radius: 1rem;
+  --premium-tint: #edf3ff;
+  --premium-shadow: 0 16px 40px -24px #104da638;
+  --brand-coral-ink: #ad3022;
+  --brand-green-ink: #256e2b;
+  --brand-yellow-ink: #795300;
+  --brand-coral-tint: #fff0ec;
+  --brand-green-tint: #eff8ec;
+  --brand-yellow-tint: #fff7da;
 }
 .dark .academy-site {
   --foreground: oklch(0.94 0.01 170);
@@ -1475,4 +1487,88 @@
   .academy-logo-mark { width: 42px; height: 42px; }
   .academy-logo-name strong { font-size: 14px; }
   .academy-logo-name > span { font-size: 10px; }
+}
+
+/* Colorful academy UI: generous whitespace keeps the brand accents readable. */
+.academy-site header { border-bottom: 3px solid var(--yellow-accent); background: color-mix(in srgb, var(--card) 96%, transparent); }
+.academy-site header nav a { border-radius: 999px; }
+.academy-site header nav a:hover, .academy-site header nav a[aria-current="page"] { color: var(--primary); background: var(--accent); }
+.academy-site .inline-flex.cursor-pointer { border-radius: 14px; }
+.academy-site .inline-flex.cursor-pointer.bg-yellow-accent { color: #102f60; font-weight: 700; box-shadow: 0 5px 0 #d28d00; }
+.academy-site .inline-flex.cursor-pointer.bg-yellow-accent:active { box-shadow: 0 2px 0 #d28d00; }
+.academy-site .surface-card { border-radius: 24px; border-color: var(--border); box-shadow: 0 8px 30px -24px #104da655; }
+.academy-site :is(input, textarea, select):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+
+.premium-hero { background: var(--brand-blue); }
+.premium-hero::after { background: linear-gradient(to left, var(--brand-blue) 0%, var(--brand-blue) 35%, color-mix(in srgb, var(--brand-blue) 94%, transparent) 48%, transparent 78%); }
+.premium-hero-copy > h1, .premium-hero-copy > p, .premium-hero-copy > .mt-5 > p { color: #fff; }
+.premium-hero-copy > p.text-muted-foreground { color: #e9f1ff; }
+.premium-hero-copy > .premium-eyebrow { width: fit-content; padding: 8px 14px; border: 1px solid #ffffff40; border-radius: 999px; background: #ffffff12; color: #fff; }
+.premium-hero .premium-eyebrow > span { width: 10px; height: 10px; border-radius: 50%; background: var(--yellow-accent); }
+.premium-hero-copy > .mt-5 > p svg { color: var(--yellow-accent); }
+.premium-home-partner { border-color: #ffffff80; border-inline-start-color: var(--yellow-accent); border-radius: 22px; box-shadow: 0 14px 30px -20px #03245d; }
+.premium-home-partner-free { background: var(--brand-yellow-tint); color: var(--brand-yellow-ink); }
+.premium-home-partner-bottom > span:first-child { color: var(--brand-green-ink); }
+.premium-photo-label { border-radius: 999px; border: 2px solid var(--yellow-accent); }
+.premium-live-dot { background: var(--brand-green); }
+.premium-trust { background: var(--brand-dark); border-bottom: 0; }
+.premium-trust-item b { color: var(--yellow-accent); }
+.premium-trust-item span { color: #fff; }
+.premium-trust-item + .premium-trust-item { border-inline-start-color: #ffffff30; }
+
+.premium-benefit, .premium-course, .premium-guide-benefit, .premium-skill, .sample-material {
+  --panel-accent: var(--brand-blue);
+  --panel-ink: var(--primary);
+  --panel-tint: var(--accent);
+}
+:is(.premium-benefit, .premium-course, .premium-guide-benefit, .premium-skill, .sample-material):nth-child(4n+2) { --panel-accent: var(--coral-accent); --panel-ink: var(--brand-coral-ink); --panel-tint: var(--brand-coral-tint); }
+:is(.premium-benefit, .premium-course, .premium-guide-benefit, .premium-skill, .sample-material):nth-child(4n+3) { --panel-accent: var(--yellow-accent); --panel-ink: var(--brand-yellow-ink); --panel-tint: var(--brand-yellow-tint); }
+:is(.premium-benefit, .premium-course, .premium-guide-benefit, .premium-skill, .sample-material):nth-child(4n+4) { --panel-accent: var(--brand-green); --panel-ink: var(--brand-green-ink); --panel-tint: var(--brand-green-tint); }
+.premium-benefit, .premium-course { border-top: 5px solid var(--panel-accent); border-radius: 24px; background: linear-gradient(180deg, var(--panel-tint), var(--card) 70%); }
+.premium-benefit .premium-icon, .premium-guide-benefit .premium-icon { color: var(--panel-ink); background: var(--panel-tint); border-radius: 16px; }
+.premium-benefit h3, .premium-course h3 { color: var(--panel-ink); }
+.premium-course .premium-level-number { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 18px; color: var(--panel-ink); background: var(--panel-tint); }
+.premium-cefr { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); }
+.premium-soft-band { background: #f3f6ff; }
+.premium-teaching-band { background: var(--accent); }
+.premium-skill { padding: 24px; border: 1px solid color-mix(in srgb, var(--panel-accent) 20%, var(--card)); border-top: 4px solid var(--panel-accent); border-radius: 22px; background: var(--card); }
+.premium-skill > svg { color: var(--panel-ink); }
+.premium-guide-section { background: var(--brand-yellow-tint); border-color: #f1dfab; }
+.premium-guide-eyebrow { background: var(--card); border: 1px solid #e5dba8; padding: 10px 16px; }
+.premium-guide-benefit { border-inline-start: 4px solid var(--panel-accent); border-radius: 20px; }
+.premium-guide-document { border: 2px solid #d5def1; border-radius: 24px; }
+.premium-guide-document-heading { background: var(--accent); }
+.premium-guide-reassurance { background: var(--card); border-inline-start-color: var(--brand-green); }
+.premium-step { border-top: 0; padding: 26px; border-radius: 24px; background: var(--accent); }
+.premium-step:nth-child(2) { background: var(--brand-coral-tint); }
+.premium-step:nth-child(3) { background: var(--brand-green-tint); }
+.premium-step > span { display: inline-grid; place-items: center; min-width: 56px; height: 56px; padding-inline: 8px; border-radius: 18px; background: var(--card); }
+.premium-parent-heading { padding: 28px; border-radius: 28px; background: var(--brand-yellow-tint); }
+.premium-final { background: var(--brand-blue); border-top: 8px solid var(--yellow-accent); }
+
+.academy-page-heading { background: var(--brand-blue); border-bottom: 5px solid var(--yellow-accent); }
+.academy-page-heading :is(h1, p, a) { color: #fff; }
+.academy-page-heading p.text-muted-foreground { color: #e9f1ff; }
+.academy-page-heading span { color: var(--yellow-accent); }
+.sample-shortcut { border-radius: 999px; }
+.sample-shortcut:nth-child(4n+2) { background: var(--brand-coral-tint); color: var(--brand-coral-ink); border-color: #f4cfc8; }
+.sample-shortcut:nth-child(4n+3) { background: var(--brand-yellow-tint); color: var(--brand-yellow-ink); border-color: #ecdda6; }
+.sample-shortcut:nth-child(4n+4) { background: var(--brand-green-tint); color: var(--brand-green-ink); border-color: #c6dfbf; }
+.sample-material { border-top: 5px solid var(--panel-accent); }
+.sample-material h3 { color: var(--panel-ink); }
+.curriculum-detail, .trial-form { border-radius: 24px; background: var(--card); box-shadow: var(--premium-shadow); }
+.trial-form { border-top: 6px solid var(--primary); }
+.trial-form > .border-b { padding-bottom: 20px; }
+.curriculum-choice { border-radius: 16px; }
+.academy-site footer { border-top: 6px solid var(--yellow-accent); }
+@media (max-width: 767px) {
+  .premium-hero::after { background: linear-gradient(to bottom, var(--brand-blue) 0%, var(--brand-blue) calc(100% - 232px), transparent calc(100% - 205px)); }
+  .premium-hero-inner { padding-block: 28px 250px; }
+  .premium-photo-label { padding: 10px 12px; }
+  .premium-skill { padding: 18px; }
+  .premium-parent-heading { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .premium-benefit, .premium-course { transition: none; }
+  .premium-benefit:hover, .premium-course:hover { transform: none; }
 }
