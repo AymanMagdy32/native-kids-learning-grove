@@ -1,7 +1,7 @@
 import { HomeMaterials } from "@/components/home/HomeMaterials";
 /* Palette: logo royal blue, yellow, coral, and green. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, AudioLines, BookOpen, Check, Clock3, Download, Gift, Headphones, ListChecks, LineChart, MessageCircle, Mic, PenLine, ShieldCheck, Users } from "lucide-react";
+import { ArrowLeft, AudioLines, BookOpen, Check, Clock3, Gift, Headphones, ListChecks, LineChart, MessageCircle, Mic, PenLine, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { LEVELS } from "@/components/home/learning-data";
@@ -100,13 +100,6 @@ function HomePage() {
                   </article>
                 ))}
                 </div>
-                <article id="parent-guide-preview" className="premium-guide-document mt-8 scroll-mt-28" aria-labelledby="guide-preview-title">
-                  <div className="premium-guide-document-heading">
-                    <div><p className="text-xs font-bold text-primary">شوف الدليل بنفسك</p><h3 id="guide-preview-title" className="mt-2 text-lg">الوحدة الأولى من دليل ولي الأمر</h3></div>
-                    <Button asChild variant="outline" size="sm"><a href="https://drive.google.com/file/d/1YAh39uUf-JvkMNSLkpWX0sZg7-6zNiTi/view?usp=sharing" target="_blank" rel="noopener noreferrer">افتح الدليل في صفحة جديدة <Download /></a></Button>
-                  </div>
-                  <iframe src="https://drive.google.com/file/d/1YAh39uUf-JvkMNSLkpWX0sZg7-6zNiTi/preview" title="معاينة الوحدة الأولى من دليل ولي الأمر" loading="lazy" allow="fullscreen" className="premium-guide-document-frame" />
-                </article>
               </div>
 
             </div>
