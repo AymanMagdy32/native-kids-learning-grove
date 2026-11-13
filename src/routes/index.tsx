@@ -1,4 +1,5 @@
-/* Palette: deep teal, sunny yellow, soft white. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
+import { HomeMaterials } from "@/components/home/HomeMaterials";
+/* Palette: logo royal blue, yellow, coral, and green. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, AudioLines, BookOpen, Check, Clock3, Download, Gift, Headphones, ListChecks, LineChart, MessageCircle, Mic, PenLine, ShieldCheck, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -73,14 +74,7 @@ function HomePage() {
           </div>
         </section>
 
-        <section id="about" className="premium-section">
-          <div className="container-page">
-            <div className="premium-section-heading"><div><p className="premium-eyebrow">تعليم يحبه طفلك. وتطمن له.</p><h2 className="mt-3">صغير في السن،<br />كبير في اللي يقدر يحققه.</h2></div><p>مش مجرد حفظ كلمات. بنساعد طفلك يفهم، يعبّر، ويستخدم اللغة في مواقف قريبة من عالمه.</p></div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-              {BENEFITS.map(({ icon: Icon, title, body }, i) => <article key={title} className="premium-benefit premium-reveal"><div className="flex items-center justify-between"><span className="premium-icon"><Icon className="size-6" /></span><span className="text-xs text-muted-foreground" dir="ltr">0{i + 1}</span></div><h3 className="mt-6 text-xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{body}</p></article>)}
-            </div>
-          </div>
-        </section>
+        <HomeMaterials />
 
         <section id="teaching" className="premium-section premium-teaching-band">
           <div className="container-page grid items-start gap-10 md:grid-cols-2">
@@ -117,6 +111,15 @@ function HomePage() {
 
             </div>
             <aside className="premium-guide-reassurance mt-8 premium-reveal"><div><h3 className="text-base font-bold">ليه الحصص بالإنجليزي بس؟</h3><p className="mt-2 text-sm leading-7">لأن الطفل بيتعلم اللغة أسرع لما بيسمعها وبيستخدمها طول الحصة. الدليل بالعربي والإنجليزي ده ليك إنت في البيت، عشان تفهم وتساعد.</p></div></aside>
+          </div>
+        </section>
+
+        <section id="about" className="premium-section home-benefits-compact">
+          <div className="container-page">
+            <div className="premium-section-heading"><div><p className="premium-eyebrow">تعليم يحبه طفلك. وتطمن له.</p><h2 className="mt-3">صغير في السن،<br />كبير في اللي يقدر يحققه.</h2></div><p>مش مجرد حفظ كلمات. بنساعد طفلك يفهم، يعبّر، ويستخدم اللغة في مواقف قريبة من عالمه.</p></div>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {BENEFITS.map(({ icon: Icon, title, body }, i) => <article key={title} className="premium-benefit premium-reveal"><div className="flex items-center justify-between"><span className="premium-icon"><Icon className="size-6" /></span><span className="text-xs text-muted-foreground" dir="ltr">0{i + 1}</span></div><h3 className="mt-6 text-xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{body}</p></article>)}
+            </div>
           </div>
         </section>
 
