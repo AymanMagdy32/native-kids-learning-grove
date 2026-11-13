@@ -1582,12 +1582,12 @@
 .home-material-card:nth-child(4n+4) { --material-accent: var(--brand-green); --material-ink: var(--brand-green-ink); --material-tint: var(--brand-green-tint); }
 .home-material-top { display: flex; align-items: center; justify-content: space-between; color: var(--muted-foreground); font-size: 11px; }
 .home-material-card .premium-icon { width: 40px; height: 40px; color: var(--material-ink); background: var(--material-tint); }
-.home-material-card h3 { color: var(--material-ink); font-size: 19px; }
+.home-material-card h3 { color: var(--material-ink); font-size: 20px; }
 .home-material-english { margin-top: 4px; font-size: 11px; color: var(--muted-foreground); }
 .home-material-description { margin-top: 12px; margin-bottom: 16px; font-size: 13px; line-height: 1.9; color: var(--muted-foreground); }
 .home-material-preview-button { display: block; width: 100%; margin-top: auto; cursor: pointer; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
 .home-material-preview-button:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
-.home-material-thumbnail { display: block; position: relative; height: 112px; background: var(--material-tint); }
+.home-material-thumbnail { display: block; position: relative; height: 144px; background: var(--material-tint); }
 .home-material-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: var(--material-ink); font-size: 11px; }
 .home-material-placeholder > svg { width: 36px; height: 36px; }
 .home-material-thumbnail > img { opacity: 0; position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; background: var(--card); }
@@ -1607,9 +1607,9 @@
   .home-material-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
   .home-material-card { padding: 14px 12px; border-radius: 20px; }
   .home-material-card:last-child { grid-column: 1 / -1; }
-  .home-material-card:last-child .home-material-thumbnail { height: 120px; }
+  .home-material-card:last-child .home-material-thumbnail { height: 144px; }
   .home-material-card h3 { font-size: 17px; }
-  .home-material-thumbnail { height: 96px; }
+  .home-material-thumbnail { height: 120px; }
   .home-material-description { font-size: 13px; }
   .home-material-dialog { padding: 16px; }
 }

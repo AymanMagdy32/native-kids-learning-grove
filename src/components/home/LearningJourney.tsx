@@ -64,7 +64,7 @@ export function LearningJourney() {
           <div>
             <p className="premium-eyebrow">خطوة صغيرة… تفتح كلام كتير</p>
             <h2 id="journey-title" className="mt-3">
-              ٢٠ وحدة. وأول مستويين في رحلته.
+              أول مستويين في رحلته.
             </h2>
           </div>
           <p>
