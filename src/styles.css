@@ -1575,7 +1575,7 @@
 
 /* Small, immediately discoverable material previews on the homepage. */
 .home-materials { padding-block: 56px; }
-.home-material-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 16px; }
+.home-material-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; }
 .home-material-card { --material-accent: var(--brand-blue); --material-ink: var(--primary); --material-tint: var(--accent); display: flex; flex-direction: column; min-width: 0; padding: 18px; border: 1px solid var(--border); border-top: 5px solid var(--material-accent); border-radius: 24px; background: linear-gradient(180deg,var(--material-tint),var(--card) 70%); }
 .home-material-card:nth-child(4n+2) { --material-accent: var(--coral-accent); --material-ink: var(--brand-coral-ink); --material-tint: var(--brand-coral-tint); }
 .home-material-card:nth-child(4n+3) { --material-accent: var(--yellow-accent); --material-ink: var(--brand-yellow-ink); --material-tint: var(--brand-yellow-tint); }
@@ -1601,13 +1601,11 @@
 .home-benefits-compact { padding-block: 48px; }
 .home-benefits-compact .premium-benefit { padding: 20px; }
 .home-benefits-compact .premium-benefit h3 { margin-top: 16px; font-size: 18px; }
-@media (max-width: 1023px) { .home-material-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media (max-width: 1023px) { .home-material-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 639px) {
   .home-materials { padding-block: 36px; }
   .home-material-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
   .home-material-card { padding: 14px 12px; border-radius: 20px; }
-  .home-material-card:last-child { grid-column: 1 / -1; }
-  .home-material-card:last-child .home-material-thumbnail { height: 144px; }
   .home-material-card h3 { font-size: 17px; }
   .home-material-thumbnail { height: 120px; }
   .home-material-description { font-size: 13px; }
@@ -1780,4 +1778,10 @@
 @media(max-width:767px) {
  .guide-showcase .guide-showcase-top { grid-template-columns:minmax(0,1fr); }
  .guide-pdf-card { width:100%; max-width:360px; margin-inline:auto; }
+}
+
+@media (min-width:1024px) {
+ .home-material-grid .home-material-card { padding:22px; }
+ .home-material-grid .home-material-card h3 { font-size:22px; }
+ .home-material-grid .home-material-thumbnail { height:170px; }
 }

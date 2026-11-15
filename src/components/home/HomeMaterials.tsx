@@ -115,7 +115,7 @@ export function HomeMaterials({ guideOnly = false }: { guideOnly?: boolean }) {
           </p>
         </div>}
         <div className={guideOnly ? "guide-pdf-card-grid" : "home-material-grid mt-8"}>
-          {(guideOnly ? samples.filter(sample => sample.id === "home-guide") : samples).map((sample, index) => {
+          {(samples.filter(sample => guideOnly ? sample.id === "home-guide" : sample.id !== "home-guide")).map((sample, index) => {
             const copy = homeCopy[sample.id]!;
             const Icon = sample.icon;
             return (
