@@ -1767,19 +1767,3 @@
  .guide-showcase .premium-guide-reassurance > div { display:block; }
  .guide-showcase .premium-guide-reassurance p { margin-top:12px; }
 }
-
-/* Keep the booklet in its material card, with the full guide still opening on tap. */
-.guide-showcase .guide-showcase-top { display:block; }
-.guide-mini-book, .guide-mini-page, .guide-mini-title { display:block; }
-.guide-mini-title { margin:14px 0 10px; font-size:22px; font-weight:700; }
-.guide-mini-progress { display:flex; align-items:center; gap:6px; color:#23752b; font-size:12px; font-weight:700; margin-top:12px; }
-.home-guide-mockup-preview { display:flex; position:relative; align-items:center; justify-content:center; min-height:290px; padding:34px 18px 24px; background:#fff6da; border-radius:18px; }
-.home-guide-mockup-preview .guide-mini-book { width:210px; max-width:calc(100% - 24px); margin:0; text-align:start; }
-.home-guide-mockup-preview .guide-mini-page { padding:14px 10px; }
-.home-guide-mockup-preview .guide-mini-title { font-size:18px; }
-.home-guide-mockup-preview .guide-mini-tags { font-size:8px; gap:2px; }
-.home-guide-mockup-preview .guide-mini-tags span { padding:4px; }
-.home-guide-mockup-preview .guide-free-seal { width:64px; height:64px; left:-18px; top:-22px; font-size:11px; }
-.home-guide-mockup-preview .guide-free-seal strong { font-size:18px; }
-.home-guide-mockup-preview .guide-mini-line { font-size:10px; padding:8px; }
-.home-guide-mockup-preview .guide-mini-progress { font-size:10px; }
