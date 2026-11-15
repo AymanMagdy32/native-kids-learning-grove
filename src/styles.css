@@ -1684,11 +1684,11 @@
 .premium-hero-parent .premium-hero-inner { position: relative; }
 .premium-hero-parent .premium-hero-copy { position: relative; z-index: 2; }
 .hero-parent-visual { position: absolute; z-index: 1; left: max(20px, calc((100vw - 1216px) / 2)); top: 34px; bottom: 0; width: min(44vw, 520px); scroll-margin-top: 112px; }
-.hero-parent-story { position: relative; z-index: 2; padding: 22px 24px; border: 1px solid #ffffff38; border-radius: 24px 24px 8px 24px; background: #ffffff14; color: #fff; }
+.hero-parent-story { position: absolute; bottom: calc(min(44vw, 520px) * .99); left: 24px; right: 0; z-index: 2; padding: 22px 24px; border: 1px solid #ffffff38; border-radius: 24px 24px 8px 24px; background: #ffffff14; color: #fff; }
 .hero-parent-eyebrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--yellow-accent); font-size: 12px; font-weight: 700; }
 .hero-parent-eyebrow > svg { flex: none; fill: var(--yellow-accent); }
 .hero-parent-wish { margin-top: 12px; font-family: var(--font-display); font-size: clamp(18px,1.7vw,23px); font-weight: 700; line-height: 1.9; color: #fff; }
-.hero-parent-figure { position: absolute; top: 205px; bottom: 0; left: 0; right: 0; margin: 0; }
+.hero-parent-figure { position: absolute; top: auto; bottom: 0; left: -28px; right: 28px; aspect-ratio: 768 / 754; margin: 0; }
 .hero-parent-figure img { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
 .hero-parent-sun { position: absolute; top: 6%; left: 2%; width: 200px; height: 200px; border-radius: 50%; background: var(--yellow-accent); }
 .hero-parent-leaf { position: absolute; right: 4%; top: 25%; width: 110px; height: 150px; border-radius: 100% 0 100% 0; background: var(--brand-green); transform: rotate(-20deg); }
@@ -1696,17 +1696,17 @@
   .hero-parent-visual { width: 41%; left: 16px; }
   .hero-parent-story { padding: 18px; }
   .hero-parent-wish { font-size: 18px; }
-  .hero-parent-figure { top: 250px; }
+  .hero-parent-story { bottom: calc(41vw * .99); }
   .hero-parent-sun { width: 150px; height: 150px; }
 }
 @media (max-width: 767px) {
   .premium-hero-parent .premium-hero-inner { padding-bottom: 380px; }
   .hero-parent-visual { top: auto; bottom: 0; left: 16px; right: 16px; width: auto; height: 350px; }
-  .hero-parent-story { position: absolute; top: 20px; right: 0; width: 54%; padding: 16px 14px; border-radius: 20px 20px 6px 20px; }
+  .hero-parent-story { position: absolute; top: 20px; bottom: auto; left: auto; right: 8px; width: 55%; padding: 16px 14px; border-radius: 20px 20px 6px 20px; }
   .hero-parent-eyebrow { font-size: 10px; gap: 6px; line-height: 1.8; }
   .hero-parent-eyebrow > svg { width: 16px; height: 16px; }
   .hero-parent-wish { margin-top: 8px; font-size: 16px; line-height: 1.85; }
-  .hero-parent-figure { top: auto; right: auto; left: -12px; bottom: 0; width: 57%; height: 310px; overflow: hidden; }
+  .hero-parent-figure { top: auto; right: auto; left: -18px; bottom: 0; width: 57%; height: 310px; overflow: hidden; }
   .hero-parent-figure img { object-fit: cover; }
   .hero-parent-sun { width: 140px; height: 140px; top: 5%; left: 0; }
   .hero-parent-leaf { width: 70px; height: 100px; right: 0; top: 36%; }
