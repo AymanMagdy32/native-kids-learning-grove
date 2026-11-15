@@ -85,7 +85,7 @@ function MaterialThumbnail({ sample }: { sample: MaterialSample }) {
     </span>
   );
 }
-export function HomeMaterials() {
+export function HomeMaterials({ guideOnly = false }: { guideOnly?: boolean }) {
   const lastTrigger = useRef<HTMLElement | null>(null);
   const [active, setActive] = useState<MaterialSample | null>(null);
   const [loading, setLoading] = useState(false);
@@ -97,12 +97,13 @@ export function HomeMaterials() {
   }
   return (
     <section
-      id="home-materials"
-      className="premium-section home-materials"
-      aria-labelledby="home-materials-title"
+      id={guideOnly ? undefined : "home-materials"}
+      className={guideOnly ? "home-materials guide-pdf-card" : "premium-section home-materials"}
+      aria-labelledby={guideOnly ? undefined : "home-materials-title"}
+      aria-label={guideOnly ? "نموذج دليل ولي الأمر PDF" : undefined}
     >
-      <div className="container-page">
-        <div className="premium-section-heading">
+      <div className={guideOnly ? "guide-pdf-card-inner" : "container-page"}>
+        {!guideOnly && <div className="premium-section-heading">
           <div>
             <p className="premium-eyebrow">شوفي بنفسك قبل ما تختاري</p>
             <h2 id="home-materials-title" className="mt-3">
@@ -112,9 +113,9 @@ export function HomeMaterials() {
           <p>
             نماذج حقيقية من المحتوى، من الحصة للتدريب في البيت. افتحي أي كارت وشوفي النموذج هنا.
           </p>
-        </div>
-        <div className="home-material-grid mt-8">
-          {samples.map((sample, index) => {
+        </div>}
+        <div className={guideOnly ? "guide-pdf-card-grid" : "home-material-grid mt-8"}>
+          {(guideOnly ? samples.filter(sample => sample.id === "home-guide") : samples).map((sample, index) => {
             const copy = homeCopy[sample.id]!;
             const Icon = sample.icon;
             return (

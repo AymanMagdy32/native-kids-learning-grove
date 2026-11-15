@@ -1767,3 +1767,17 @@
  .guide-showcase .premium-guide-reassurance > div { display:block; }
  .guide-showcase .premium-guide-reassurance p { margin-top:12px; }
 }
+
+/* Real PDF preview card beside the Parent Guide introduction. */
+.guide-showcase .guide-showcase-top { grid-template-columns:minmax(0,1fr) 300px; }
+.guide-pdf-card { min-width:0; }
+.guide-pdf-card .home-material-card { width:100%; padding:20px; }
+.guide-pdf-card .home-material-top { display:none; }
+.guide-pdf-card .home-material-card h3 { font-size:22px; }
+.guide-pdf-card .home-material-description { min-height:0; margin-bottom:14px; }
+.guide-pdf-card .home-material-thumbnail { height:180px; }
+.guide-pdf-card .home-material-open { margin-top:12px; }
+@media(max-width:767px) {
+ .guide-showcase .guide-showcase-top { grid-template-columns:minmax(0,1fr); }
+ .guide-pdf-card { width:100%; max-width:360px; margin-inline:auto; }
+}
