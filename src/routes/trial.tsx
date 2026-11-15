@@ -58,15 +58,34 @@ function TrialPage() {
   const [requestId, setRequestId] = useState<string | null>(null);
   const submission = useRef<{ id: string; payload: string } | null>(null);
   const inFlight = useRef(false);
+  const [checkingAvailability, setCheckingAvailability] = useState(true);
+  const availabilityAttempt = useRef(0);
+  async function checkAvailability() {
+    const attempt = ++availabilityAttempt.current;
+    setCheckingAvailability(true);
+    setSaveError("");
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    try {
+      const result = await Promise.race([
+        bookingAvailability(),
+        new Promise<never>((_, reject) => {
+          timer = setTimeout(() => reject(new Error("Availability timeout")), 12000);
+        }),
+      ]);
+      if (attempt !== availabilityAttempt.current) return;
+      setSavingEnabled(result.enabled);
+      setAvailabilityChecked(true);
+    } catch {
+      if (attempt !== availabilityAttempt.current) return;
+      setSaveError("مش قادرين نتصل بخدمة الحجز دلوقتي. بياناتك هتفضل موجودة؛ جرّب الاتصال تاني أو تواصل معانا على واتساب.");
+    } finally {
+      clearTimeout(timer);
+      if (attempt === availabilityAttempt.current) setCheckingAvailability(false);
+    }
+  }
   useEffect(() => {
-    bookingAvailability()
-      .then((result) => {
-        setSavingEnabled(result.enabled);
-        setAvailabilityChecked(true);
-      })
-      .catch(() => {
-        setSaveError("تعذّر التحقق من خدمة الحجز. حدّث الصفحة وجرب تاني.");
-      });
+    void checkAvailability();
+    return () => { availabilityAttempt.current++; };
   }, []);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -293,6 +312,18 @@ function TrialPage() {
               {saveError}
             </p>
           )}
+          {!availabilityChecked && !checkingAvailability && (
+            <div className="flex flex-wrap gap-3">
+              <Button type="button" onClick={() => void checkAvailability()}>
+                جرّب الاتصال تاني
+              </Button>
+              <Button asChild variant="outline">
+                <a href={whatsappLink("مرحبًا، عايز أحجز تجربة وتحديد مستوى لطفلي، لكن فورم الموقع مش شغّال عندي.")} target="_blank" rel="noopener noreferrer">
+                  تواصل معانا على واتساب
+                </a>
+              </Button>
+            </div>
+          )}
           <Button
             type="submit"
             size="lg"
@@ -302,7 +333,7 @@ function TrialPage() {
             {submitting
               ? "بنحفظ طلبك…"
               : !availabilityChecked
-                ? "لحظة واحدة…"
+                ? checkingAvailability ? "لحظة واحدة…" : "خدمة الحجز غير متاحة دلوقتي"
                 : savingEnabled
                   ? "سجّل طلب التجربة وتحديد المستوى"
                   : "جهّز طلب الحجز على واتساب"}

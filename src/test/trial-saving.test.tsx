@@ -47,6 +47,17 @@ describe("Saving trial requests before WhatsApp", () => {
     cleanup();
     vi.unstubAllGlobals();
   });
+  it("lets parents retry a failed availability check without losing their details", async () => {
+    mocks.availability.mockRejectedValueOnce(new Error("offline"));
+    render(<Page />);
+    await screen.findByRole("button", { name: "جرّب الاتصال تاني" });
+    fireEvent.change(screen.getByLabelText("اسم ولي الأمر *"), { target: { value: "Test Parent" } });
+    expect(screen.queryByText("طلبك اتسجل بنجاح")).not.toBeInTheDocument();
+    expect(mocks.save).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole("button", { name: "جرّب الاتصال تاني" }));
+    await screen.findByRole("button", { name: "سجّل طلب التجربة وتحديد المستوى" });
+    expect(screen.getByLabelText("اسم ولي الأمر *")).toHaveValue("Test Parent");
+  });
   it("preserves a failed request and retries with the same ID", async () => {
     mocks.save
       .mockRejectedValueOnce(new Error("offline"))
