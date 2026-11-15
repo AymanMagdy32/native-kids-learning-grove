@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 
 const NAV = [
-  { to: "/", hash: "courses", label: "المستويات" },
+  { to: "/", hash: "teaching", label: "المستويات" },
   { to: "/samples", hash: "", label: "شوف نماذج من المحتوى" },
   { to: "/faq", hash: "", label: "أسئلة الأهالي" },
 ] as const;

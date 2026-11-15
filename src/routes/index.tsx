@@ -6,7 +6,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, AudioLines, BookOpen, Check, Clock3, Gift, ListChecks, LineChart, MessageCircle, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import { LEVELS } from "@/components/home/learning-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -109,21 +108,6 @@ function HomePage() {
             <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
               {BENEFITS.map(({ icon: Icon, title, body }, i) => <article key={title} className="premium-benefit premium-reveal"><div className="flex items-center justify-between"><span className="premium-icon"><Icon className="size-6" /></span><span className="text-xs text-muted-foreground" dir="ltr">0{i + 1}</span></div><h3 className="mt-6 text-xl">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{body}</p></article>)}
             </div>
-          </div>
-        </section>
-
-        <section id="courses" className="premium-section premium-soft-band">
-          <div className="container-page">
-            <div className="premium-section-heading"><div><p className="premium-eyebrow">المنهج · من أول كلمة لأفكار أكبر</p><h2 className="mt-3">بداية تناسبه.<br />ومسار يكمل معاه.</h2></div></div>
-            <div className="mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {LEVELS.map((level) => <article className="premium-course premium-reveal" key={level.n}>
-                <div className="flex items-center justify-between"><span className="premium-level-number" dir="ltr">0{level.n}</span><span className="premium-cefr" dir="ltr">{level.cefr}</span></div>
-                <h3 className="mt-5 text-xl">{level.titleAr}</h3><p className="mt-1 text-xs text-muted-foreground" dir="ltr">{level.titleEn}</p>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">{level.outcome}</p>
-                <details className="premium-course-details"><summary>تفاصيل المستوى <ArrowLeft className="size-4" /></summary><p className="mt-4 text-sm leading-7 text-muted-foreground">{level.desc}</p><h4 className="mt-5 text-sm">موضوعات المستوى</h4><p className="mt-2 text-sm leading-7 text-muted-foreground">{level.topics.join(" · ")}</p><h4 className="mt-5 text-sm">مهارات بنتمرّن عليها</h4><ul className="mt-3 space-y-3">{level.skills.map(skill => <li key={skill} className="flex items-start gap-2 text-sm leading-7 text-muted-foreground"><Check className="mt-1 size-4 text-primary" /><span dir="auto">{skill}</span></li>)}</ul></details>
-              </article>)}
-            </div>
-            <div className="mt-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center"><p className="text-sm text-muted-foreground">مش متأكد طفلك يبدأ منين؟ بنحدد المستوى معك في التجربة.</p><Button asChild variant="link"><Link to="/samples">شوف المنهج وطريقة الحصة <ArrowLeft /></Link></Button></div>
           </div>
         </section>
 
