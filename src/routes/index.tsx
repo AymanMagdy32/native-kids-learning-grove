@@ -1,4 +1,4 @@
-import { ParentVision } from "@/components/home/ParentVision";
+import { HeroParentVisual } from "@/components/home/HeroParentVisual";
 import { LearningJourney } from "@/components/home/LearningJourney";
 import { HomeMaterials } from "@/components/home/HomeMaterials";
 /* Palette: logo royal blue, yellow, coral, and green. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
@@ -7,7 +7,6 @@ import { ArrowLeft, AudioLines, BookOpen, Check, Clock3, Gift, ListChecks, LineC
 import { Button } from "@/components/ui/button";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { LEVELS } from "@/components/home/learning-data";
-import learningPhoto from "@/assets/native-kid-learning.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -44,8 +43,8 @@ function HomePage() {
   return (
     <SiteLayout>
       <div className="premium-home">
-        <section className="premium-hero">
-          <img src={learningPhoto} alt="طفلان يستمتعان بالتعلّم معًا على اللابتوب" width={1920} height={1024} fetchPriority="high" className="premium-hero-photo" />
+        <section className="premium-hero premium-hero-parent">
+          <HeroParentVisual />
           <div className="container-page premium-hero-inner">
             <div className="premium-hero-copy">
               <p className="premium-eyebrow"><span /> حصص لطفلك. وخطوات ليكي في البيت.</p>
@@ -67,7 +66,6 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <div className="premium-photo-label"><span className="premium-live-dot" /><span>في الحصة يتعلّم. وفي البيت تتمرّنوا سوا.</span></div>
         </section>
 
         <section aria-label="رحلة طفلك بالأرقام" className="premium-trust">
@@ -80,7 +78,6 @@ function HomePage() {
 
         <LearningJourney />
 
-        <ParentVision />
 
         <section id="parent-guide" aria-labelledby="parent-guide-title" className="premium-section premium-guide-section">
           <div className="container-page">
