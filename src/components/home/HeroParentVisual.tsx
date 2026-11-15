@@ -16,17 +16,16 @@ export function HeroParentVisual() {
         <span className="hero-parent-sun" aria-hidden="true" />
         <span className="hero-parent-leaf" aria-hidden="true" />
         <img
-          src="/images/native-kid-parent-768.webp"
-          srcSet="/images/native-kid-parent-480.webp 480w, /images/native-kid-parent-768.webp 768w"
+          src="/images/native-kid-thinking-mother-768.webp"
+          srcSet="/images/native-kid-thinking-mother-480.webp 480w, /images/native-kid-thinking-mother-768.webp 768w"
           sizes="(max-width: 767px) 55vw, 44vw"
           width={768}
-          height={840}
+          height={754}
           loading="eager"
           fetchPriority="high"
           decoding="async"
-          alt="صورة توضيحية لأم محجبة مبتسمة"
+          alt="أم محجبة بتفكّر بابتسامة في تعلّم ابنها"
         />
-        <figcaption>صورة توضيحية</figcaption>
       </figure>
     </div>
   );
