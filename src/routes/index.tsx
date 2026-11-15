@@ -133,9 +133,6 @@ function HomePage() {
 
 
 
-        <section className="premium-section">
-          <div className="container-page premium-parent-note"><div className="premium-parent-heading"><ShieldCheck className="size-8 text-primary" /><p className="premium-eyebrow mt-4">لأن قرارك مهم</p><h2 className="mt-3">خليك مطمّن.<br />وخليك جزء من الرحلة.</h2></div><div className="space-y-7">{[{ title: "تجربة قبل الاشتراك", body: "طفلك يتعرّف على طريقة التعلّم، وأنت تشوف هل هي مناسبة له." }, { title: "متابعة مش مجرد حضور", body: "تعرف اللي اتعلّمه طفلك، والمهارات اللي بنشتغل عليها، من خلال متابعة شهرية." }, { title: "إجابات واضحة لأسئلتك", body: "فريقنا يساعدك تختار المستوى وشكل الحصص المناسب قبل البداية." }].map(item => <div key={item.title} className="flex gap-4"><Check className="mt-1 size-5 text-primary" /><div><h3 className="text-lg">{item.title}</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">{item.body}</p></div></div>)}<Button asChild variant="link" className="px-0"><Link to="/faq">أسئلة أولياء الأمور <ArrowLeft /></Link></Button></div></div>
-        </section>
 
         <section id="contact" className="premium-final">
           <div className="container-page flex flex-col items-start justify-between gap-8 py-16 md:flex-row md:items-center"><div><p className="text-sm text-brand-dark-foreground/75">أول خطوة صغيرة. بداية لحاجة كبيرة.</p><h2 className="mt-3">خلّي الإنجليزي جزء من عالمه.</h2><p className="mt-4 text-sm leading-7 text-brand-dark-foreground/75">احجز تجربة وحدّد مستوى طفلك، واتعرّف على البداية المناسبة لطفلك.</p><p className="mt-3 text-sm leading-7 text-brand-dark-foreground/75">احجز حصة تجريبية وتحديد مستوى، وابنك وإنت تبدأوا سوا.</p></div><Button asChild size="lg" variant="sunshine" className="h-auto min-h-12 whitespace-normal text-center"><Link to="/trial">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></Link></Button></div>
