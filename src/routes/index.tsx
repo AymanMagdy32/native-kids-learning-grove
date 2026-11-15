@@ -85,16 +85,7 @@ function HomePage() {
               <h2 id="parent-guide-title" className="mt-4"><span className="guide-showcase-highlight">كورس مجاني للأهل</span>ساعد ابنك من البيت… حتى لو إنجليزيتك مش قوية</h2>
               <p className="mt-4 max-w-3xl text-sm leading-8 text-muted-foreground">مع كل كورس بتستلم «دليل البيت»: دليل بالعربي والإنجليزي بعد كل وحدة، يخليك تفهم ابنك اتعلم إيه وتساعده بثقة، من غير ما تحتاج تكون متقن للإنجليزي.</p>
             </div>
-            <div className="guide-mini-book" aria-label="نموذج من دليل البيت: التعارف">
-              <span className="guide-free-seal">للأهل<strong>مجانًا</strong></span>
-              <div className="guide-mini-page">
-                <div className="guide-mini-tags"><span dir="ltr">Parent Guide · Unit 1</span><span>٣ دقائق</span></div>
-                <h3 dir="ltr">Hello! My name is…</h3>
-                <div className="guide-mini-line"><span>هالّو!</span><b dir="ltr">Hello!</b></div>
-                <div className="guide-mini-line"><span>ماي نيم إز ____</span><b dir="ltr">My name is ____.</b></div>
-                <p><Check className="size-4" /> هل يستطيع طفلك؟ ٢ من ٣</p>
-              </div>
-            </div></div>
+            </div>
             <div className="premium-guide-layout mt-10">
               <div className="premium-guide-benefits-column">
                 <div className="guide-showcase-cards">

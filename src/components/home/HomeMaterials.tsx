@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { ParentGuideMockup } from "./ParentGuideMockup";
 import { REAL_SAMPLES } from "./sample-data";
 import type { MaterialSample } from "./sample-data";
 
@@ -136,7 +137,9 @@ export function HomeMaterials() {
                   onClick={() => open(sample)}
                   aria-label={`عايني ${copy.title}`}
                 >
-                  <MaterialThumbnail sample={sample} />
+                  {sample.id === "home-guide" ? (
+                    <span className="home-guide-mockup-preview"><ParentGuideMockup /><span className="home-material-preview-badge"><Eye className="size-3.5" /> معاينة</span></span>
+                  ) : <MaterialThumbnail sample={sample} />}
                 </button>
                 <Button
                   type="button"
