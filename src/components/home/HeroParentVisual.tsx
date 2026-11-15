@@ -4,9 +4,9 @@ export function HeroParentVisual() {
   return (
     <div id="parent-vision" className="hero-parent-visual" aria-label="حلمك لطفلك">
       <div className="hero-parent-story">
-        <p className="hero-parent-eyebrow">
-          حلمك ليه… هو نقطة البداية <Quote aria-hidden="true" className="size-5" />
-        </p>
+        <div className="hero-parent-eyebrow" aria-hidden="true">
+          <Quote className="size-5" />
+        </div>
         <p className="hero-parent-wish">
           نفسي ابني يفهم الإنجليزي ويتكلّم بيه بثقة… يسأل، ويرد، ويحكي عن يومه، مش يحفظ كلمات
           وينساها.
