@@ -1723,3 +1723,47 @@
   .hero-parent-story::after { bottom: 24px; left: -23px; }
   .hero-parent-story::before { bottom: 12px; left: -39px; }
 }
+
+/* Parent Guide: compact booklet and four brand-colour benefits. */
+.guide-showcase .guide-showcase-top { display:grid; grid-template-columns:minmax(0, 1fr) 280px; align-items:center; gap:40px; }
+.guide-showcase .premium-guide-heading { max-width:none; }
+.guide-showcase .premium-guide-heading h2 { font-size:clamp(28px, 3.2vw, 44px); line-height:1.45; }
+.guide-showcase-highlight { display:table; padding:0 12px; margin-bottom:8px; border-radius:14px; background:#ffdb4d; color:#102e5a; }
+.guide-mini-book { position:relative; width:250px; max-width:90%; margin:20px auto; transform:rotate(-4deg); isolation:isolate; }
+.guide-mini-book::before { content:""; position:absolute; inset:24px -15px -15px 15px; background:#1d4ba5; border-radius:24px; transform:rotate(12deg); z-index:-1; }
+.guide-mini-page { padding:18px 15px; border:1px solid #e5ddc2; border-radius:24px; background:white; color:#152f55; box-shadow:0 10px 24px #15356118; }
+.guide-mini-tags { display:flex; justify-content:space-between; gap:8px; font-size:10px; font-weight:700; }
+.guide-mini-tags span { background:#e8efff; padding:4px 8px; border-radius:20px; }
+.guide-mini-tags span:last-child { background:#fff3c5; }
+.guide-mini-page h3 { margin:14px 0 10px; font-size:22px; }
+.guide-mini-line { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px; background:#fff6d9; border-radius:12px; margin-top:8px; font-size:12px; }
+.guide-mini-page p { display:flex; align-items:center; gap:6px; color:#23752b; font-size:12px; font-weight:700; margin-top:12px; }
+.guide-free-seal { position:absolute; top:-24px; left:-22px; display:grid; place-content:center; text-align:center; width:84px; height:84px; background:#ffb800; outline:2px dashed #153561; outline-offset:-9px; border-radius:50%; color:#153561; font-size:13px; font-weight:700; transform:rotate(-12deg); box-shadow:0 5px 12px #15356120; }
+.guide-free-seal strong { font-size:22px; }
+.guide-showcase .premium-guide-layout { max-width:none; margin-top:32px; }
+.guide-showcase-cards { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.guide-showcase .premium-guide-benefit { border:0; border-radius:24px; padding:20px; gap:12px; background:#1d4ba5; color:white; }
+.guide-showcase .premium-guide-benefit:nth-child(2) { background:#bd3828; }
+.guide-showcase .premium-guide-benefit:nth-child(3) { background:#f4b900; color:#142e55; }
+.guide-showcase .premium-guide-benefit:nth-child(4) { background:#2a7a2e; }
+.guide-showcase .premium-guide-benefit .premium-icon { width:44px; height:44px; border-radius:50%; background:white; color:var(--panel-ink); }
+.guide-showcase .premium-guide-benefit h3 { font-size:20px; line-height:1.4; color:inherit; }
+.guide-showcase .premium-guide-benefit p { color:inherit; font-size:14px; line-height:1.7; }
+.guide-showcase .premium-guide-reassurance { border:1px solid #e8dfc7; }
+.guide-showcase .premium-guide-reassurance > div { display:flex; align-items:center; gap:24px; }
+.guide-showcase .premium-guide-reassurance h3 { flex-shrink:0; font-size:20px; }
+.guide-showcase .premium-guide-reassurance p { margin-top:0; }
+@media(max-width:1023px) {
+ .guide-showcase .guide-showcase-top { grid-template-columns:minmax(0,1fr) 230px; gap:24px; }
+ .guide-showcase-cards { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .guide-mini-book { width:220px; }
+}
+@media(max-width:639px) {
+ .guide-showcase .guide-showcase-top { grid-template-columns:minmax(0,1fr); gap:28px; }
+ .guide-showcase .premium-guide-heading h2 { font-size:29px; }
+ .guide-mini-book { width:240px; margin:12px auto 20px; }
+ .guide-showcase-cards { grid-template-columns:minmax(0,1fr); gap:12px; }
+ .guide-showcase .premium-guide-benefit { padding:20px; }
+ .guide-showcase .premium-guide-reassurance > div { display:block; }
+ .guide-showcase .premium-guide-reassurance p { margin-top:12px; }
+}

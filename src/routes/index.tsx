@@ -78,16 +78,26 @@ function HomePage() {
         <LearningJourney />
 
 
-        <section id="parent-guide" aria-labelledby="parent-guide-title" className="premium-section premium-guide-section">
+        <section id="parent-guide" aria-labelledby="parent-guide-title" className="premium-section premium-guide-section guide-showcase">
           <div className="container-page">
-            <div className="premium-guide-heading premium-reveal">
+            <div className="guide-showcase-top"><div className="premium-guide-heading premium-reveal">
               <p className="premium-guide-eyebrow"><BookOpen className="size-4" /> دليل البيت · معاكي طول الكورس</p>
-              <h2 id="parent-guide-title" className="mt-4">ساعد ابنك من البيت… حتى لو إنجليزيتك مش قوية</h2>
+              <h2 id="parent-guide-title" className="mt-4"><span className="guide-showcase-highlight">كورس مجاني للأهل</span>ساعد ابنك من البيت… حتى لو إنجليزيتك مش قوية</h2>
               <p className="mt-4 max-w-3xl text-sm leading-8 text-muted-foreground">مع كل كورس بتستلم «دليل البيت»: دليل بالعربي والإنجليزي بعد كل وحدة، يخليك تفهم ابنك اتعلم إيه وتساعده بثقة، من غير ما تحتاج تكون متقن للإنجليزي.</p>
             </div>
+            <div className="guide-mini-book" aria-label="نموذج من دليل البيت: التعارف">
+              <span className="guide-free-seal">للأهل<strong>مجانًا</strong></span>
+              <div className="guide-mini-page">
+                <div className="guide-mini-tags"><span dir="ltr">Parent Guide · Unit 1</span><span>٣ دقائق</span></div>
+                <h3 dir="ltr">Hello! My name is…</h3>
+                <div className="guide-mini-line"><span>هالّو!</span><b dir="ltr">Hello!</b></div>
+                <div className="guide-mini-line"><span>ماي نيم إز ____</span><b dir="ltr">My name is ____.</b></div>
+                <p><Check className="size-4" /> هل يستطيع طفلك؟ ٢ من ٣</p>
+              </div>
+            </div></div>
             <div className="premium-guide-layout mt-10">
               <div className="premium-guide-benefits-column">
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="guide-showcase-cards">
                 {PARENT_GUIDE_BENEFITS.map(({ icon: Icon, title, body }) => (
                   <article key={title} className="premium-guide-benefit premium-reveal">
                     <span className="premium-icon"><Icon className="size-5" /></span>
