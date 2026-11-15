@@ -1678,3 +1678,42 @@
 }
 @media (prefers-reduced-motion: reduce) { .journey-unit-number { transition: none; } }
 @media (max-width: 639px) { .journey-scroll-controls { margin-inline-start: auto; } }
+
+/* Original parent aspiration feature; artwork is illustrative, not a customer review. */
+.parent-vision { padding-block: 64px; background: var(--background); }
+.parent-vision-card { position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 20px; overflow: hidden; border-radius: 32px; background: var(--brand-blue); color: #fff; }
+.parent-vision-copy { position: relative; z-index: 2; padding: clamp(28px,4vw,52px); padding-inline-end: 0; }
+.parent-vision-eyebrow { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #f8e7a0; }
+.parent-vision-eyebrow > span { display: block; width: 9px; height: 9px; flex: none; border-radius: 50%; background: var(--yellow-accent); }
+.parent-vision-copy h2 { margin-top: 18px; font-size: clamp(28px,3vw,40px); line-height: 1.65; color: #fff; }
+.parent-vision-copy h2 > span { color: var(--yellow-accent); }
+.parent-vision-message { position: relative; margin-top: 24px; padding: 24px; padding-top: 54px; border: 1px solid #ffffff30; border-radius: 24px 24px 8px 24px; background: #ffffff12; }
+.parent-vision-quote { position: absolute; top: 18px; inset-inline-start: 24px; width: 30px; height: 30px; color: var(--yellow-accent); fill: var(--yellow-accent); stroke-width: 1; }
+.parent-vision-wish { font-family: var(--font-display); font-size: clamp(20px,2vw,26px); font-weight: 700; line-height: 1.9; color: #fff; }
+.parent-vision-message-label { margin-top: 14px; font-size: 12px; line-height: 1.9; color: #e6eeff; }
+.parent-vision-support { margin-top: 20px; font-size: 14px; line-height: 2; color: #eef3ff; }
+.parent-vision-link { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; margin-top: 10px; padding-block: 8px; color: var(--yellow-accent); font-size: 14px; font-weight: 700; text-underline-offset: 5px; }
+.parent-vision-link:hover { text-decoration: underline; }
+.parent-vision-link:focus-visible { outline: 2px solid var(--yellow-accent); outline-offset: 4px; border-radius: 8px; }
+.parent-vision-portrait { position: relative; min-height: 570px; align-self: stretch; margin: 0; }
+.parent-vision-portrait img { position: absolute; z-index: 1; bottom: 0; inset-inline: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+.parent-vision-sun { position: absolute; top: 9%; left: 2%; width: 220px; height: 220px; border-radius: 50%; background: var(--yellow-accent); }
+.parent-vision-leaf { position: absolute; right: 8%; top: 30%; width: 130px; height: 180px; border-radius: 100% 0 100% 0; background: var(--brand-green); transform: rotate(-20deg); }
+.parent-vision-portrait figcaption { position: absolute; z-index: 2; bottom: 12px; inset-inline: 12px; width: fit-content; max-width: calc(100% - 24px); margin-inline: auto; padding: 5px 10px; border-radius: 999px; background: #093574e8; color: #fff; font-size: 10px; line-height: 1.8; text-align: center; }
+@media (max-width: 767px) {
+  .parent-vision { padding-block: 36px; }
+  .parent-vision-card { grid-template-columns: 1fr; gap: 0; border-radius: 24px; }
+  .parent-vision-copy { padding: 26px 22px 12px; }
+  .parent-vision-copy h2 { font-size: 30px; line-height: 1.6; }
+  .parent-vision-message { margin-top: 20px; padding-inline: 18px; padding-bottom: 20px; }
+  .parent-vision-wish { font-size: 22px; }
+  .parent-vision-portrait { min-height: 350px; height: 350px; width: min(100%,400px); justify-self: center; }
+  .parent-vision-sun { width: 180px; height: 180px; top: 7%; left: 8%; }
+  .parent-vision-leaf { width: 100px; height: 130px; top: 34%; right: 10%; }
+}
+@media (max-width: 359px) {
+  .parent-vision-copy { padding-inline: 18px; }
+  .parent-vision-copy h2 { font-size: 27px; }
+  .parent-vision-wish { font-size: 20px; }
+  .parent-vision-portrait { height: 310px; min-height: 310px; }
+}

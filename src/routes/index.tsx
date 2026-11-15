@@ -1,3 +1,4 @@
+import { ParentVision } from "@/components/home/ParentVision";
 import { LearningJourney } from "@/components/home/LearningJourney";
 import { HomeMaterials } from "@/components/home/HomeMaterials";
 /* Palette: logo royal blue, yellow, coral, and green. Fonts: Baloo Bhaijaan 2 / Readex Pro. */
@@ -78,6 +79,8 @@ function HomePage() {
         <HomeMaterials />
 
         <LearningJourney />
+
+        <ParentVision />
 
         <section id="parent-guide" aria-labelledby="parent-guide-title" className="premium-section premium-guide-section">
           <div className="container-page">
