@@ -14,7 +14,7 @@ function ContactPage() {
     <div className="container-page py-12">
       <section className="surface-card mx-auto max-w-2xl p-6 sm:p-10" aria-labelledby="contact-team-title">
         <MessageCircle className="size-12 text-primary" aria-hidden="true" />
-        <h2 id="contact-team-title" className="mt-5 text-2xl">كلّمنا… ونرتّبها سوا</h2>
+        <h2 id="contact-team-title" className="mt-5 text-2xl">تواصل معانا وحدّد البداية المناسبة لطفلك</h2>
         <ul className="my-6 space-y-4 text-sm leading-7">{["احكيلنا سن طفلك وخبرته مع الإنجليزي.", "نساعدك تختار الجروب أو البرايفت حسب احتياجه.", "نعرفك التفاصيل والمواعيد ونرتّب معاك الخطوة الجاية."].map(text => <li key={text} className="flex gap-3"><Check className="mt-1 size-5 shrink-0 text-primary" /><span>{text}</span></li>)}</ul>
         <Button asChild size="lg" variant="sunshine" className="h-auto min-h-12 w-full whitespace-normal"><a href={bookingWhatsAppLink()} target="_blank" rel="noopener noreferrer">تواصل معانا على واتساب <MessageCircle className="size-5" /></a></Button>
         <Button asChild variant="link" className="mt-4"><Link to="/samples">شوف نماذج المحتوى <ArrowLeft className="size-4" /></Link></Button>
