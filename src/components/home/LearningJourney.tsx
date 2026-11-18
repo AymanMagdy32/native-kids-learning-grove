@@ -1,3 +1,4 @@
+import { bookingWhatsAppLink } from "@/lib/contact";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Flag, MoveHorizontal } from "lucide-react";
@@ -158,9 +159,9 @@ export function LearningJourney() {
                 <h3>والرحلة لسه مكملة…</h3>
                 <p>اكتشف باقي المستويات خطوة بخطوة خلال الكورس.</p>
                 <Button asChild variant="outline">
-                  <Link to="/trial">
+                  <a href={bookingWhatsAppLink()} target="_blank" rel="noopener noreferrer">
                     اعرف البداية المناسبة لطفلك <ArrowLeft className="size-4" />
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </aside>

@@ -25,8 +25,8 @@ npm i
 npm run dev
 ```
 
-## Trial requests and staff pipeline
+## Booking and contact
 
-The trial form supports database-backed saving and a protected staff dashboard at `/staff`.
-Activation requires the academy Supabase migration, approved staff accounts, and server runtime settings.
-See [request pipeline setup](docs/request-pipeline-setup.md). Until configured, the existing WhatsApp flow remains available and does not claim that a request has been saved.
+Booking buttons open WhatsApp directly. The contact number and message builders live in `src/lib/contact.ts`.
+`/trial` is a contact page with no form or database calls; retired staff URLs redirect there.
+No database environment variables are required. Existing Supabase data is unchanged.

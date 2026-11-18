@@ -4,10 +4,10 @@ import { HomeMaterials } from "./HomeMaterials";
 import { REAL_SAMPLES } from "./sample-data";
 afterEach(cleanup);
 describe("Homepage material previews", () => {
-  it("shows all five real materials including Parent Guide without loading embedded viewers initially", () => {
+  it("shows four materials and keeps the Parent Guide in its separate section", () => {
     const { container } = render(<HomeMaterials />);
-    expect(container.querySelectorAll(".home-material-card")).toHaveLength(5);
-    expect(screen.getByRole("heading", { name: "دليل ولي الأمر" })).toBeInTheDocument();
+    expect(container.querySelectorAll(".home-material-card")).toHaveLength(4);
+    expect(screen.queryByRole("heading", { name: "دليل ولي الأمر" })).not.toBeInTheDocument();
     expect(container.querySelector("iframe")).toBeNull();
   });
   it("opens the chosen real sample in the page and keeps a safe external fallback", async () => {

@@ -1,3 +1,4 @@
+import { bookingWhatsAppLink } from "@/lib/contact";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
@@ -22,9 +23,9 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link to="/trial" className="hover:text-brand-dark-foreground">
+              <a href={bookingWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="hover:text-brand-dark-foreground">
                 حصة تجريبية وتحديد مستوى
-              </Link>
+              </a>
             </li>
             <li>
               <Link to="/faq" className="hover:text-brand-dark-foreground">

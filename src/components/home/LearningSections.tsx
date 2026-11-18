@@ -1,3 +1,4 @@
+import { bookingWhatsAppLink } from "@/lib/contact";
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
@@ -604,10 +605,10 @@ export function ProgramComparison() {
           </div>
           <div className="flex flex-wrap gap-3">
             <Button asChild size="lg">
-              <Link to="/trial">احجز حصة تجريبية</Link>
+              <a href={bookingWhatsAppLink()} target="_blank" rel="noopener noreferrer">احجز حصة تجريبية</a>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link to="/trial">احجز حصة تجريبية</Link>
+              <a href={bookingWhatsAppLink()} target="_blank" rel="noopener noreferrer">احجز حصة تجريبية</a>
             </Button>
           </div>
         </div>
@@ -640,7 +641,7 @@ export function FinalParentCta() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Button asChild size="lg" variant="secondary">
-              <Link to="/trial">احجز حصة تجريبية</Link>
+              <a href={bookingWhatsAppLink()} target="_blank" rel="noopener noreferrer">احجز حصة تجريبية</a>
             </Button>
             <Button asChild size="lg" variant="outline">
               <Link to="/faq">تواصل معنا</Link>

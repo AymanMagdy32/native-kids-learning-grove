@@ -1,3 +1,4 @@
+import { bookingWhatsAppLink } from "@/lib/contact";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Accordion,
@@ -20,7 +21,7 @@ const FAQS = [
   },
   {
     q: "إزاي أحجز تجربة وأحدّد مستوى طفلي؟",
-    a: "املأ نموذج الحجز، وفريقنا هيتواصل معاك يوضح تفاصيل التجربة وتحديد المستوى قبل تأكيد الميعاد.",
+    a: "كلّمنا على واتساب، وفريقنا هيوضح لك تفاصيل التجربة وتحديد المستوى والمواعيد المتاحة قبل تأكيد الميعاد.",
   },
   {
     q: "ما هي مدة الحصة وعددها أسبوعيًا؟",
@@ -106,7 +107,7 @@ function FaqPage() {
             احجز تجربة وحدّد مستوى طفلك وفريقنا هيتواصل معك ويجاوب على كل أسئلتك.
           </p>
           <Button asChild size="lg" className="mt-5 w-full h-auto min-h-12 whitespace-normal text-center">
-            <Link to="/trial">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></Link>
+            <a href={bookingWhatsAppLink()} target="_blank" rel="noopener noreferrer">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></a>
           </Button>
           <div className="mt-6 border-t border-border pt-5"><BookOpen className="size-5 text-primary" /><h3 className="mt-2 text-base">حابب تعرف المنهج؟</h3><p className="mt-2 text-sm leading-7 text-muted-foreground">شوف موضوعات ومهارات كل مستوى، ونماذج من مواد الحصص.</p><Button asChild variant="link" className="mt-2 px-0"><Link to="/samples">استكشف المنهج <ArrowLeft /></Link></Button></div>
         </aside>

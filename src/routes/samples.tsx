@@ -1,3 +1,4 @@
+import { bookingWhatsAppLink } from "@/lib/contact";
 import { REAL_SAMPLES } from "@/components/home/sample-data";
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -384,7 +385,7 @@ function SamplesPage() {
         <PhonicsJourney />
 
       </div>
-      <section className="bg-accent py-10"><div className="container-page flex flex-wrap items-center justify-between gap-5"><div><h2 className="text-2xl">خلي طفلك يجرّب بنفسه</h2><p className="mt-2 text-sm leading-7 text-muted-foreground">حصة تجريبية وتحديد مستوى تساعدك تشوف الطريقة قبل ما تقرر.</p></div><Button asChild size="lg" className="h-auto min-h-12 whitespace-normal text-center"><Link to="/trial">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></Link></Button></div></section>
+      <section className="bg-accent py-10"><div className="container-page flex flex-wrap items-center justify-between gap-5"><div><h2 className="text-2xl">خلي طفلك يجرّب بنفسه</h2><p className="mt-2 text-sm leading-7 text-muted-foreground">حصة تجريبية وتحديد مستوى تساعدك تشوف الطريقة قبل ما تقرر.</p></div><Button asChild size="lg" className="h-auto min-h-12 whitespace-normal text-center"><a href={bookingWhatsAppLink()} target="_blank" rel="noopener noreferrer">احجز تجربة وحدّد مستوى طفلك <ArrowLeft /></a></Button></div></section>
     </SiteLayout>
   );
 }
