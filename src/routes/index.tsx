@@ -1,3 +1,4 @@
+import { ProgramOptions } from "@/components/home/ProgramOptions";
 import { HeroParentVisual } from "@/components/home/HeroParentVisual";
 import { LearningJourney } from "@/components/home/LearningJourney";
 import { HomeMaterials } from "@/components/home/HomeMaterials";
@@ -111,6 +112,8 @@ function HomePage() {
             </div>
           </div>
         </section>
+
+        <ProgramOptions />
 
         <section className="premium-section" id="start">
           <div className="container-page"><p className="premium-eyebrow">بداية سهلة، من غير حيرة</p><h2 className="mt-3">رحلته تبدأ بـ 3 خطوات.</h2><ol className="mt-12 grid gap-8 md:grid-cols-3">{STEPS.map(({ n, title, body }) => <li key={n} className="premium-step"><span dir="ltr">{n}</span><h3 className="mt-5 text-xl">{title}</h3><p className="mt-3 max-w-sm text-sm leading-7 text-muted-foreground">{body}</p></li>)}</ol></div>

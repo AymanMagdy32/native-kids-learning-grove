@@ -1,3 +1,4 @@
+import { PROGRAMS } from "@/components/home/ProgramOptions";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
@@ -52,6 +53,11 @@ function buildWhatsAppLink(data: z.infer<typeof schema>) {
 }
 
 function TrialPage() {
+  const [program, setProgram] = useState<"group" | "private" | "">("");
+  useEffect(() => {
+    const choice = new URLSearchParams(window.location.search).get("program");
+    if (choice === "group" || choice === "private") setProgram(choice);
+  }, []);
   const [savingEnabled, setSavingEnabled] = useState(false);
   const [availabilityChecked, setAvailabilityChecked] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -104,7 +110,7 @@ function TrialPage() {
       child_age: fd.get("child_age"),
       current_level: fd.get("current_level") || undefined,
       preferred_contact: contact,
-      note: fd.get("note") || undefined,
+      note: [program ? `نوع الحصص المطلوب: ${program === "group" ? "جروب" : "برايفت"}` : "", fd.get("note")].filter(Boolean).join("\n") || undefined,
       consent,
     });
 
@@ -198,6 +204,15 @@ function TrialPage() {
             <p className="text-xs font-bold text-primary">طلب الحصة التجريبية</p>
             <h2 className="mt-2 text-2xl">نتعرّف عليك وعلى طفلك</h2>
           </div>
+          <fieldset>
+            <legend className="text-sm font-bold">شكل الحصص المناسب لطفلك</legend>
+            <div className="trial-program-options mt-3">
+              {PROGRAMS.map(option => <Button key={option.id} type="button" variant="outline" aria-pressed={program === option.id} onClick={() => setProgram(option.id)} className={program === option.id ? "trial-program-selected" : ""}>
+                <span>{option.title}</span><span>{option.price} جنيه</span>
+              </Button>)}
+            </div>
+            <p className="mt-2 text-xs text-muted-foreground">اختياري؛ لو لسه محتار فريقنا يساعدك تختار.</p>
+          </fieldset>
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <Label htmlFor="parent_name">اسم ولي الأمر *</Label>
@@ -284,7 +299,7 @@ function TrialPage() {
 
           <div>
             <Label htmlFor="note">ملاحظات (اختياري)</Label>
-            <Textarea id="note" name="note" rows={4} maxLength={600} className="mt-2" />
+            <Textarea id="note" name="note" rows={4} maxLength={520} className="mt-2" />
           </div>
 
           <div className="flex items-start gap-3">

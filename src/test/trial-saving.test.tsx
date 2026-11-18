@@ -58,6 +58,15 @@ describe("Saving trial requests before WhatsApp", () => {
     await screen.findByRole("button", { name: "سجّل طلب التجربة وتحديد المستوى" });
     expect(screen.getByLabelText("اسم ولي الأمر *")).toHaveValue("Test Parent");
   });
+  it("includes the chosen program in the saved request for staff", async () => {
+    mocks.save.mockResolvedValue({ id: "11111111-1111-4111-8111-111111111111" });
+    render(<Page />);
+    await fillForm();
+    fireEvent.click(screen.getByRole("button", { name: "برايفت ٢٠٠٠ جنيه" }));
+    fireEvent.click(screen.getByRole("button", { name: "سجّل طلب التجربة وتحديد المستوى" }));
+    await screen.findByText("طلبك اتسجل بنجاح");
+    expect(mocks.save.mock.calls[0]?.[0].data.request.note).toBe("نوع الحصص المطلوب: برايفت");
+  });
   it("preserves a failed request and retries with the same ID", async () => {
     mocks.save
       .mockRejectedValueOnce(new Error("offline"))
