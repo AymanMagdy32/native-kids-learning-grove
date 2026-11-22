@@ -1,4 +1,4 @@
-import { bookingWhatsAppLink } from "@/lib/contact";
+import { bookingWhatsAppLink, whatsappLink } from "@/lib/contact";
 import { ArrowLeft, BookOpen, Check, UserRound, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -34,6 +34,14 @@ export function ProgramOptions() {
           <Button asChild size="lg" variant={id === "group" ? "sunshine" : "default"} className="program-cta"><a href={bookingWhatsAppLink(id)} target="_blank" rel="noopener noreferrer">{cta}<ArrowLeft className="size-4" /></a></Button>
         </article>)}
       </div>
+      <aside className="family-offer" aria-labelledby="family-offer-title">
+        <div className="family-offer-heading"><span className="family-offer-icon"><Users aria-hidden="true" /></span><div><p className="premium-eyebrow">سوا يتعلّموا… وإنت توفّر</p><h3 id="family-offer-title">أكتر من طفل؟ التوفير يكبر معاكم</h3><p>اختار البداية المناسبة لكل طفل، واستفيد بخصم مع الاشتراك سوا.</p></div></div>
+        <div className="family-offer-tiers">
+          <div className="family-offer-tier"><span>اشتراك طفلين</span><strong>خصم ١٠٪</strong></div>
+          <div className="family-offer-tier family-offer-tier-three"><span>اشتراك ٣ أطفال</span><strong>خصم ١٥٪</strong></div>
+        </div>
+        <a className="family-offer-contact" href={whatsappLink("أهلًا Native Kid Academy، عايز أعرف تفاصيل خصم اشتراك طفلين ١٠٪ أو ٣ أطفال ١٥٪، والمواعيد المناسبة ليهم.")} target="_blank" rel="noopener noreferrer">اسألنا عن خصم الأطفال على واتساب <ArrowLeft className="size-4" aria-hidden="true" /></a>
+      </aside>
       <p className="program-help">محتار بين الاتنين؟ كلّمنا على واتساب وفريقنا يساعدك تختار حسب مستوى طفلك.</p>
     </div>
   </section>;
