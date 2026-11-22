@@ -1,4 +1,4 @@
-import { bookingWhatsAppLink, whatsappLink } from "@/lib/contact";
+import { bookingWhatsAppLink } from "@/lib/contact";
 import { ArrowLeft, BookOpen, Check, UserRound, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -25,7 +25,7 @@ export function ProgramOptions() {
       <div className="program-heading"><p className="premium-eyebrow">اختار شكل التعلّم المناسب لطفلك</p><h2 id="programs-title" className="mt-3">جروب يشارك فيه،<br />أو برايفت يركّز عليه.</h2><p className="mt-4 text-sm leading-8 text-muted-foreground">نفس الهدف: طفلك يفهم ويتكلّم بثقة. اختار البداية، وإحنا نساعدك تحدّد الأنسب لمستواه.</p></div>
       <div className="program-grid">
         {PROGRAMS.map(({ id, title, english, price, before, saving, icon: Icon, tagline, description, benefits, cta }) => <article key={id} className={`program-card program-${id}`} aria-labelledby={`program-${id}-title`}>
-          <div className="program-card-top"><span className="program-icon"><Icon aria-hidden="true" /></span><span className="program-saving">وفّر {saving} جنيه</span></div>
+          <div className="program-card-top"><span className="program-icon"><Icon aria-hidden="true" /></span><div className="program-offer-badges" aria-label="التوفير وخصومات اشتراك الأطفال"><span className="program-saving">وفّر {saving} جنيه</span><span className="program-family-discount">طفلين: خصم ١٠٪</span><span className="program-family-discount program-family-three">٣ أطفال: خصم ١٥٪</span></div></div>
           <div className="mt-5 flex items-center gap-3"><h3 id={`program-${id}-title`}>{title}</h3><span className="program-english" lang="en" dir="ltr">{english}</span></div>
           <p className="program-tagline">{tagline}</p><p className="mt-2 text-sm leading-7 text-muted-foreground">{description}</p>
           <div className="program-price"><span className="sr-only">السعر الحالي</span><strong>{price}</strong><span>جنيه</span><span className="program-before">بدل <del>{before}</del></span></div>
@@ -34,14 +34,6 @@ export function ProgramOptions() {
           <Button asChild size="lg" variant={id === "group" ? "sunshine" : "default"} className="program-cta"><a href={bookingWhatsAppLink(id)} target="_blank" rel="noopener noreferrer">{cta}<ArrowLeft className="size-4" /></a></Button>
         </article>)}
       </div>
-      <aside className="family-offer" aria-labelledby="family-offer-title">
-        <div className="family-offer-heading"><span className="family-offer-icon"><Users aria-hidden="true" /></span><div><p className="premium-eyebrow">سوا يتعلّموا… وإنت توفّر</p><h3 id="family-offer-title">أكتر من طفل؟ التوفير يكبر معاكم</h3><p>اختار البداية المناسبة لكل طفل، واستفيد بخصم مع الاشتراك سوا.</p></div></div>
-        <div className="family-offer-tiers">
-          <div className="family-offer-tier"><span>اشتراك طفلين</span><strong>خصم ١٠٪</strong></div>
-          <div className="family-offer-tier family-offer-tier-three"><span>اشتراك ٣ أطفال</span><strong>خصم ١٥٪</strong></div>
-        </div>
-        <a className="family-offer-contact" href={whatsappLink("أهلًا Native Kid Academy، عايز أعرف تفاصيل خصم اشتراك طفلين ١٠٪ أو ٣ أطفال ١٥٪، والمواعيد المناسبة ليهم.")} target="_blank" rel="noopener noreferrer">اسألنا عن خصم الأطفال على واتساب <ArrowLeft className="size-4" aria-hidden="true" /></a>
-      </aside>
       <p className="program-help">محتار بين الاتنين؟ كلّمنا على واتساب وفريقنا يساعدك تختار حسب مستوى طفلك.</p>
     </div>
   </section>;
