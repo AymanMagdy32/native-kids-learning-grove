@@ -21,10 +21,10 @@ describe("Meta website pixel", () => {
     a.dataset["whatsappProgram"] = "private";
     trackWhatsAppClick(a);
     const event = window.fbq?.queue.at(-1);
-    expect(event).toEqual(["trackSingleCustom", META_PIXEL_ID, "WhatsAppClick", {contact_method: "whatsapp", program: "private", page_path: "/"}]);
+    expect(event).toEqual(["trackSingle", META_PIXEL_ID, "Lead", {contact_method: "whatsapp", program: "private", page_path: "/"}]);
     expect(JSON.stringify(event)).not.toContain("private-message");
     expect(JSON.stringify(event)).not.toContain("201133954793");
-    expect(JSON.stringify(window.fbq?.queue)).not.toContain('"Lead"');
+    expect(JSON.stringify(window.fbq?.queue)).not.toContain('"WhatsAppClick"');
   });
   it("ignores unrelated external links", () => {
     productionWindow(); const a = document.createElement("a"); a.href = "https://example.com/";

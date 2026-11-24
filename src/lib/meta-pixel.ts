@@ -40,7 +40,8 @@ export function trackWhatsAppClick(anchor: HTMLAnchorElement) {
   if (destination.protocol !== "https:" || !["api.whatsapp.com", "wa.me", "web.whatsapp.com"].includes(destination.hostname)) return;
   if (!initializeMetaPixel()) return;
   const program = anchor.dataset["whatsappProgram"];
-  window.fbq?.("trackSingleCustom", META_PIXEL_ID, "WhatsAppClick", {
+  // Lead represents a WhatsApp button click, not a confirmed conversation or booking.
+  window.fbq?.("trackSingle", META_PIXEL_ID, "Lead", {
     contact_method: "whatsapp",
     program: program === "group" || program === "private" ? program : "general",
     page_path: window.location.pathname,
