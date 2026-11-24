@@ -1,3 +1,4 @@
+import { MetaPixel } from "@/components/analytics/MetaPixel";
 import { BRAND_FAVICON, BRAND_APPLE_ICON } from "@/lib/brand";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -137,6 +138,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <MetaPixel />
       <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );

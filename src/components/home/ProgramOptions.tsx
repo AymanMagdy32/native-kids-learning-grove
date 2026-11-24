@@ -31,7 +31,7 @@ export function ProgramOptions() {
           <div className="program-price"><span className="sr-only">السعر الحالي</span><strong>{price}</strong><span>جنيه</span><span className="program-before">بدل <del>{before}</del></span></div>
           <ul className="program-features">{benefits.map(text => <li key={text}><Check className="size-4" aria-hidden="true" /><span>{text}</span></li>)}</ul>
           <p className="program-guide"><BookOpen className="size-5" aria-hidden="true" /> ومعاه دليل البيت مجانًا بالعربي والإنجليزي</p>
-          <Button asChild size="lg" variant={id === "group" ? "sunshine" : "default"} className="program-cta"><a href={bookingWhatsAppLink(id)} target="_blank" rel="noopener noreferrer">{cta}<ArrowLeft className="size-4" /></a></Button>
+          <Button asChild size="lg" variant={id === "group" ? "sunshine" : "default"} className="program-cta"><a data-whatsapp-program={id} href={bookingWhatsAppLink(id)} target="_blank" rel="noopener noreferrer">{cta}<ArrowLeft className="size-4" /></a></Button>
         </article>)}
       </div>
       <p className="program-help">محتار بين الاتنين؟ كلّمنا على واتساب وفريقنا يساعدك تختار حسب مستوى طفلك.</p>
